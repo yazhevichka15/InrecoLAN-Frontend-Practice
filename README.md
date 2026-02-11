@@ -31,3 +31,7 @@
 ├── vite.config.json
 └── README.md
 ```
+
+## Стек технологий
+
+Tailwind, TypeSript, React, Redux
