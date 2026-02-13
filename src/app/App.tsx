@@ -1,5 +1,10 @@
+import { Footer } from "../widgets/Footer";
+
 function App() {
-  return <h1>Hello World!</h1>
+  return (
+      <Footer />
+  );
 }
 
-export default App
+export default App;
+
