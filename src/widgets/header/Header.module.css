@@ -1,0 +1,71 @@
+header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 40px;
+}
+
+.HeaderMenu {
+  display: grid;
+  grid-template-columns: 117px 117px 117px;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.HeaderMenuItem {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: #2b0c1a;
+  cursor: pointer;
+}
+
+.HeaderRightMenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.HeaderRightMenuItem {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: #2b0c1a;
+  cursor: pointer;
+}
+
+.ColumnFirst {
+  grid-column: span 3;
+  display: flex;
+  align-items: center;
+}
+
+.ColumnSecond {
+  grid-column: span 5;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: inherit;
+}
+
+.TitleBlock {
+  grid-column: 3 / 5;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #2b0c1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ColumnThird {
+  grid-column: span 4;
+}
