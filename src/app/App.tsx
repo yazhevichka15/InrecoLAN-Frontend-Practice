@@ -1,4 +1,4 @@
-import { Footer } from "../widgets/Footer/Footer";
+import { Footer } from "../widgets/footer";
 
 function App() {
   return (

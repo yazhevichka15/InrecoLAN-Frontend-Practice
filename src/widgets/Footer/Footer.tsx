@@ -1,6 +1,6 @@
 import { FooterAbout } from "./FooterAbout.tsx";
 import { FooterAdress } from "./FooterAdress.tsx";
-import { FooterCatalog } from "./FooterCatalog";
+import { FooterCatalog } from "./FooterCatalog.tsx";
 import { FooterContacts } from "./FooterContacts.tsx";
 
 export function Footer() {
