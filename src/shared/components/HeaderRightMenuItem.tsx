@@ -1,10 +1,10 @@
 import type { LucideIcon } from 'lucide-react'
 
-type Props = {
+interface HeaderRightMenuItemProps {
   Icon: LucideIcon
   title: string
 }
-function HeaderRightMenuItem({ Icon, title }: Props) {
+function HeaderRightMenuItem({ Icon, title }: HeaderRightMenuItemProps) {
   return (
     <div className='flex items-center gap-[10px] text-[400] text-[14px] text-[#2b0c1a] cursor-pointer'>
       <Icon size={16} color='#2B0C1A' strokeWidth={1} />

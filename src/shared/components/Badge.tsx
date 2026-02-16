@@ -1,6 +1,8 @@
-type Props = { count: number }
+interface BadgeProps {
+  count: number
+}
 
-function Badge({ count }: Props) {
+function Badge({ count }: BadgeProps) {
   return (
     <span className='bg-[#fef1e7] px-[6px] py-0 rounded-[50px] text-[400] text-[14px] text-[#2b0c1a] absolute left-[97%] top-[-5px] -z-1'>
       {count}

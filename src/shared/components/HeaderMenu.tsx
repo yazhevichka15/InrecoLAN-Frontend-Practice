@@ -1,10 +1,10 @@
 import HeaderMenuItem from './HeaderMenuItem'
 
-type Props = {
+interface HeaderMenuProps {
   items: string[]
 }
 
-function HeaderMenu({ items }: Props) {
+function HeaderMenu({ items }: HeaderMenuProps) {
   return (
     <ul className='col-span-3 grid grid-cols-subgrid gap-[40px] flex items-center'>
       {items.map((el) => (

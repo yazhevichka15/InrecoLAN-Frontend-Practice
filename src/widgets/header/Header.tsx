@@ -1,7 +1,7 @@
-import SearchBar from './SearchBar'
+import SearchBar from '../../shared/components/SearchBar'
 import { ShoppingCart, User, Heart } from 'lucide-react'
-import HeaderMenu from './HeaderMenu'
-import HeaderRightMenuItem from './HeaderRightMenuItem'
+import HeaderMenu from '../../shared/components/HeaderMenu'
+import HeaderRightMenuItem from '../../shared/components/HeaderRightMenuItem'
 import Badge from '../../shared/components/Badge'
 import { useState } from 'react'
 
@@ -13,11 +13,10 @@ function Header() {
 
   const toggleAuth = () => {
     setIsAuth(!isAuth)
-    setButtonTitle(isAuth ? 'Михалыч' : 'Войти')
+    setButtonTitle(isAuth ? 'Войти' : 'Михалыч')
   }
-
   return (
-    <header className='grid grid-cols-12 gap-[40px]'>
+    <header className='grid grid-cols-12 gap-[40px] mx-4 my-2'>
       <HeaderMenu items={menuItems} />
 
       <div className='col-span-5 grid grid-cols-subgrid gap-[40px]'>
@@ -26,12 +25,12 @@ function Header() {
         </div>
       </div>
       <ul
-        className={`col-span-4 flex justify-between items-center ${isAuth ? 'justify-end gap-[40px]' : ''}`}
+        className={`col-span-4 flex justify-between items-center ${!isAuth ? 'justify-end gap-[40px]' : ''}`}
       >
         <li>
           <SearchBar />
         </li>
-        {!isAuth && (
+        {isAuth && (
           <>
             <li className='relative'>
               <HeaderRightMenuItem Icon={Heart} title='Избранное' />
