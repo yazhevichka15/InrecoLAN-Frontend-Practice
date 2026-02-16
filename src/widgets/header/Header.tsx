@@ -1,39 +1,54 @@
-import SearchBar from '../../shared/components/SearchBar/SearchBar'
-import styles from './Header.module.css'
+import SearchBar from './SearchBar'
 import { ShoppingCart, User, Heart } from 'lucide-react'
+import HeaderMenu from './HeaderMenu'
+import HeaderRightMenuItem from './HeaderRightMenuItem'
+import Badge from '../../shared/components/Badge'
+import { useState } from 'react'
 
 function Header() {
+  const menuItems = ['Главная', 'Каталог', 'Контакты']
+
+  const [isAuth, setIsAuth] = useState(false)
+  const [buttonTitle, setButtonTitle] = useState('Войти')
+
+  const toggleAuth = () => {
+    setIsAuth(!isAuth)
+    setButtonTitle(isAuth ? 'Михалыч' : 'Войти')
+  }
+
   return (
-    <header>
-      <nav className={styles.ColumnFirst}>
-        <ul className={styles.HeaderMenu}>
-          <li className={styles.HeaderMenuItem}>Главная</li>
-          <li className={styles.HeaderMenuItem}>Каталог</li>
-          <li className={styles.HeaderMenuItem}>Контакты</li>
-        </ul>
-      </nav>
-      <div className={styles.ColumnSecond}>
-        <div className={styles.TitleBlock}>Империя люстр</div>
+    <header className='grid grid-cols-12 gap-[40px]'>
+      <HeaderMenu items={menuItems} />
+
+      <div className='col-span-5 grid grid-cols-subgrid gap-[40px]'>
+        <div className='col-span-2 col-start-3 text-[400] text-[20px] tracking-[0.25em] uppercase text-[#2b0c1a] flex items-center'>
+          Империя люстр
+        </div>
       </div>
-      <nav className={styles.ColumnThird}>
-        <ul className={styles.HeaderRightMenu}>
-          <li>
-            <SearchBar />
-          </li>
-          <li className={styles.HeaderRightMenuItem}>
-            <Heart size={16} color='#2B0C1A' strokeWidth={1} />
-            Избранное
-          </li>
-          <li className={styles.HeaderRightMenuItem}>
-            <ShoppingCart size={16} color='#2B0C1A' strokeWidth={1} />
-            Корзина
-          </li>
-          <li className={styles.HeaderRightMenuItem}>
-            <User size={16} color='#2B0C1A' strokeWidth={1} />
-            Михалыч
-          </li>
-        </ul>
-      </nav>
+      <ul
+        className={`col-span-4 flex justify-between items-center ${isAuth ? 'justify-end gap-[40px]' : ''}`}
+      >
+        <li>
+          <SearchBar />
+        </li>
+        {!isAuth && (
+          <>
+            <li className='relative'>
+              <HeaderRightMenuItem Icon={Heart} title='Избранное' />
+              <Badge count={0} />
+            </li>
+            <li className='relative'>
+              <HeaderRightMenuItem Icon={ShoppingCart} title='Корзина' />
+              <Badge count={0} />
+            </li>
+          </>
+        )}
+        <li>
+          <button onClick={toggleAuth}>
+            <HeaderRightMenuItem Icon={User} title={buttonTitle} />
+          </button>
+        </li>
+      </ul>
     </header>
   )
 }
