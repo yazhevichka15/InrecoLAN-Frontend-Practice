@@ -1,5 +1,8 @@
+import { GridCatalog } from "../pages/grid-catalog/GridCatalog";
+
 function App() {
-  return <h1>Hello World!</h1>
+  return <GridCatalog />;
 }
 
-export default App
+export default App;
+
