@@ -1,5 +1,70 @@
+@import 'tailwindcss';
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'Involve';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/involve-vf.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gogol';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/gogol_regular.otf') format('opentype');
+}
+
+@theme {
+  --color-dark-brown: #2b0c1a;
+  --color-light-brown: #a48077;
+  --color-beige: #fef1e7;
+  --color-gray: #d9dede;
+
+  /* Для шрифтов нужно подобрать запасные варианты */
+  --font-sans: 'Involve';
+  --font-handwrite: 'Gogol';
+
+  /* Пример отступов */
+  /* --spacing-18: 4.5rem; */
+}
+
+/* Пробовала подключать шрифты и переменные при верстке SubHeader */
+/* Базовые стили, уточнить и перенастроить */
+/* @layer base {
+  html {
+    font-family: var(--basic-font);
+  }
+
+  h1 {
+    font-size: 45px;
+    letter-spacing: -2px;
+    color: var(--dark-brown-color);
+  }
+
+  h1 span:nth-child(2) {
+    font-family: var(--handwrite-font);
+    letter-spacing: 0;
+    color: var(--light-brown-color);
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--dark-brown-color);
+  }
+} */
