@@ -4,16 +4,14 @@ import HeaderMenu from '../../shared/components/HeaderMenu/HeaderMenu'
 import HeaderRightMenuItem from '../../shared/components/HeaderRightMenuItem/HeaderRightMenuItem'
 import Badge from '../../shared/components/Badge/Badge'
 import { useState } from 'react'
+import { cn } from '../../shared/utils/cn'
+
+const menuItems = ['Главная', 'Каталог', 'Контакты']
 
 function Header() {
-  const menuItems = ['Главная', 'Каталог', 'Контакты']
-
   const [isAuth, setIsAuth] = useState(false)
-  const [buttonTitle, setButtonTitle] = useState('Войти')
-
   const toggleAuth = () => {
     setIsAuth(!isAuth)
-    setButtonTitle(isAuth ? 'Войти' : 'Михалыч')
   }
   return (
     <header className='grid grid-cols-12 gap-[40px] mx-4 my-2'>
@@ -25,7 +23,10 @@ function Header() {
         </div>
       </div>
       <ul
-        className={`col-span-4 flex justify-between items-center ${!isAuth ? 'justify-end gap-[40px]' : ''}`}
+        className={cn(
+          'col-span-4 flex items-center',
+          isAuth ? 'justify-between' : 'justify-end gap-[40px]'
+        )}
       >
         <li>
           <SearchBar />
@@ -43,9 +44,7 @@ function Header() {
           </>
         )}
         <li>
-          <button onClick={toggleAuth}>
-            <HeaderRightMenuItem Icon={User} title={buttonTitle} />
-          </button>
+          <HeaderRightMenuItem Icon={User} title={isAuth ? 'Михалыч' : 'Войти'} func={toggleAuth} />
         </li>
       </ul>
     </header>
