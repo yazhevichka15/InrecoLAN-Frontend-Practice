@@ -8,11 +8,11 @@ export function FooterContacts() {
                 <p className="text-[#95726B] text-2xl">imperiya_lustr@mail.ru</p>
             </div>
 
-            <div className="flex items-center gap-3 mt-2">
-                <img src="icons/social/Max.webp" className="w-5 h-5" alt="Max" />
-                <img src="icons/social/Telegram.webp" className="w-5 h-5" alt="Telegram" />
-                <img src="icons/social/Vk.webp" className="w-5 h-5" alt="Vk" />
-                <img src="icons/social/WhatsApp.webp" className="w-5 h-5" alt="WhatsApp" />
+            <div className="flex items-center gap-10 mt-2">
+                <img src="/icons/social/Max.webp" className="w-5 h-5 cursor-pointer" alt="Max" />
+                <img src="/icons/social/Telegram.webp" className="w-5 h-5 cursor-pointer" alt="Telegram" />
+                <img src="/icons/social/Vk.webp" className="w-5 h-5 cursor-pointer" alt="Vk" />
+                <img src="/icons/social/Whats.webp" className="w-5 h-5 cursor-pointer" alt="WhatsApp" />
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ export function FooterAbout() {
         Империя люстр
       </h3>
 
-      <p className="">
+      <p>
         г. Владимир, ул. Студёная гора, д. 34
       </p>
     </div>
