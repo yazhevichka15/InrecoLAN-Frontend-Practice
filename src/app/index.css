@@ -75,6 +75,7 @@
   h1,
   h2,
   h3 {
+    line-height: 100%;
     letter-spacing: -2px;
     text-transform: uppercase;
   }
@@ -83,6 +84,7 @@
     font-family: var(--font-handwrite);
     font-size: inherit;
     text-transform: lowercase;
+    color: var(--color-light-brown);
   }
 
   hr {
