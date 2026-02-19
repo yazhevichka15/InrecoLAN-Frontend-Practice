@@ -1,4 +1,4 @@
-import HeaderMenuItem from '../HeaderMenuItem/HeaderMenuItem'
+import HeaderMenuItem from '../HeaderMenuItem'
 
 interface IHeaderMenuProps {
   items: string[]

@@ -1,8 +1,8 @@
-import SearchBar from '../../shared/components/SearchBar/SearchBar'
+import SearchBar from '../../shared/components/SearchBar'
 import { ShoppingCart, User, Heart } from 'lucide-react'
-import HeaderMenu from '../../shared/components/HeaderMenu/HeaderMenu'
-import HeaderRightMenuItem from '../../shared/components/HeaderRightMenuItem/HeaderRightMenuItem'
-import Badge from '../../shared/components/Badge/Badge'
+import HeaderMenu from '../../shared/components/HeaderMenu'
+import HeaderRightMenuItem from '../../shared/components/HeaderRightMenuItem'
+import Badge from '../../shared/components/Badge'
 import { useState } from 'react'
 import { cn } from '../../shared/utils/cn'
 
