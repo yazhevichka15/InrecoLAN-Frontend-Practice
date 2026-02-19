@@ -47,7 +47,7 @@
 
   --gap-base: var(--spacing-40px);
 
-  /* Стандартные отступы для контейнера */
+  /* Стандартные отступы для контейнера, использовать как обычные переменные */
   --basic-container: var(--spacing-50px) var(--spacing-40px) var(--spacing-100px);
   --basic-container-x: 0 var(--spacing-40px);
 }
@@ -76,7 +76,7 @@
   h2,
   h3 {
     line-height: 100%;
-    letter-spacing: -2px;
+    letter-spacing: -0.04em;
     text-transform: uppercase;
   }
 
