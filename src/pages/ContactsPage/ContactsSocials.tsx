@@ -1,3 +1,4 @@
+// Ссылки - пока заглушки
 import { ContactsSocialIcon } from './ContactsSocialIcon'
 
 export function ContactsSocials() {
@@ -6,22 +7,22 @@ export function ContactsSocials() {
       <ContactsSocialIcon
         socialLink='https://ya.ru/'
         iconSrc='/icons/social/vk-white.svg'
-        iconAlt=''
+        iconAlt='VK icon'
       />
       <ContactsSocialIcon
         socialLink='https://ya.ru/'
         iconSrc='/icons/social/telegram-white.svg'
-        iconAlt=''
+        iconAlt='Telegram icon'
       />
       <ContactsSocialIcon
         socialLink='https://ya.ru/'
         iconSrc='/icons/social/whatsapp-white.svg'
-        iconAlt=''
+        iconAlt='WhatsApp icon'
       />
       <ContactsSocialIcon
         socialLink='https://ya.ru/'
         iconSrc='/icons/social/max-white.svg'
-        iconAlt=''
+        iconAlt='MAX icon'
       />
     </div>
   )

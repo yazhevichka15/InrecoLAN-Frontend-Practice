@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom'
 
-// Поправить тип и нейминг
-interface IContactIconProps {
+interface IContactsSocialIcon {
   socialLink: string
   iconSrc: string
   iconAlt: string
 }
 
-export function ContactsSocialIcon({ socialLink, iconSrc, iconAlt }: IContactIconProps) {
+export function ContactsSocialIcon({ socialLink, iconSrc, iconAlt }: IContactsSocialIcon) {
   return (
-    <div className='w-11.75 h-9.25 bg-light-brown rounded-xs flex items-center justify-center'>
-      <img src={iconSrc} alt={iconAlt} className='w-6.5 h-6.5' />
-    </div>
+    <Link
+      to={socialLink}
+      className='w-12 h-10 flex items-center justify-center bg-light-brown rounded-xs cursor-pointer'
+    >
+      <img src={iconSrc} alt={iconAlt} className='w-6.75 h-6.75' />
+    </Link>
   )
 }
