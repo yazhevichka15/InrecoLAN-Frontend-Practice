@@ -1,5 +1,11 @@
 // Заглушка
+import Header from '../../widgets/header'
 
 export const HomePage = () => {
-  return <h1>Главная страница</h1>
+  return (
+    <>
+      <Header />
+      <h1>Главная страница</h1>
+    </>
+  )
 }
