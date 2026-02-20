@@ -1,8 +1,12 @@
-import { GridCatalog } from "../pages/grid-catalog/GridCatalog";
+import { BrowserRouter } from "react-router-dom";
+import GridCatalog from "../pages/grid-catalog/GridCatalog";
 
 function App() {
-  return <GridCatalog />;
+  return (
+    <BrowserRouter>
+      <GridCatalog />
+    </BrowserRouter>
+  );
 }
 
 export default App;
-
