@@ -1,1 +1,0 @@
-export { FavouritiesPage } from './FavouritiesPage'
