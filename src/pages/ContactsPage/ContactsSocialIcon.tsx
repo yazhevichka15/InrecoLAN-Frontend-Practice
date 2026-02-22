@@ -13,7 +13,7 @@ export const ContactsSocialIcon: FC<IContactsSocialIcon> = ({ socialLink, iconSr
       to={socialLink}
       className='w-50px h-40px flex items-center justify-center bg-light-brown rounded-xs cursor-pointer'
     >
-      <img src={iconSrc} alt={iconAlt} className='w-6.75 h-6.75' />
+      <img src={iconSrc} alt={iconAlt} className='w-[24px] h-[24px]' />
     </Link>
   )
 }
