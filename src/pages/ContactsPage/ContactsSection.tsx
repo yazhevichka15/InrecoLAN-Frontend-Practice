@@ -1,4 +1,6 @@
 import { MapPin, CalendarDays } from 'lucide-react'
+import type { FC } from 'react'
+
 import { cn } from '@shared/utils/cn'
 
 interface IContactSection {
@@ -10,14 +12,14 @@ interface IContactSection {
   hasCalendarIcon?: boolean
 }
 
-export function ContactsSection({
+export const ContactsSection: FC<IContactSection> = ({
   sectionHeader,
   details,
   description,
   sectionTheme = 'light',
   hasMapIcon = false,
   hasCalendarIcon = false,
-}: IContactSection) {
+}) => {
   const sectionClass = cn('w-full p-40px flex flex-col gap-20px rounded-xs', {
     'bg-beige': sectionTheme === 'light',
     'border border-solid border-dark-brown': sectionTheme === 'dark',
