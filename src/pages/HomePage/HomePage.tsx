@@ -1,5 +1,4 @@
 // Заглушка
-
 export const HomePage = () => {
   return (
     <>
