@@ -21,7 +21,7 @@ const colorItems = ['Белый', 'Чёрный', 'Золотой']
 
 export function FiltersSidebar() {
   return (
-    <div className='p-[var(--basic-container)] flex gap-[var(--spacing-50px)] flex-col col-span-3 border-r-1 border-[var(--color-light-brown)]'>
+    <div className='px-[var(--basic-container-x)] py-[var(--spacing-50px)] flex gap-[var(--spacing-50px)] flex-col col-span-3 border-r-1 border-[var(--color-light-brown)]'>
       <h2>Фильтры</h2>
       <FilterGroup
         title='Категория'
