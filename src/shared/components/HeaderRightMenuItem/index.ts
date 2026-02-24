@@ -1,1 +1,1 @@
-export { default } from './HeaderRightMenuItem'
+export { HeaderRightMenuItem } from './HeaderRightMenuItem'

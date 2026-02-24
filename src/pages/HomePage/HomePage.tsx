@@ -1,5 +1,5 @@
 // Заглушка
-import Header from '../../widgets/header'
+import { Header } from '../../widgets/header'
 
 export const HomePage = () => {
   return (

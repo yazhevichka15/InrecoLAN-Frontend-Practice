@@ -1,14 +1,14 @@
-import SearchBar from '../../shared/components/SearchBar'
+import { SearchBar } from '../../shared/components/SearchBar'
 import { ShoppingCart, User, Heart } from 'lucide-react'
-import HeaderMenu from '../../shared/components/HeaderMenu'
-import HeaderRightMenuItem from '../../shared/components/HeaderRightMenuItem'
-import Badge from '../../shared/components/Badge'
+import { HeaderMenu } from '../../shared/components/HeaderMenu'
+import { HeaderRightMenuItem } from '../../shared/components/HeaderRightMenuItem'
+import { Badge } from '../../shared/components/Badge'
 import { useState } from 'react'
 import { cn } from '../../shared/utils/cn'
 
 const menuItems = ['Главная', 'Каталог', 'Контакты']
 
-function Header() {
+export function Header() {
   const [isAuth, setIsAuth] = useState(false)
   const toggleAuth = () => {
     setIsAuth(!isAuth)
@@ -50,4 +50,3 @@ function Header() {
     </header>
   )
 }
-export default Header
