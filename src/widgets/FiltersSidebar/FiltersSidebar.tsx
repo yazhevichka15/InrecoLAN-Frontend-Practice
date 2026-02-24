@@ -1,5 +1,6 @@
 import { FilterGroup } from '@shared/components/FilterGroup'
 import { Button } from '@shared/components/Button'
+import { RangeInput } from '@shared/components/RangeInput'
 
 const categoriesItems = [
   'Люстры',
@@ -37,6 +38,8 @@ export function FiltersSidebar() {
         defaultValue={roomTypeItems[0]}
       />
       <FilterGroup title='Основной цвет' items={colorItems} name='color' inputType='checkbox' />
+
+      <RangeInput min={20} max={40} />
 
       <div className='flex flex-col gap-[var(--spacing-20px)]'>
         <Button theme='dark' title='Применить' className='w-full h-[37px]' />
