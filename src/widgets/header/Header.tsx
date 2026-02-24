@@ -18,15 +18,15 @@ export function Header() {
       <div className='grid grid-cols-12 gap-[var(--gap-base)] my-[var(--spacing-20px)]'>
         <HeaderMenu items={menuItems} />
 
-        <div className='col-span-5 grid grid-cols-subgrid gap-[40px]'>
-          <div className='col-span-2 col-start-3 text-[400] text-[20px] tracking-[0.25em] uppercase text-[#2b0c1a] flex items-center'>
-            Империя люстр
+        <div className='col-span-5 grid grid-cols-subgrid gap-[var(--gap-base)]'>
+          <div className='col-span-2 col-start-3 flex items-center'>
+            <h3 className='tracking-[0.25em] uppercase'>Империя люстр</h3>
           </div>
         </div>
         <ul
           className={cn(
             'col-span-4 flex items-center',
-            isAuth ? 'justify-between' : 'justify-end gap-[40px]'
+            isAuth ? 'justify-between' : 'justify-end gap-[var(--gap-base)]'
           )}
         >
           <li>
