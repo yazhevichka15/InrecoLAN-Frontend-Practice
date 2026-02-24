@@ -1,0 +1,1 @@
+export { SmallDescriptionBlock } from './SmallDescriptionBlock'
