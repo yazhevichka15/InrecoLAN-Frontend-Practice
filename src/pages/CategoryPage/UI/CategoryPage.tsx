@@ -1,7 +1,7 @@
-import { categories } from "../../entities/category/model/categories";
+import { categories } from "../../../shared/mocks/categories";
 import CategoryCard from "./CategoryCard";
 
-const GridCatalog = () => {
+const CategoryPage = () => {
   return (
     <section className="container mx-auto px-4 py-16">
     
@@ -14,4 +14,4 @@ const GridCatalog = () => {
   );
 };
 
-export default GridCatalog;
+export default CategoryPage;

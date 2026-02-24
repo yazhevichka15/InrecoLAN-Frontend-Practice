@@ -1,12 +1,7 @@
-import { BrowserRouter } from "react-router-dom";
-import GridCatalog from "../pages/grid-catalog/GridCatalog";
+import { CategoryPage } from "../pages/CategoryPage";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <GridCatalog />
-    </BrowserRouter>
-  );
+  return <CategoryPage />;
 }
 
 export default App;
