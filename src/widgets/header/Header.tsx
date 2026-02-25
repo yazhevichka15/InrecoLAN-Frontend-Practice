@@ -8,7 +8,6 @@ import { HeaderRightMenuItem } from './HeaderRightMenuItem'
 
 import { cn } from '@shared/utils/cn'
 
-// const menuItems = ['Главная', 'Каталог', 'Контакты']
 const menuItems = [
   { title: 'Главная', ref: '/' },
   { title: 'Каталог', ref: '/catalog' },
