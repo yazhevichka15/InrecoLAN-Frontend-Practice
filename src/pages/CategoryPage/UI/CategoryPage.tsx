@@ -1,4 +1,4 @@
-import { categories } from "../../../shared/mocks/categories";
+import { categories } from "../model/categories";
 import CategoryCard from "./CategoryCard";
 
 const CategoryPage = () => {

@@ -1,4 +1,4 @@
-import type { Category } from "../../entities/category/model/types";
+import type { Category } from "@pages/CategoryPage/model/types";
 
 export const categories: Category[] = [
   {
