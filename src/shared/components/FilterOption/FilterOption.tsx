@@ -19,7 +19,7 @@ export const FilterOption: FC<IFilterOptionProps> = ({
       type={inputType}
       name={name}
       defaultChecked={defaultChecked}
-      className='border border-[var(--color-light-brown)] accent-[var(--color-light-brown)] cursor-pointer'
+      className='border border-light-brown accent-light-brown cursor-pointer'
     />
   </label>
 )

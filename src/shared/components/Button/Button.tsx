@@ -1,24 +1,28 @@
 import type { FC } from 'react'
 import { cn } from '@shared/utils/cn'
 
+import type { LucideIcon } from 'lucide-react'
+
 interface IButtonProps {
-  title: string
+  title?: string
   theme: 'dark' | 'light'
   className?: string
+  Icon?: LucideIcon
+  onClick?: () => void
 }
 
-export const Button: FC<IButtonProps> = ({ title, theme = 'dark', className }) => (
+export const Button: FC<IButtonProps> = ({ title, theme, className, Icon, onClick }) => (
   <button
+    onClick={onClick}
     className={cn(
-      'rounded-[2px] cursor-pointer',
+      'rounded-xs cursor-pointer flex items-center justify-center',
       {
-        'bg-[var(--color-dark-brown)] text-white': theme === 'dark',
-        'border border-[var(--color-light-brown)] text-[var(--color-light-brown)]':
-          theme === 'light',
+        'bg-dark-brown text-white': theme === 'dark',
+        'border border-light-brown text-light-brown': theme === 'light',
       },
       className
     )}
   >
-    {title}
+    {Icon ? <Icon size={24} color='#A48077' strokeWidth={1} /> : title}
   </button>
 )

@@ -53,7 +53,7 @@ export function Header() {
           </li>
         </ul>
       </div>
-      <hr className='mb-[var(--spacing-50px)]' />
+      <hr />
     </header>
   )
 }

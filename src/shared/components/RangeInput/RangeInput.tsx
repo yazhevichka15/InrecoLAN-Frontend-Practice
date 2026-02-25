@@ -16,7 +16,7 @@ export const RangeInput: FC<IRangeInputProps> = ({ min, max }) => (
       max={max}
       step='1'
       value='30'
-      className='w-full accent-[var(--color-light-brown)]'
+      className='w-full accent-light-brown'
     />
   </div>
 )

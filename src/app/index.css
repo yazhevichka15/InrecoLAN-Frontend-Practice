@@ -31,6 +31,7 @@
   --font-sans: 'Involve';
   --font-handwrite: 'Gogol';
 
+  --spacing-5px: calc(var(--spacing) * 1.5);
   --spacing-10px: calc(var(--spacing) * 2.5);
   --spacing-20px: calc(var(--spacing) * 5);
   --spacing-30px: calc(var(--spacing) * 7.5);
@@ -43,6 +44,9 @@
   --spacing-100px: calc(var(--spacing) * 25);
   --spacing-110px: calc(var(--spacing) * 27.5);
   --spacing-150px: calc(var(--spacing) * 37.5);
+  --spacing-260px: calc(var(--spacing) * 65);
+  --spacing-430px: calc(var(--spacing) * 107.5);
+  --spacing-550px: calc(var(--spacing) * 137.5);
 
   --gap-base: var(--spacing-40px);
 

@@ -16,9 +16,9 @@ export const FilterGroup: FC<IFilterGroupProps> = ({
   name,
   defaultValue,
 }) => (
-  <fieldset className='flex flex-col gap-[var(--spacing-30px)]'>
-    <h3 className='text-[var(--color-light-brown)]'>{title}</h3>
-    <div className='flex flex-col gap-[var(--spacing-10px)]'>
+  <fieldset className='flex flex-col gap-30px'>
+    <h3 className='text-light-brown'>{title}</h3>
+    <div className='flex flex-col gap-10px'>
       {items.map((el) => (
         <FilterOption
           key={el}
