@@ -1,12 +1,19 @@
-import { SearchBar } from '../../shared/components/SearchBar'
 import { ShoppingCart, User, Heart } from 'lucide-react'
-import { HeaderMenu } from '../../shared/components/HeaderMenu'
-import { HeaderRightMenuItem } from '../../shared/components/HeaderRightMenuItem'
-import { Badge } from '../../shared/components/Badge'
 import { useState } from 'react'
-import { cn } from '../../shared/utils/cn'
 
-const menuItems = ['Главная', 'Каталог', 'Контакты']
+import { SearchBar } from '@shared/ui/SearchBar'
+import { Badge } from '@shared/ui/Badge'
+import { HeaderMenu } from './HeaderMenu'
+import { HeaderRightMenuItem } from './HeaderRightMenuItem'
+
+import { cn } from '@shared/utils/cn'
+
+// const menuItems = ['Главная', 'Каталог', 'Контакты']
+const menuItems = [
+  { title: 'Главная', ref: '/' },
+  { title: 'Каталог', ref: '/catalog' },
+  { title: 'Контакты', ref: '/contacts' },
+]
 
 export function Header() {
   const [isAuth, setIsAuth] = useState(false)
@@ -14,11 +21,11 @@ export function Header() {
     setIsAuth(!isAuth)
   }
   return (
-    <header className='m-[var(--basic-container-x)]'>
-      <div className='grid grid-cols-12 gap-[var(--gap-base)] my-[var(--spacing-20px)]'>
+    <header className='m-(--basic-container-x)'>
+      <div className='grid grid-cols-12 gap-base my-20px'>
         <HeaderMenu items={menuItems} />
 
-        <div className='col-span-5 grid grid-cols-subgrid gap-[var(--gap-base)]'>
+        <div className='col-span-5 grid grid-cols-subgrid gap-base'>
           <div className='col-span-2 col-start-3 flex items-center'>
             <h3 className='tracking-[0.25em] uppercase'>Империя люстр</h3>
           </div>
@@ -26,7 +33,7 @@ export function Header() {
         <ul
           className={cn(
             'col-span-4 flex items-center',
-            isAuth ? 'justify-between' : 'justify-end gap-[var(--gap-base)]'
+            isAuth ? 'justify-between' : 'justify-end gap-base'
           )}
         >
           <li>
@@ -53,7 +60,7 @@ export function Header() {
           </li>
         </ul>
       </div>
-      <hr className='mb-[var(--spacing-50px)]' />
+      <hr />
     </header>
   )
 }
