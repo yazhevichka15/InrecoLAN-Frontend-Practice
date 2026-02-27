@@ -2,10 +2,10 @@ export function FooterContacts() {
     return (
         <div className="flex flex-col gap-4">
             <div className="space-y-1">
-                <p className="text-[#402431]">Пн-пт с 9.00 до 20.00</p>
-                <p className="text-[#402431]">Сб-вс с 10.00 до 18.00</p>
-                <p className="text-[#95726B] text-2xl font-medium">8(4922)44-93-30</p>
-                <p className="text-[#95726B] text-2xl">imperiya_lustr@mail.ru</p>
+                <p className="text-footer-title">Пн-пт с 9.00 до 20.00</p>
+                <p className="text-footer-title">Сб-вс с 10.00 до 18.00</p>
+                <p className="text-footer-list text-2xl font-medium">8(4922)44-93-30</p>
+                <p className="text-footer-list text-2xl">imperiya_lustr@mail.ru</p>
             </div>
 
             <div className="flex items-center gap-10 mt-2">

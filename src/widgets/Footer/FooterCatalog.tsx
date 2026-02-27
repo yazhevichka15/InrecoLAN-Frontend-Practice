@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 export function FooterCatalog() {
   return (
     <div>
-      <h3 className="text-[#402431]">Каталог</h3>
-      <ul className="text-[#95726B]">
+      <h3 className="text-footer-title">Каталог</h3>
+      <ul className="text-footer-list">
         <li>
           <Link to="/catalog/lustry" className="hover:text-white">
             Люстры

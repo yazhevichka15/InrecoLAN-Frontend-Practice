@@ -5,7 +5,7 @@
 
 export function Footer() {
   return (
-    <footer className="absolute bottom-0 left-0 w-full bg-[#2B0D1A] text-white/50 py-10 px-8 overflow-hidden">
+    <footer className="w-full bg-dark-brown text-white/50 py-10 px-8">
       <div className="flex justify-between">
         <FooterAbout />
         <FooterAdress />
@@ -13,11 +13,11 @@ export function Footer() {
         <FooterContacts />
       </div>
 
-      <div className="text-[#402431] flex justify-center text-[110px] border-b-2">
+      <div className="text-footer-title flex justify-center text-[110px] border-b-2">
         ИМПЕРИЯ ЛЮСТР
       </div>
 
-      <div className="text-[#402431] ml-auto">
+      <div className="text-footer-title ml-auto">
         © Империя люстр 2026
       </div>
     </footer>
