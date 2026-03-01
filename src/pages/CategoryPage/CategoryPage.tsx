@@ -28,7 +28,7 @@ export const CategoryPage = () => {
             price='32990'
             status='not-in-cart'
           />
-          <ProductCard title='Люстра ARM013-08-W белый антик' price='51990' status='in-cart' />
+          <ProductCard title='Люстра ARM013-08-W белый антик' price='51990' status='not-in-cart' />
           <ProductCard
             title='Люстра 07512-3.33 матовое золото'
             price='6230'
