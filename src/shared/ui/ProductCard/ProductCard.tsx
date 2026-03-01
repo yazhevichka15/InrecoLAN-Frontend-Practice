@@ -3,13 +3,20 @@ import { ProductCounter } from '../ProductCounter'
 import { Heart } from 'lucide-react'
 
 interface IProductCardProps {
+  image: string
   title: string
   price: string
-  inFavorites: boolean
+  inFavorites?: boolean
   status: 'in-cart' | 'not-in-cart' | 'out-of-stock'
 }
 
-export const ProductCard: FC<IProductCardProps> = ({ title, price, inFavorites, status }) => {
+export const ProductCard: FC<IProductCardProps> = ({
+  image,
+  title,
+  price,
+  inFavorites,
+  status,
+}) => {
   const [cardStatus, setCardStatus] = useState(status)
   const [favorites, setFavorites] = useState(inFavorites)
 
@@ -26,7 +33,7 @@ export const ProductCard: FC<IProductCardProps> = ({ title, price, inFavorites, 
           strokeWidth={1.5}
         />
       </button>
-      <img src='' alt='' className='w-full h-430px' />
+      <img src={image} alt={title} className='w-full h-430px' />
       <h3>{title}</h3>
       {cardStatus === 'out-of-stock' ? (
         <h3 className='text-gray'>Нет в наличии</h3>
