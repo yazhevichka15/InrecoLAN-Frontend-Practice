@@ -9,7 +9,7 @@ interface IHeaderRightMenuItemProps {
 
 export const HeaderRightMenuItem: FC<IHeaderRightMenuItemProps> = ({ Icon, title, func }) => (
   <button onClick={func}>
-    <div className='flex items-center gap-[var(--spacing-10px)] cursor-pointer'>
+    <div className='flex items-center gap-10px cursor-pointer'>
       <Icon size={16} color='#2B0C1A' strokeWidth={1} />
       {title}
     </div>

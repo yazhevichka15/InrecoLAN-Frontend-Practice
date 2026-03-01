@@ -31,10 +31,12 @@
   --font-sans: 'Involve';
   --font-handwrite: 'Gogol';
 
-  --spacing-5px: calc(var(--spacing) * 1.5);
+  --spacing-5px: calc(var(--spacing) * 1.25);
   --spacing-10px: calc(var(--spacing) * 2.5);
+  --spacing-15px: calc(var(--spacing) * 3.75);
   --spacing-20px: calc(var(--spacing) * 5);
   --spacing-30px: calc(var(--spacing) * 7.5);
+  --spacing-34px: calc(var(--spacing) * 8.5);
   --spacing-40px: calc(var(--spacing) * 10);
   --spacing-50px: calc(var(--spacing) * 12.5);
   --spacing-60px: calc(var(--spacing) * 15);
@@ -47,6 +49,8 @@
   --spacing-260px: calc(var(--spacing) * 65);
   --spacing-430px: calc(var(--spacing) * 107.5);
   --spacing-550px: calc(var(--spacing) * 137.5);
+  --spacing-165px: calc(var(--spacing) * 41.25);
+  --spacing-260px: calc(var(--spacing) * 65);
 
   --gap-base: var(--spacing-40px);
 

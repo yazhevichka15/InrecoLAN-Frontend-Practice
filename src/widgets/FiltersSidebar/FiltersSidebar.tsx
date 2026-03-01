@@ -1,6 +1,6 @@
-import { FilterGroup } from '@shared/components/FilterGroup'
-import { Button } from '@shared/components/Button'
-import { RangeInput } from '@shared/components/RangeInput'
+import { FilterGroup } from '@shared/ui/FilterGroup'
+import { Button } from '@shared/ui/Button'
+import { RangeInput } from '@shared/ui/RangeInput'
 
 const categoriesItems = [
   'Люстры',

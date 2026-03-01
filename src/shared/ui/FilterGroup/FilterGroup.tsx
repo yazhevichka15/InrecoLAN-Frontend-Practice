@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { FilterOption } from '@shared/components/FilterOption'
+import { FilterOption } from '@shared/ui/FilterOption'
 
 interface IFilterGroupProps {
   title: string

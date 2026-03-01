@@ -5,7 +5,7 @@
 import { FiltersSidebar } from '@widgets/FiltersSidebar'
 import { SubHeader } from '@widgets/SubHeader'
 import { Header } from '@widgets/Header'
-import { ProductCard } from '@shared/components/ProductCard'
+import { ProductCard } from '@shared/ui/ProductCard'
 
 export const CategoryPage = () => {
   return (
