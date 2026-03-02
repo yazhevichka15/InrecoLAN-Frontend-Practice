@@ -21,7 +21,7 @@ const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
     className="w-full h-96 object-cover"
   />
 
-  <div className="absolute inset-0 flex items-end justify-between p-4 text-white">
+  <div className="absolute flex items-end justify-between p-4 text-white">
     <span className="font-semibold text-lg">
       {category.title}
     </span>
