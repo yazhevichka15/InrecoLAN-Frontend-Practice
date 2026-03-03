@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-
 :root {
   margin: 0;
   padding: 0;
@@ -27,6 +26,10 @@
   --color-light-brown: #a48077;
   --color-beige: #fef1e7;
   --color-gray: #d9dede;
+  --color-red: #ff3300;
+
+  --color-footer-title: #402431;
+  --color-footer-list: #95726b;
 
   /* Для шрифтов нужно подобрать запасные варианты */
   --font-sans: 'Involve';
@@ -37,6 +40,7 @@
   --spacing-15px: calc(var(--spacing) * 3.75);
   --spacing-20px: calc(var(--spacing) * 5);
   --spacing-30px: calc(var(--spacing) * 7.5);
+  --spacing-34px: calc(var(--spacing) * 8.5);
   --spacing-40px: calc(var(--spacing) * 10);
   --spacing-50px: calc(var(--spacing) * 12.5);
   --spacing-60px: calc(var(--spacing) * 15);
@@ -46,6 +50,7 @@
   --spacing-100px: calc(var(--spacing) * 25);
   --spacing-110px: calc(var(--spacing) * 27.5);
   --spacing-150px: calc(var(--spacing) * 37.5);
+  --spacing-165px: calc(var(--spacing) * 41.25);
   --spacing-260px: calc(var(--spacing) * 65);
 
   --gap-base: var(--spacing-40px);
