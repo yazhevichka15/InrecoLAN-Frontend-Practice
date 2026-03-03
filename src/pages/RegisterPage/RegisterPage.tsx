@@ -1,0 +1,5 @@
+// Заглушка
+
+export const RegisterPage = () => {
+  return <h1>Страница регистрации</h1>
+}
