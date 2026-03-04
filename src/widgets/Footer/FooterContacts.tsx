@@ -8,7 +8,7 @@ export function FooterContacts() {
                 <p className="text-footer-list text-2xl">imperiya_lustr@mail.ru</p>
             </div>
 
-            <div className="flex items-center gap-10 mt-2">
+            <div className="flex justify-end items-center gap-10 mt-2">
                 <img src="/icons/social/Max.webp" className="w-5 h-5 cursor-pointer" alt="Max" />
                 <img src="/icons/social/Telegram.webp" className="w-5 h-5 cursor-pointer" alt="Telegram" />
                 <img src="/icons/social/Vk.webp" className="w-5 h-5 cursor-pointer" alt="Vk" />
