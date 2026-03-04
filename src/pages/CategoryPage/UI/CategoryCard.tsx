@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { FC } from "react";
 
-interface CategoryCardProps {
+interface ICategoryCardProps {
   category: {
     slug: string;
     title: string;
@@ -9,7 +9,7 @@ interface CategoryCardProps {
   };
 }
 
-const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
+const CategoryCard: FC<ICategoryCardProps> = ({ category }) => {
   return (
     <Link
   to={`/catalog/${category.slug}`}
