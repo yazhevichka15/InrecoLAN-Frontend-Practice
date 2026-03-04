@@ -11,6 +11,7 @@ interface IProductCardProps {
   inFavorites?: boolean
   status: 'in-cart' | 'not-in-cart' | 'out-of-stock'
   badge?: string
+  oldPrice?: string
 }
 
 export const ProductCard: FC<IProductCardProps> = ({
@@ -20,6 +21,7 @@ export const ProductCard: FC<IProductCardProps> = ({
   inFavorites,
   status,
   badge,
+  oldPrice,
 }) => {
   const [cardStatus, setCardStatus] = useState(status)
   const [favorites, setFavorites] = useState(inFavorites)
@@ -51,7 +53,11 @@ export const ProductCard: FC<IProductCardProps> = ({
         <h3 className='text-gray'>Нет в наличии</h3>
       ) : (
         <div className='flex justify-between items-center'>
-          <h3 className='text-light-brown'>{price}₽</h3>
+          <div className='flex gap-20px items-center'>
+            <h3 className='text-light-brown'>{price}₽</h3>
+            {oldPrice && <h3 className='text-gray line-through'>{oldPrice}₽</h3>}
+          </div>
+
           {cardStatus === 'not-in-cart' && (
             <button
               className='text-light-brown cursor-pointer flex items-center gap-10px'

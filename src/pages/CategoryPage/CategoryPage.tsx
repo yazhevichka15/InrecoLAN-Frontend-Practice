@@ -21,6 +21,7 @@ const chandeliersItems = [
     price: '32990',
     status: 'not-in-cart' as const,
     badge: '',
+    oldPrice: '',
   },
   {
     image: '/public/assets/products/chandelier-2.webp',
@@ -28,6 +29,7 @@ const chandeliersItems = [
     price: '51990',
     status: 'not-in-cart' as const,
     badge: 'Новинка',
+    oldPrice: '',
   },
   {
     image: '/public/assets/products/chandelier-3.webp',
@@ -35,6 +37,7 @@ const chandeliersItems = [
     price: '6230',
     status: 'not-in-cart' as const,
     badge: '-30%',
+    oldPrice: '8900',
   },
   {
     image: '/public/assets/products/chandelier-4.webp',
@@ -42,6 +45,7 @@ const chandeliersItems = [
     price: '6230',
     status: 'out-of-stock' as const,
     badge: '',
+    oldPrice: '',
   },
 ]
 
@@ -72,6 +76,7 @@ export const CategoryPage = () => {
                 price={card.price}
                 status={card.status}
                 badge={card.badge}
+                oldPrice={card.oldPrice}
               />
             ))}
           </div>
