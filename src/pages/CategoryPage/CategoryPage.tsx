@@ -6,6 +6,13 @@ import { FiltersSidebar } from '@widgets/FiltersSidebar'
 import { SubHeader } from '@widgets/SubHeader'
 import { Header } from '@widgets/Header'
 import { ProductCard } from '@shared/ui/ProductCard'
+import { SortSelect } from '@shared/ui/SortSelect/SortSelect'
+
+const selectItems = [
+  { value: '-', title: 'Без сортировки' },
+  { value: 'cheap', title: 'Сначала дешёвые' },
+  { value: 'expensive', title: 'Сначала дорогие' },
+]
 
 export const CategoryPage = () => {
   return (
@@ -22,31 +29,35 @@ export const CategoryPage = () => {
       />
       <div className='grid grid-cols-12 gap-base m-(--basic-container-x)'>
         <FiltersSidebar />
-        <div className='col-span-9 grid grid-cols-subgrid flex flex-col gap-base my-50px'>
-          <ProductCard
-            image='/public/assets/products/chandelier-1.webp'
-            title='Люстра ARM337-07-R кремовый с золотом'
-            price='32990'
-            status='not-in-cart'
-          />
-          <ProductCard
-            image='/public/assets/products/chandelier-2.webp'
-            title='Люстра ARM013-08-W белый антик'
-            price='51990'
-            status='not-in-cart'
-          />
-          <ProductCard
-            image='/public/assets/products/chandelier-3.webp'
-            title='Люстра 07512-3.33 матовое золото'
-            price='6230'
-            status='not-in-cart'
-          />
-          <ProductCard
-            image='/public/assets/products/chandelier-4.webp'
-            title='Люстра 07874-80,33 золото'
-            price='6230'
-            status='out-of-stock'
-          />
+        <div className='col-span-9 grid grid-cols-subgrid my-50px'>
+          <SortSelect options={selectItems} />
+
+          <div className='col-span-9 grid grid-cols-subgrid flex flex-col gap-base my-50px'>
+            <ProductCard
+              image='/public/assets/products/chandelier-1.webp'
+              title='Люстра ARM337-07-R кремовый с золотом'
+              price='32990'
+              status='not-in-cart'
+            />
+            <ProductCard
+              image='/public/assets/products/chandelier-2.webp'
+              title='Люстра ARM013-08-W белый антик'
+              price='51990'
+              status='not-in-cart'
+            />
+            <ProductCard
+              image='/public/assets/products/chandelier-3.webp'
+              title='Люстра 07512-3.33 матовое золото'
+              price='6230'
+              status='not-in-cart'
+            />
+            <ProductCard
+              image='/public/assets/products/chandelier-4.webp'
+              title='Люстра 07874-80,33 золото'
+              price='6230'
+              status='out-of-stock'
+            />
+          </div>
         </div>
       </div>
     </>

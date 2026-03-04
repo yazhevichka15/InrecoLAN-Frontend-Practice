@@ -1,6 +1,7 @@
 import { useState, type FC } from 'react'
 import { ProductCounter } from '../ProductCounter'
 import { Heart } from 'lucide-react'
+import { cn } from '@shared/utils/cn'
 
 interface IProductCardProps {
   image: string
@@ -23,7 +24,7 @@ export const ProductCard: FC<IProductCardProps> = ({
   return (
     <div className='col-span-3 flex flex-col justify-between h-550px relative'>
       <button
-        className='absolute top-20px right-20px cursor-pointer'
+        className={'absolute top-20px right-20px cursor-pointer z-1'}
         onClick={() => setFavorites(!favorites)}
       >
         <Heart
@@ -33,7 +34,14 @@ export const ProductCard: FC<IProductCardProps> = ({
           strokeWidth={1.5}
         />
       </button>
-      <img src={image} alt={title} className='w-full h-430px' />
+      <img
+        src={image}
+        alt={title}
+        className={cn(
+          'w-full h-430px',
+          cardStatus === 'out-of-stock' && 'filter grayscale opacity-50'
+        )}
+      />
       <h3>{title}</h3>
       {cardStatus === 'out-of-stock' ? (
         <h3 className='text-gray'>Нет в наличии</h3>
