@@ -2,6 +2,7 @@ import { useState, type FC } from 'react'
 import { ProductCounter } from '../ProductCounter'
 import { Heart } from 'lucide-react'
 import { cn } from '@shared/utils/cn'
+import { CardBadge } from '../CardBadge'
 
 interface IProductCardProps {
   image: string
@@ -9,6 +10,7 @@ interface IProductCardProps {
   price: string
   inFavorites?: boolean
   status: 'in-cart' | 'not-in-cart' | 'out-of-stock'
+  badge?: string
 }
 
 export const ProductCard: FC<IProductCardProps> = ({
@@ -17,12 +19,14 @@ export const ProductCard: FC<IProductCardProps> = ({
   price,
   inFavorites,
   status,
+  badge,
 }) => {
   const [cardStatus, setCardStatus] = useState(status)
   const [favorites, setFavorites] = useState(inFavorites)
 
   return (
     <div className='col-span-3 flex flex-col justify-between h-550px relative'>
+      {badge && <CardBadge title={badge ? badge : ''} />}
       <button
         className={'absolute top-20px right-20px cursor-pointer z-1'}
         onClick={() => setFavorites(!favorites)}
