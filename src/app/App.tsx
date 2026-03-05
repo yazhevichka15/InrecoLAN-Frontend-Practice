@@ -16,10 +16,13 @@ import { AdminPanel } from '../pages/AdminPanel/index'
 import { ForbiddenPage } from '../pages/ForbiddenPage/index'
 import { ServerErrorPage } from '../pages/ServerErrorPage/index'
 import { NotFoundPage } from '../pages/NotFoundPage/index'
+import { Footer } from '@widgets/Footer'
 
 function App() {
   return (
     <BrowserRouter>
+    <div className="min-h-screen flex flex-col">
+      <main className='flex-1'>
       <Routes>
         <Route index element={<HomePage />} />
         <Route path='contacts' element={<ContactsPage />} />
@@ -51,8 +54,11 @@ function App() {
         <Route path='500' element={<ServerErrorPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
+      </main>
+      <Footer />
+      </div>
     </BrowserRouter>
   )
 }
 
-export default App
+export default App;
