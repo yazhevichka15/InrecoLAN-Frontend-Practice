@@ -1,25 +1,29 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { SubHeader } from '@widgets/SubHeader'
 import { ShoppingCartItem } from './ShoppingCartItem'
+import { Button } from '@shared/ui/Button'
+import { ArrowButton } from '@shared/ui/ArrowButton'
 
 export const ShoppingCartPage = () => {
+  const navigate = useNavigate()
+
   // Для теста, должен быть запрос на сервер
   const cartProducts = [
-    {
-      id: '2345',
-      imgSrc: 'string',
-      name: 'Люстра ARM337-07-R кремовый с золотом',
-      price: 32990,
-      quantity: 2,
-    },
-    {
-      id: '2345',
-      imgSrc: 'string',
-      name: 'Люстра ARM337-07-R кремовый с золотом',
-      price: 32990,
-      quantity: 2,
-    },
+    // {
+    //   id: '2345',
+    //   imgSrc: 'string',
+    //   name: 'Люстра ARM337-07-R кремовый с золотом',
+    //   price: 32990,
+    //   quantity: 2,
+    // },
+    // {
+    //   id: '2345',
+    //   imgSrc: 'string',
+    //   name: 'Люстра ARM337-07-R кремовый с золотом',
+    //   price: 32990,
+    //   quantity: 1,
+    // },
   ]
 
   const totalPrice = calculateTotalPrice(cartProducts)
@@ -35,15 +39,17 @@ export const ShoppingCartPage = () => {
       {cartProducts.length === 0 && (
         <main className='p-(--basic-container) flex flex-col justify-center items-center gap-base'>
           <h3>В корзине пока пусто!</h3>
-          <Link to='/catalog' className='flex'>
-            <p className='uppercase text-light-brown'>В каталог</p>
-            {/* <ArrowButton /> - кнопка в виде стрелки */}
-          </Link>
+          <ArrowButton title='В каталог' theme='' onClick={() => navigate('/catalog')} />
         </main>
       )}
 
       {cartProducts.length > 0 && (
         <main className='p-(--basic-container) flex flex-col gap-base'>
+          <div className='flex gap-base'>
+            <Button title='Выбрать все' theme='dark' className='w-[400px] h-[40px]' />
+            <Button title='Очистить корзину' theme='light' className='w-[400px] h-[40px]' />
+          </div>
+
           {cartProducts.map((product) => (
             <ShoppingCartItem key={product.id} {...product} />
           ))}
@@ -53,7 +59,11 @@ export const ShoppingCartPage = () => {
               <h2>Итого:</h2>
               <h2 className='text-light-brown'>{totalPrice}₽</h2>
             </div>
-            {/* Кнопка "оформить заказ", реализовано у Иры */}
+            <Button
+              title='Оформить заказ'
+              theme='dark'
+              className='w-[740px] h-[80px] text-[20px]'
+            />
           </div>
         </main>
       )}
