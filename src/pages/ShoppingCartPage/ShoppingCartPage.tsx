@@ -4,6 +4,7 @@ import { SubHeader } from '@widgets/SubHeader'
 import { ShoppingCartItem } from './ShoppingCartItem'
 import { Button } from '@shared/ui/Button'
 import { ArrowButton } from '@shared/ui/ArrowButton'
+import { SmallArrowButton } from '@shared/ui/SmallArrowButton'
 
 export const ShoppingCartPage = () => {
   const navigate = useNavigate()
@@ -47,6 +48,7 @@ export const ShoppingCartPage = () => {
               onClick={() => navigate('/catalog')}
             />
           </div>
+          <SmallArrowButton arrowDirection='left' />
         </div>
       )}
 
