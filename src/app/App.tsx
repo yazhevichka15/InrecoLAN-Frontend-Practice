@@ -16,49 +16,52 @@ import { AdminPanel } from '../pages/AdminPanel/index'
 import { ForbiddenPage } from '../pages/ForbiddenPage/index'
 import { ServerErrorPage } from '../pages/ServerErrorPage/index'
 import { NotFoundPage } from '../pages/NotFoundPage/index'
+
+import { Header } from '@widgets/Header'
 import { Footer } from '@widgets/Footer'
 
 function App() {
   return (
     <BrowserRouter>
-    <div className="min-h-screen flex flex-col">
-      <main className='flex-1'>
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path='contacts' element={<ContactsPage />} />
+      <div className='min-h-screen flex flex-col'>
+        <Header />
+        <main className='flex flex-col flex-1'>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path='contacts' element={<ContactsPage />} />
 
-        <Route path='catalog'>
-          <Route index element={<CategoriesPage />} />
-          <Route path=':category' element={<CategoryPage />} />
-          <Route path=':category/:product' element={<ProductDetailsPage />} />
-        </Route>
+            <Route path='catalog'>
+              <Route index element={<CategoriesPage />} />
+              <Route path=':category' element={<CategoryPage />} />
+              <Route path=':category/:product' element={<ProductDetailsPage />} />
+            </Route>
 
-        <Route path='auth'>
-          <Route index element={<Navigate to='login' replace />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='register' element={<RegisterPage />} />
-          <Route path='forgot-password' element={<ForgotPasswordPage />} />
-        </Route>
+            <Route path='auth'>
+              <Route index element={<Navigate to='login' replace />} />
+              <Route path='login' element={<LoginPage />} />
+              <Route path='register' element={<RegisterPage />} />
+              <Route path='forgot-password' element={<ForgotPasswordPage />} />
+            </Route>
 
-        {/* <Route element={<ProtectedRouteClient />}> */}
-        <Route path='profile' element={<ProfilePage />} />
-        <Route path='cart' element={<ShoppingCartPage />} />
-        <Route path='favourities' element={<FavouritiesPage />} />
-        {/* </Route> */}
+            {/* <Route element={<ProtectedRouteClient />}> */}
+            <Route path='profile' element={<ProfilePage />} />
+            <Route path='cart' element={<ShoppingCartPage />} />
+            <Route path='favourities' element={<FavouritiesPage />} />
+            {/* </Route> */}
 
-        {/* <Route element={<ProtectedRouteAdmin />}> */}
-        <Route path='admin' element={<AdminPanel />} />
-        {/* </Route> */}
+            {/* <Route element={<ProtectedRouteAdmin />}> */}
+            <Route path='admin' element={<AdminPanel />} />
+            {/* </Route> */}
 
-        <Route path='403' element={<ForbiddenPage />} />
-        <Route path='500' element={<ServerErrorPage />} />
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-      </main>
-      <Footer />
+            <Route path='403' element={<ForbiddenPage />} />
+            <Route path='500' element={<ServerErrorPage />} />
+            <Route path='*' element={<NotFoundPage />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
     </BrowserRouter>
   )
 }
 
-export default App;
+export default App
