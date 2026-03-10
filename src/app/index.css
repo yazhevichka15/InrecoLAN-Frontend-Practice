@@ -55,6 +55,8 @@
   --spacing-260px: calc(var(--spacing) * 65);
   --spacing-280px: calc(var(--spacing) * 70);
   --spacing-300px: calc(var(--spacing) * 75);
+  --spacing-400px: calc(var(--spacing) * 100);
+  --spacing-740px: calc(var(--spacing) * 185);
 
   --gap-base: var(--spacing-40px);
 
