@@ -1,32 +1,27 @@
-import { useEffect, useRef, useState, type FC, type ChangeEvent } from 'react'
+import { useEffect, useRef, type FC } from 'react'
 
 interface IDoubleRangeInput {
   min: number
   max: number
   step: number
+  value: { min: number; max: number }
+  onChange: (value: { min: number; max: number }) => void
 }
 
-export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step }) => {
-  const [inputFrom, setInputFrom] = useState(min)
-  const [inputTo, setInputTo] = useState(max)
-  const [fromInputValue, setFromInputValue] = useState(String(min))
-  const [toInputValue, setToInputValue] = useState(String(max))
-
+export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step, value, onChange }) => {
   const slider = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    setFromInputValue(String(inputFrom))
-    setToInputValue(String(inputTo))
     if (slider.current) {
-      if (inputFrom > inputTo) {
-        slider.current.style.right = `${100 - ((inputFrom - min) / (max - min)) * 100}%`
-        slider.current.style.left = `${((inputTo - min) / (max - min)) * 100}%`
+      if (value.min > value.max) {
+        slider.current.style.right = `${100 - ((value.min - min) / (max - min)) * 100}%`
+        slider.current.style.left = `${((value.max - min) / (max - min)) * 100}%`
       } else {
-        slider.current.style.right = `${100 - ((inputTo - min) / (max - min)) * 100}%`
-        slider.current.style.left = `${((inputFrom - min) / (max - min)) * 100}%`
+        slider.current.style.right = `${100 - ((value.max - min) / (max - min)) * 100}%`
+        slider.current.style.left = `${((value.min - min) / (max - min)) * 100}%`
       }
     }
-  }, [inputFrom, inputTo, min, max])
+  }, [value.min, value.max, min, max])
 
   return (
     <div className='flex flex-col gap-20px'>
@@ -37,13 +32,11 @@ export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step }) => {
           min={min}
           max={max}
           step={step}
-          value={fromInputValue}
+          value={value.min}
           onChange={(e) => {
-            const value = e.target.value
-            setFromInputValue(value)
-            const numValue = Number(value)
+            const numValue = Number(e.target.value)
             if (!isNaN(numValue) && numValue >= min && numValue <= max) {
-              setInputFrom(numValue)
+              onChange({ min: numValue, max: value.max })
             }
           }}
         />
@@ -53,13 +46,11 @@ export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step }) => {
           min={min}
           max={max}
           step={step}
-          value={toInputValue}
+          value={value.max}
           onChange={(e) => {
-            const value = e.target.value
-            setToInputValue(value)
-            const numValue = Number(value)
+            const numValue = Number(e.target.value)
             if (!isNaN(numValue) && numValue >= min && numValue <= max) {
-              setInputTo(numValue)
+              onChange({ min: value.min, max: numValue })
             }
           }}
         />
@@ -71,22 +62,20 @@ export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step }) => {
         <div className='relative'>
           <input
             type='range'
-            onChange={(e) => setInputFrom(Number(e.target.value))}
+            onChange={(e) => onChange({ min: Number(e.target.value), max: value.max })}
             min={min}
             max={max}
             step={step}
-            defaultValue={min}
-            value={inputFrom}
+            value={value.min}
             className='absolute w-full h-5px -top-5px bg-none pointer-events-none range-input'
           />
           <input
             type='range'
-            onChange={(e) => setInputTo(Number(e.target.value))}
+            onChange={(e) => onChange({ min: value.min, max: Number(e.target.value) })}
             min={min}
             max={max}
             step={step}
-            defaultValue={max}
-            value={inputTo}
+            value={value.max}
             className='absolute w-full h-5px -top-5px bg-none pointer-events-none range-input'
           />
         </div>

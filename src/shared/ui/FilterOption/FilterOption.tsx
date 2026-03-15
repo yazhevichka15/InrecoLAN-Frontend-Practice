@@ -1,24 +1,27 @@
 import type { FC } from 'react'
+import { type UseFormRegister } from 'react-hook-form'
 
 interface IFilterOptionProps {
   title: string
   inputType: 'radio' | 'checkbox'
-  name?: string
-  defaultChecked?: boolean
+  name: string
+  register: UseFormRegister<any>
+  value: string
 }
 
 export const FilterOption: FC<IFilterOptionProps> = ({
   title,
   inputType,
   name,
-  defaultChecked,
+  register,
+  value,
 }) => (
   <label className='flex items-center justify-between cursor-pointer'>
     <span>{title}</span>
     <input
       type={inputType}
-      name={name}
-      defaultChecked={defaultChecked}
+      value={value}
+      {...register(name)}
       className='border border-light-brown accent-light-brown cursor-pointer'
     />
   </label>
