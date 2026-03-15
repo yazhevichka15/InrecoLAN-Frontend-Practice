@@ -18,11 +18,6 @@ export const FilterOption: FC<IFilterOptionProps> = ({
 }) => (
   <label className='flex items-center justify-between cursor-pointer'>
     <span>{title}</span>
-    <input
-      type={inputType}
-      value={value}
-      {...register(name)}
-      className='border border-light-brown accent-light-brown cursor-pointer'
-    />
+    <input type={inputType} value={value} {...register(name)} />
   </label>
 )

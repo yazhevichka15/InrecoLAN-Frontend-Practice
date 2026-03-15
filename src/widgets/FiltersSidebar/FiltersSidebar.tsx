@@ -1,7 +1,6 @@
 import { FilterGroup } from '@shared/ui/FilterGroup'
 import { Button } from '@shared/ui/Button'
 import { DoubleRangeInput } from '@shared/ui/DoubleRangeInput'
-import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 
 const categoriesItems = [
