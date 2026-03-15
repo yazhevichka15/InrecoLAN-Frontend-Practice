@@ -1,1 +1,0 @@
-export { HeaderMenuItem } from './HeaderMenuItem'
