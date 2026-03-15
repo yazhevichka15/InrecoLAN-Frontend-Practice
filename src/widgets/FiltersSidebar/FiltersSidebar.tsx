@@ -1,6 +1,7 @@
 import { FilterGroup } from '@shared/ui/FilterGroup'
 import { Button } from '@shared/ui/Button'
-import { RangeInput } from '@shared/ui/RangeInput'
+import { DoubleRangeInput } from '@shared/ui/DoubleRangeInput'
+import { useRef } from 'react'
 
 const categoriesItems = [
   'Люстры',
@@ -20,8 +21,12 @@ const roomTypeItems = ['Встроенный', 'Накладной', 'Подве
 const colorItems = ['Белый', 'Чёрный', 'Золотой']
 
 export function FiltersSidebar() {
+  const form = useRef<HTMLFormElement>(null)
   return (
-    <div className='px-(--basic-container-x) py-50px flex gap-50px flex-col col-span-3 border-r border-light-brown'>
+    <form
+      ref={form}
+      className='px-(--basic-container-x) py-50px flex gap-50px flex-col col-span-3 border-r border-light-brown'
+    >
       <h2>Фильтры</h2>
       <FilterGroup
         title='Категория'
@@ -39,12 +44,25 @@ export function FiltersSidebar() {
       />
       <FilterGroup title='Основной цвет' items={colorItems} name='color' inputType='checkbox' />
 
-      <RangeInput min={20} max={40} />
+      <fieldset className='flex flex-col gap-30px'>
+        <h3 className='text-light-brown'>Мощность, Вт</h3>
+        <DoubleRangeInput min={24} max={40} step={1} />
+      </fieldset>
+      <fieldset className='flex flex-col gap-30px'>
+        <h3 className='text-light-brown'>Количество ламп, шт</h3>
+        <DoubleRangeInput min={1} max={10} step={1} />
+      </fieldset>
 
       <div className='flex flex-col gap-20px'>
-        <Button theme='dark' title='Применить' className='w-full h-9.25' />
-        <Button theme='light' title='Сбросить' className='w-full h-9.25' />
+        <Button theme='dark' title='Применить' className='w-full h-9.25' type='button' />
+        <Button
+          theme='light'
+          title='Сбросить'
+          className='w-full h-9.25'
+          type='button'
+          onClick={() => form.current?.reset()}
+        />
       </div>
-    </div>
+    </form>
   )
 }

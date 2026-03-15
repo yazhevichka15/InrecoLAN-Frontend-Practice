@@ -104,4 +104,18 @@
     width: calc(var(--spacing) * 29.25);
     opacity: 40%;
   }
+
+  .range-input {
+    -webkit-appearance: none;
+  }
+
+  .range-input::-webkit-slider-thumb {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: var(--color-light-brown);
+    pointer-events: auto;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
 }

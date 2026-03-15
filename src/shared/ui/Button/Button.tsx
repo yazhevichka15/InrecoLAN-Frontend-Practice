@@ -9,10 +9,12 @@ interface IButtonProps {
   className?: string
   Icon?: LucideIcon
   onClick?: () => void
+  type: 'submit' | 'button'
 }
 
-export const Button: FC<IButtonProps> = ({ title, theme, className, Icon, onClick }) => (
+export const Button: FC<IButtonProps> = ({ title, theme, className, Icon, onClick, type }) => (
   <button
+    type={type}
     onClick={onClick}
     className={cn(
       'rounded-xs cursor-pointer flex items-center justify-center',
@@ -20,6 +22,7 @@ export const Button: FC<IButtonProps> = ({ title, theme, className, Icon, onClic
         'bg-dark-brown text-white': theme === 'dark',
         'border border-light-brown text-light-brown': theme === 'light',
       },
+      'hover:bg-light-brown hover:text-white active:bg-[#81635B]',
       className
     )}
   >
