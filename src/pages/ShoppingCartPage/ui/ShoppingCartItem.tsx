@@ -6,7 +6,6 @@ import { ProductCounter } from '@shared/ui/ProductCounter'
 
 import { useShoppingCart } from '../context/ShoppingCartContext'
 
-// Такая ли типизация?
 interface IShoppingCartItem {
   id: string
   imgSrc: string

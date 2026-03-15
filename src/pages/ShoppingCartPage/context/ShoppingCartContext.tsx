@@ -3,7 +3,6 @@ import { createContext, useContext, useState, type ReactNode } from 'react'
 import { clearCart as clearCartApi } from '../api/clearCart'
 import { deleteProductFromCart as deleteProductFromCartApi } from '../api/deleteProductFromCart'
 
-// Точно ли интерфейс? Может тип или Entity? Вынести отдельно?
 interface ICartProduct {
   id: string
   imgSrc: string
