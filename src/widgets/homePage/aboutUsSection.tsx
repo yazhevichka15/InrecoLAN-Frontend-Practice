@@ -73,3 +73,4 @@ export const AboutUsSection = () => {
     </section>
   );
 };
+export default AboutUsSection
