@@ -54,7 +54,7 @@ export function Header() {
             <HeaderRightMenuItem
               Icon={User}
               title={isAuth ? 'Михалыч' : 'Войти'}
-              func={toggleAuth}
+              onClick={toggleAuth}
             />
           </li>
         </ul>
