@@ -1,4 +1,4 @@
-import { categories } from "../model/categories";
+import { categories } from "../model/categories-data";
 import CategoryCard from "./CategoryCard";
 
 const CategoryPage = () => {
