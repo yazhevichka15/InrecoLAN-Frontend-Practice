@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import type { FC } from "react";
+import type { ICategory } from "../model/types";
 
 interface ICategoryCardProps {
-  category: {
-    slug: string;
-    title: string;
-    image: string;
-  };
+  category: ICategory;
 }
 
 const CategoryCard: FC<ICategoryCardProps> = ({ category }) => {

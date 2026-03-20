@@ -1,5 +1,5 @@
 
-export interface Category {
+export interface ICategory {
   slug: string;   
   title: string;
   image: string;
