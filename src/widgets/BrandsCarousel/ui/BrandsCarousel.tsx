@@ -13,11 +13,13 @@ export const BrandsCarousel = () => {
 
   return (
     <div className='carousel'>
+      <hr />
       <div className='carousel-track'>
         {brands.map((brand, index) => (
           <BrandsCarouselItem key={`${brand.id}-${index}`} brand={brand} />
         ))}
       </div>
+      <hr />
     </div>
   )
 }

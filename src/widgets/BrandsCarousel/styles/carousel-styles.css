@@ -1,16 +1,24 @@
 .carousel {
   /* Анимация в левую сторону */
   --animation-direction: normal;
-  --animation-duraction: 5s;
+  --animation-duraction: 30s;
 
   --carousel-item-width: 590px;
   --carousel-item-height: 120px;
   --carousel-gap: 80px;
 
   max-width: 100%;
+  height: var(--spacing-250px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
   -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.carousel hr {
+  border-color: var(--color-gray);
 }
 
 .carousel-track {
