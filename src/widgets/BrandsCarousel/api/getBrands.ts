@@ -16,11 +16,11 @@ export function getBrands() {
       name: 'test3',
       imgSrc: 'img/brands/test3.png',
     },
-    {
-      id: 4,
-      name: 'test1',
-      imgSrc: 'img/brands/test1.png',
-    },
+    // {
+    //   id: 4,
+    //   name: 'test1',
+    //   imgSrc: 'img/brands/test1.png',
+    // },
     // {
     //   id: 5,
     //   name: 'test2',

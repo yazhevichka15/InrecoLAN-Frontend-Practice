@@ -12,14 +12,10 @@ export const BrandsCarousel = () => {
   }, [brandsImages])
 
   return (
-    <div className='scroller' data-speed='fast' data-animated='true'>
-      <div className='scroller__inner'>
+    <div className='carousel'>
+      <div className='carousel-track'>
         {brands.map((brand, index) => (
-          <BrandsCarouselItem
-            key={`${brand.id}-${index}`}
-            brand={brand}
-            ariaHidden={index >= brandsImages.length}
-          />
+          <BrandsCarouselItem key={`${brand.id}-${index}`} brand={brand} />
         ))}
       </div>
     </div>

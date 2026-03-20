@@ -1,8 +1,8 @@
 import '../styles/carousel-styles.css'
 
-export const BrandsCarouselItem = ({ brand, ariaHidden = false }) => {
+export const BrandsCarouselItem = ({ brand }) => {
   return (
-    <div className='item' aria-hidden={ariaHidden}>
+    <div className='item'>
       <img src={brand.imgSrc} alt={brand.name} draggable='false' />
     </div>
   )
