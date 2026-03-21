@@ -75,3 +75,13 @@ function App() {
 }
 
 export default App
+
+{
+  /* 
+Пример реализации защищенного пути:
+<Route element={ProtectedRoute}>
+  <Route path='/test1' element={<FirstComponentPage />} />
+  <Route path='/test2' element={<SecondComponentPage />} />
+</Route>  
+*/
+}
