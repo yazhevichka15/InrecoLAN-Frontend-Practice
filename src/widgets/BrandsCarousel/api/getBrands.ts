@@ -3,78 +3,73 @@ export function getBrands() {
   return [
     {
       id: 1,
-      name: 'test1',
-      imgSrc: 'img/brands/test1.png',
+      name: 'benetti Brand Logo',
+      imgSrc: 'img/brands/benetti.webp',
     },
     {
       id: 2,
-      name: 'test2',
-      imgSrc: 'img/brands/test2.png',
+      name: 'BOGATE`S Brand Logo',
+      imgSrc: 'img/brands/bogates.webp',
     },
     {
       id: 3,
-      name: 'test3',
-      imgSrc: 'img/brands/test3.png',
+      name: 'CRYSTAL LUX Brand Logo',
+      imgSrc: 'img/brands/crystal_lux.webp',
     },
-    // {
-    //   id: 4,
-    //   name: 'test1',
-    //   imgSrc: 'img/brands/test1.png',
-    // },
-    // {
-    //   id: 5,
-    //   name: 'test2',
-    //   imgSrc: 'img/brands/test2.png',
-    // },
-    // {
-    //   id: 6,
-    //   name: 'test3',
-    //   imgSrc: 'img/brands/test3.png',
-    // },
-    // {
-    //   id: 7,
-    //   name: 'test1',
-    //   imgSrc: 'img/brands/test1.png',
-    // },
-    // {
-    //   id: 8,
-    //   name: 'test2',
-    //   imgSrc: 'img/brands/test2.png',
-    // },
-    // {
-    //   id: 9,
-    //   name: 'test3',
-    //   imgSrc: 'img/brands/test3.png',
-    // },
-    // {
-    //   id: 10,
-    //   name: 'test1',
-    //   imgSrc: 'img/brands/test1.png',
-    // },
-    // {
-    //   id: 11,
-    //   name: 'test2',
-    //   imgSrc: 'img/brands/test2.png',
-    // },
-    // {
-    //   id: 12,
-    //   name: 'test3',
-    //   imgSrc: 'img/brands/test3.png',
-    // },
-    // {
-    //   id: 13,
-    //   name: 'test1',
-    //   imgSrc: 'img/brands/test1.png',
-    // },
-    // {
-    //   id: 14,
-    //   name: 'test2',
-    //   imgSrc: 'img/brands/test2.png',
-    // },
-    // {
-    //   id: 15,
-    //   name: 'test3',
-    //   imgSrc: 'img/brands/test3.png',
-    // },
+    {
+      id: 4,
+      name: 'EUROSVET Brand Logo',
+      imgSrc: 'img/brands/eurosvet.webp',
+    },
+    {
+      id: 5,
+      name: 'freya Brand Logo',
+      imgSrc: 'img/brands/freya.webp',
+    },
+    {
+      id: 6,
+      name: 'Kink Light Brand Logo',
+      imgSrc: 'img/brands/kink_light.webp',
+    },
+    {
+      id: 7,
+      name: 'Lightstar Brand Logo',
+      imgSrc: 'img/brands/lightstar.webp',
+    },
+    {
+      id: 8,
+      name: 'LIMION Brand Logo',
+      imgSrc: 'img/brands/lumion.webp',
+    },
+    {
+      id: 9,
+      name: 'MAYTONI Brand Logo',
+      imgSrc: 'img/brands/maytoni.webp',
+    },
+    {
+      id: 10,
+      name: 'MODELUX Brand Logo',
+      imgSrc: 'img/brands/modelux.webp',
+    },
+    {
+      id: 11,
+      name: 'Odeon Light Brand Logo',
+      imgSrc: 'img/brands/odeon_light.webp',
+    },
+    {
+      id: 12,
+      name: 'OMNI LUX Brand Logo',
+      imgSrc: 'img/brands/omni_lux.webp',
+    },
+    {
+      id: 13,
+      name: 'TK LIGHTING Brand Logo',
+      imgSrc: 'img/brands/tk_lighting.webp',
+    },
+    {
+      id: 14,
+      name: 'Zortes Brand Logo',
+      imgSrc: 'img/brands/zortes.webp',
+    },
   ]
 }

@@ -10,6 +10,7 @@ interface IBrandsCarouselItemProps {
 
 export const BrandsCarouselItem: FC<IBrandsCarouselItemProps> = ({ brand }) => {
   return (
+    // Как идея - можно еще добавить ссылку на официальный сайт бренда
     <div className='item'>
       <img src={brand.imgSrc} alt={brand.name} />
     </div>

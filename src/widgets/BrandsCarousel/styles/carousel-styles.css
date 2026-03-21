@@ -1,11 +1,11 @@
 .carousel {
   /* Анимация в левую сторону */
   --animation-direction: normal;
-  --animation-duraction: 30s;
+  --animation-duraction: 50s;
 
   --carousel-item-width: 590px;
   --carousel-item-height: 120px;
-  --carousel-gap: 80px;
+  --carousel-gap: 100px;
 
   max-width: 100%;
   height: var(--spacing-250px);
@@ -35,7 +35,6 @@
 }
 
 .item {
-  width: var(--carousel-item-width);
   height: var(--carousel-item-height);
   display: flex;
   justify-content: center;
