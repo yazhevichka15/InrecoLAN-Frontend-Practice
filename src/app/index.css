@@ -52,6 +52,7 @@
   --spacing-150px: calc(var(--spacing) * 37.5);
   --spacing-165px: calc(var(--spacing) * 41.25);
   --spacing-260px: calc(var(--spacing) * 65);
+  --spacing-345px: calc(var(--spacing) * 86.25);
 
   --gap-base: var(--spacing-40px);
 
@@ -88,6 +89,11 @@
     text-transform: uppercase;
   }
 
+  .error-code {
+    font-size: 345px;
+    line-height: 1;
+  }
+
   .handwrite {
     font-family: var(--font-handwrite);
     font-size: inherit;
@@ -106,4 +112,3 @@
     opacity: 40%;
   }
 }
-
