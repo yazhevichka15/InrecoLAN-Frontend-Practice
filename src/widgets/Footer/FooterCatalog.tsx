@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 export function FooterCatalog() {
   return (
@@ -62,5 +62,5 @@ export function FooterCatalog() {
         </li>
       </ul>
     </div>
-  );
+  )
 }

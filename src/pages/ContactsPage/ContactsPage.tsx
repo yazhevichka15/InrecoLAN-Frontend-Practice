@@ -1,5 +1,27 @@
-// Заглушка
+import { SubHeader } from '@widgets/SubHeader'
+import { Map } from '@shared/ui/Map'
+
+import { ContactsHeader } from './ContactsHeader'
+import { ContactsSocials } from './ContactsSocials'
+import { ContactsInfo } from './ContactsInfo'
 
 export const ContactsPage = () => {
-  return <h1>Контакты</h1>
+  return (
+    <>
+      <SubHeader
+        mainTitle='Контакты'
+        subTitle='Для связи'
+        description='Поможем подобрать люстру под ваш интерьер, чтобы в доме было светло, уютно и комфортно каждый день.'
+      />
+
+      <main className='p-(--basic-container) grid grid-cols-2 gap-base'>
+        <div className='flex flex-col gap-30px'>
+          <ContactsHeader />
+          <ContactsSocials />
+          <ContactsInfo />
+        </div>
+        <Map />
+      </main>
+    </>
+  )
 }
