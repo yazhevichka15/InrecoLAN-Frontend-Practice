@@ -4,11 +4,11 @@ import type { LucideIcon } from 'lucide-react'
 interface IHeaderRightMenuItemProps {
   Icon: LucideIcon
   title: string
-  func?: () => void
+  onClick?: () => void
 }
 
-export const HeaderRightMenuItem: FC<IHeaderRightMenuItemProps> = ({ Icon, title, func }) => (
-  <button onClick={func}>
+export const HeaderRightMenuItem: FC<IHeaderRightMenuItemProps> = ({ Icon, title, onClick }) => (
+  <button onClick={onClick}>
     <div className='flex items-center gap-10px cursor-pointer'>
       <Icon size={16} color='#2B0C1A' strokeWidth={1} />
       {title}

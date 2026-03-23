@@ -1,24 +1,25 @@
-import { ShoppingCart, User, Heart } from 'lucide-react'
 import { useState } from 'react'
+import { ShoppingCart, User, Heart } from 'lucide-react'
 
-import { SearchBar } from '@shared/ui/SearchBar'
-import { Badge } from '@shared/ui/Badge'
 import { HeaderMenu } from './HeaderMenu'
 import { HeaderRightMenuItem } from './HeaderRightMenuItem'
 
+import { SearchBar } from '@shared/ui/SearchBar'
+import { Badge } from '@shared/ui/Badge'
 import { cn } from '@shared/utils/cn'
-
-const menuItems = [
-  { title: 'Главная', ref: '/' },
-  { title: 'Каталог', ref: '/catalog' },
-  { title: 'Контакты', ref: '/contacts' },
-]
 
 export function Header() {
   const [isAuth, setIsAuth] = useState(false)
   const toggleAuth = () => {
     setIsAuth(!isAuth)
   }
+
+  const menuItems = [
+    { title: 'Главная', ref: '/' },
+    { title: 'Каталог', ref: '/catalog' },
+    { title: 'Контакты', ref: '/contacts' },
+  ]
+
   return (
     <header className='m-(--basic-container-x)'>
       <div className='grid grid-cols-12 gap-base my-20px'>
@@ -29,6 +30,7 @@ export function Header() {
             <h3 className='tracking-[0.25em] uppercase'>Империя люстр</h3>
           </div>
         </div>
+
         <ul
           className={cn(
             'col-span-4 flex items-center',
@@ -54,11 +56,12 @@ export function Header() {
             <HeaderRightMenuItem
               Icon={User}
               title={isAuth ? 'Михалыч' : 'Войти'}
-              func={toggleAuth}
+              onClick={toggleAuth}
             />
           </li>
         </ul>
       </div>
+
       <hr />
     </header>
   )
