@@ -1,6 +1,6 @@
-import type { Category } from "@pages/CategoryPage/model/types";
+import type { ICategory } from "./types";
 
-export const categories: Category[] = [
+export const categories: ICategory[] = [
   {
     slug: "chandeliers",
     title: "Люстры",
