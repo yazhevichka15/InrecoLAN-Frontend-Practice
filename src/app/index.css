@@ -53,6 +53,7 @@
   --spacing-165px: calc(var(--spacing) * 41.25);
   --spacing-260px: calc(var(--spacing) * 65);
   --spacing-300px: calc(var(--spacing) * 75);
+  --spacing-345px: calc(var(--spacing) * 86.25);
 
   --gap-base: var(--spacing-40px);
 
@@ -87,6 +88,11 @@
     line-height: 100%;
     letter-spacing: -0.04em;
     text-transform: uppercase;
+  }
+
+  .error-code {
+    font-size: 345px;
+    line-height: 1;
   }
 
   .handwrite {
