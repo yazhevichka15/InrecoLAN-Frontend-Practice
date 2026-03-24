@@ -34,9 +34,9 @@ const CatalogSection = () => {
 
         <Link
           to="/catalog"
-          className="flex items-center justify-center h-80 rounded-lg bg-gray-100 p-4 text-center hover:bg-gray-200"
+          className="flex items-center justify-center h-80 rounded-lg bg-[#FEF1E7] p-4 text-center"
         >
-          <span className="font-semibold text-gray-700">
+          <span className="font-semibold text-gray-700 ">
             Посмотреть весь каталог →
           </span>
         </Link>

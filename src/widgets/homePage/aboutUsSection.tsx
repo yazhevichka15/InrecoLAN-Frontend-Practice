@@ -7,7 +7,7 @@ export const AboutUsSection = () => {
         <div className="flex justify-between flex-1 flex-col">
           <div>
             <div className="mb-8">
-              <p className="font-handwrite text-xl">немного</p>
+              <p className="font-handwrite text-xl text-footer-list">немного</p>
               <h2 className="text-4xl font-bold">о нас</h2>
             </div>
             <p className="text-lg max-w-lg">
@@ -21,7 +21,7 @@ export const AboutUsSection = () => {
             <img
               src="/assets/Arrow.webp"
               alt="Перейти в каталог"
-              className="w-16"
+              className="w-16 filter brightness-0"
             />
           </Link>
         </div>
@@ -36,7 +36,7 @@ export const AboutUsSection = () => {
       <div className="flex justify-between gap-12 pt-10">
         <div className="flex flex-1 flex-col items-start">
           <p className="text-5xl font-bold">
-            <span className="font-handwrite">Более</span> 25
+            <span className="font-handwrite text-footer-list">Более</span> 25
           </p>
           <p className="text-xl mb-4">лет на рынке</p>
           <div className="h-px w-24 mb-4"></div>
@@ -48,7 +48,7 @@ export const AboutUsSection = () => {
         </div>
         <div className="flex flex-1 flex-col items-start">
           <p className="text-5xl text-bold">
-            365 <span className="font-handwrite">дней</span>{' '}
+            365 <span className="font-handwrite text-footer-list">дней</span>
           </p>
           <p className="text-xl mb-4"> гарантии</p>
           <div className="h-px w-24 mb-4"></div>
@@ -60,7 +60,7 @@ export const AboutUsSection = () => {
         </div>
         <div className="flex flex-1 flex-col items-start">
           <p className="text-5xl font-bold">
-            100% <span className="font-handwrite">довольных</span>
+            100% <span className="font-handwrite text-footer-list">довольных</span>
           </p>
           <p className="text-xl mb-4"> клиентов</p>
           <div className="h-px w-24 mb-4"></div>

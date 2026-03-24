@@ -5,8 +5,8 @@ export const VisitSection = () => {
 
         <div className="flex flex-col justify-between max-w-md">
           <div className="mb-8">
-            <p className="font-handwrite text-xl">приходите</p>
-            <h2 className="text-4xl font-bold">В ГОСТИ</h2>
+            <p className="font-handwrite text-xl text-footer-list">приходите</p>
+            <h2 className="text-4xl font-bold">в гости</h2>
           </div>
 
           <p className="text-sm text-gray-600">

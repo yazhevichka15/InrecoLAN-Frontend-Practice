@@ -6,8 +6,8 @@ const ReviewsSection = () => {
       <div className="max-w-[1400px] mx-auto px-6">
 
         <div className="mb-12 flex items-center gap-3">
-          <h2 className="text-sm tracking-widest text-[#3A2E2A]">
-            ОТЗЫВЫ
+          <h2 className="text-2xl font-bold mb-8 px-4 sm:px-8">
+            Отзывы
           </h2>
         </div>
 
@@ -17,7 +17,7 @@ const ReviewsSection = () => {
 
         <div className="flex justify-between items-end">
           <div className="text-[#3A2E2A]">
-            <p className="text-2xl">Посетили наш магазин?</p>
+            <p className="text-2xl text-footer-list">Посетили наш магазин?</p>
             <p className="text-2xl">Оставьте свой отзыв</p>
             <p className="text-2xl">на Яндекс картах</p>
           </div>
