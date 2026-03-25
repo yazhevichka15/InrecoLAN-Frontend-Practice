@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { HomePage } from '@pages/HomePage'
 import { ContactsPage } from '@pages/ContactsPage'
-import { CategoriesPage } from '@pages/CategoriesPage'
+import { CatalogPage } from '@pages/CatalogPage'
 import { CategoryPage } from '@pages/CategoryPage'
 import { ProductDetailsPage } from '@pages/ProductDetailsPage'
 import { ShoppingCartPage } from '@pages/ShoppingCartPage'
@@ -25,7 +25,7 @@ function App() {
         <Route path='contacts' element={<ContactsPage />} />
 
         <Route path='catalog'>
-          <Route index element={<CategoriesPage />} />
+          <Route index element={<CatalogPage />} />
           <Route path=':category' element={<CategoryPage />} />
           <Route path=':category/:product' element={<ProductDetailsPage />} />
         </Route>
