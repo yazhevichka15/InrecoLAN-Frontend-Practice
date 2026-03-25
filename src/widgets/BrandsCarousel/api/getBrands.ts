@@ -1,5 +1,7 @@
+import type { IBrand } from '../model/IBrand'
+
 // Заглушка, должен быть запрос на сервер
-export function getBrands() {
+export function getBrands(): IBrand[] {
   return [
     {
       id: 1,

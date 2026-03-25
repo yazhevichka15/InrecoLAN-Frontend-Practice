@@ -1,11 +1,9 @@
 import type { FC } from 'react'
+import type { IBrand } from '../model/IBrand'
 import '../styles/carousel-styles.css'
 
 interface IBrandsCarouselItemProps {
-  brand: {
-    name: string
-    imgSrc: string
-  }
+  brand: IBrand
 }
 
 export const BrandsCarouselItem: FC<IBrandsCarouselItemProps> = ({ brand }) => {
