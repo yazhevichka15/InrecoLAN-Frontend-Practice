@@ -28,46 +28,64 @@ const reviewsData: IReview[] = [
   },
   {
     name: "Олег",
-    text: "Классный сервис, всё пришло вовремя.",
+    text: "Все хорошо, советую!.",
     date: "05.02.2025",
+    rating: 4,
+  },
+  {
+    name: "Антон",
+    text: "Доставка на высоте, доставили даже ко мне на край города.",
+    date: "25.03.2026",
+    rating: 5,
+  },
+  {
+    name: "Ирина",
+    text: "Отличные дизайнерские люстры",
+    date: "17.03.2026",
+    rating: 5,
+  },
+  {
+    name: "Виктория",
+    text: "Супер магазин!!! Огромный выбор, я прям счастлива!!!",
+    date: "20.03.2026",
     rating: 5,
   },
 ];
 
 const ReviewsSlider: React.FC = () => {
   const [index, setIndex] = useState(0);
-  const visibleSlides = 2;
+  const visibleSlides = 3;
 
   const next = () => {
-    if (index < reviewsData.length - visibleSlides) {
-      setIndex(index + 1);
-    }
+    if (index < reviewsData.length - visibleSlides)
+       setIndex(index + 1);
   };
 
   const prev = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-    }
+    if (index > 0)
+       setIndex(index - 1);
   };
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden">
+    <div className="relative w-full">
+      <div className="overflow-hidden w-full">
         <div
           className="flex transition-transform duration-500"
           style={{
-            transform: `translateX(-${(100 / visibleSlides) * index}%)`,
+            transform: `translateX(-${index * (100 / visibleSlides)}%)`,
           }}
         >
           {reviewsData.map((review, i) => (
-            <div key={i} className="w-1/2 pr-6 shrink-0">
+            <div
+              key={i}
+              className="shrink-0 pr-6"
+              style={{ width: `calc(100% / ${visibleSlides})` }}
+            >
               <div className="h-full border border-[#D6D0CC] bg-white p-8 flex flex-col justify-between">
-                
                 <div className="flex justify-between mb-4">
                   <span className="text-[#3A2E2A]">
                     {review.name}
-                  </span>
-
+                    </span>
                   <div className="text-[#3A2E2A] text-sm">
                     {"★".repeat(review.rating)}
                     {"☆".repeat(5 - review.rating)}
@@ -76,11 +94,10 @@ const ReviewsSlider: React.FC = () => {
 
                 <p className="text-sm text-[#6F6A66] mb-6">
                   {review.text}
-                </p>
-
+                  </p>
                 <span className="text-xs text-[#A8A29E]">
                   {review.date}
-                </span>
+                  </span>
               </div>
             </div>
           ))}
@@ -88,21 +105,17 @@ const ReviewsSlider: React.FC = () => {
       </div>
 
       <div className="absolute -bottom-12 right-0 flex gap-8">
-        <button
-          onClick={prev}
-          className="text-[#8C6F63] hover:text-[#3A2E2A]"
-        >
+        <button onClick={prev}
+         className="text-[#8C6F63] hover:text-[#3A2E2A]">
           ←
-        </button>
-        <button
-          onClick={next}
-          className="text-[#8C6F63] hover:text-[#3A2E2A]"
-        >
+          </button>
+        <button onClick={next}
+         className="text-[#8C6F63] hover:text-[#3A2E2A]">
           →
-        </button>
+          </button>
       </div>
     </div>
   );
 };
 
-export default ReviewsSlider;
+export default ReviewsSlider;     

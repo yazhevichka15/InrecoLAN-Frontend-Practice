@@ -2,11 +2,11 @@ import ReviewsSlider from "@shared/ui/ReviewsSlider";
 
 const ReviewsSection = () => {
   return (
-    <section className="py-20 bg-[#F8F6F4]">
-      <div className="max-w-[1400px] mx-auto px-6">
+    <section className="py-20">
+      <div className="w-full px-6 pl-14">
 
-        <div className="mb-12 flex items-center gap-3">
-          <h2 className="text-2xl font-bold mb-8 px-4 sm:px-8">
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-8">
             Отзывы
           </h2>
         </div>
