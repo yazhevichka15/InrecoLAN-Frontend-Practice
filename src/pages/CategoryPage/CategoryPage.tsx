@@ -4,7 +4,6 @@
 
 import { FiltersSidebar } from '@widgets/FiltersSidebar'
 import { SubHeader } from '@widgets/SubHeader'
-import { Header } from '@widgets/Header'
 import { ProductCard } from '@shared/ui/ProductCard'
 import { SortSelect } from '@shared/ui/SortSelect/SortSelect'
 
@@ -52,10 +51,6 @@ const chandeliersItems = [
 export const CategoryPage = () => {
   return (
     <>
-      {/* <h1>Каталог - выбранная категория товаров</h1> */}
-
-      <Header />
-
       <SubHeader
         mainTitle='Каталог'
         subTitle='люстры'
@@ -67,7 +62,7 @@ export const CategoryPage = () => {
         <div className='col-span-9 grid grid-cols-subgrid my-50px'>
           <SortSelect options={selectItems} />
 
-          <div className='col-span-9 grid grid-cols-subgrid flex flex-col gap-base my-50px'>
+          <div className='col-span-9 grid grid-cols-subgrid gap-base my-50px'>
             {chandeliersItems.map((card) => (
               <ProductCard
                 key={card.title}

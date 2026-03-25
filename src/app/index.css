@@ -26,6 +26,10 @@
   --color-light-brown: #a48077;
   --color-beige: #fef1e7;
   --color-gray: #d9dede;
+  --color-red: #ff3300;
+
+  --color-footer-title: #402431;
+  --color-footer-list: #95726b;
 
   /* Для шрифтов нужно подобрать запасные варианты */
   --font-sans: 'Involve';
@@ -51,6 +55,10 @@
   --spacing-550px: calc(var(--spacing) * 137.5);
   --spacing-165px: calc(var(--spacing) * 41.25);
   --spacing-260px: calc(var(--spacing) * 65);
+  --spacing-165px: calc(var(--spacing) * 41.25);
+  --spacing-260px: calc(var(--spacing) * 65);
+  --spacing-300px: calc(var(--spacing) * 75);
+  --spacing-345px: calc(var(--spacing) * 86.25);
 
   --gap-base: var(--spacing-40px);
 
@@ -85,6 +93,11 @@
     line-height: 100%;
     letter-spacing: -0.04em;
     text-transform: uppercase;
+  }
+
+  .error-code {
+    font-size: 345px;
+    line-height: 1;
   }
 
   .handwrite {
