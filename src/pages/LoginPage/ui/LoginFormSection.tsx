@@ -9,12 +9,12 @@ export const LoginFormSection = () => {
       <LoginForm />
 
       <div className='flex flex-col gap-20px items-center'>
-        <p>
+        <span>
           Нет аккаунта? —{' '}
           <Link to='/auth/register' className='text-light-brown'>
             Зарегистрируйтесь
           </Link>
-        </p>
+        </span>
 
         <Link to='/auth/forgot-password' className='text-light-brown'>
           Забыли пароль?

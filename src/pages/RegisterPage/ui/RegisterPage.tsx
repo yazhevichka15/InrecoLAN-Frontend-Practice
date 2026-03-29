@@ -12,12 +12,12 @@ export const RegisterPage = () => {
         description='Поможем подобрать люстру под ваш интерьер, чтобы в доме было светло, уютно и комфортно каждый день.'
       />
       <div className='w-full h-full p-(--basic-container) flex flex-col gap-50px'>
-        <p>
+        <span>
           Если вы уже зарегистрированы, перейдите на{' '}
           <Link to='/auth/login' className='text-light-brown'>
             страницу входа в систему
           </Link>
-        </p>
+        </span>
 
         <RegisterForm />
       </div>

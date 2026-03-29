@@ -12,12 +12,12 @@ export const ForgotPasswordFormSection = () => {
 
       <ForgotPasswordForm />
 
-      <p>
+      <span>
         Нет аккаунта? —{' '}
         <Link to='/auth/register' className='text-light-brown'>
           Зарегистрируйтесь
         </Link>
-      </p>
+      </span>
     </div>
   )
 }
