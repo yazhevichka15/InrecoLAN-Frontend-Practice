@@ -1,26 +1,47 @@
+import { useForm } from 'react-hook-form'
 import { Button } from '@shared/ui/Button'
-import { Link } from 'react-router-dom'
+
+// Точно ли интерфейс?
+interface IForgotPasswordFormValues {
+  email: string
+}
 
 export const ForgotPasswordForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IForgotPasswordFormValues>({
+    mode: 'onSubmit',
+  })
+
+  const onSubmit = (data: IForgotPasswordFormValues) => {
+    console.log(data)
+  }
+
   return (
-    <div className='flex flex-col gap-30px items-center'>
-      <h2>Забыли пароль?</h2>
-      <p className='w-135 text-center text-pretty'>
-        Укажите свой email, под которым вы зарегистрированы на сайте, на него будет отправлена
-        информация о восстановлении пароля.
-      </p>
+    <form onSubmit={handleSubmit(onSubmit)} className='w-full flex flex-col gap-30px text-[20px]'>
+      <div className='flex flex-col gap-15px'>
+        <input
+          type='email'
+          placeholder='Почта'
+          className='outline-0'
+          {...register('email', {
+            required: 'Введите почту',
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: 'Введите корректный email',
+            },
+            maxLength: {
+              value: 100,
+              message: 'Email не должен превышать 100 символов',
+            },
+          })}
+        />
+        {errors.email && <p className='text-red'>{errors.email.message}</p>}
+      </div>
 
-      <form className='w-full flex flex-col gap-30px text-[20px]'>
-        <input type='text' placeholder='Почта' className='outline-0' />
-        <Button type='submit' title='Отправить' theme='dark' className='h-80px' />
-      </form>
-
-      <p>
-        Нет аккаунта? —{' '}
-        <Link to='/auth/register' className='text-light-brown'>
-          Зарегистрируйтесь
-        </Link>
-      </p>
-    </div>
+      <Button type='submit' title='Отправить' theme='dark' className='h-80px' />
+    </form>
   )
 }

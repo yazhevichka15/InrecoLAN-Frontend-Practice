@@ -1,5 +1,5 @@
 import { SubHeader } from '@widgets/SubHeader'
-import { ForgotPasswordForm } from './ForgotPasswordForm'
+import { ForgotPasswordFormSection } from './ForgotPasswordFormSection'
 
 export const ForgotPasswordPage = () => {
   return (
@@ -11,7 +11,7 @@ export const ForgotPasswordPage = () => {
       />
       <div className='w-full h-full p-(--basic-container) grid grid-cols-2 gap-base items-center'>
         <img src='/img/auth/test-image.png' alt='Test auth image' />
-        <ForgotPasswordForm />
+        <ForgotPasswordFormSection />
       </div>
     </>
   )
