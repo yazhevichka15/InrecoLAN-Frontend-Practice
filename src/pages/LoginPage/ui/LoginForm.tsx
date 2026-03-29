@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 export const LoginForm = () => {
   return (
     <div className='flex flex-col gap-30px items-center'>
-      <h1>Вход в аккаунт</h1>
-      <form className='w-full flex flex-col gap-base text-[20px]'>
+      <h2>Вход в аккаунт</h2>
+      <form className='w-full flex flex-col gap-30px text-[20px]'>
         <input type='text' placeholder='Почта' className='outline-0' />
         <input type='text' placeholder='Пароль' className='outline-0' />
         <Button type='submit' title='Авторизоваться' theme='dark' className='h-80px' />
