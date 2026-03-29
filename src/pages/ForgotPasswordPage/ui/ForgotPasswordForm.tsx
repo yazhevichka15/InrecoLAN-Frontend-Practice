@@ -11,12 +11,14 @@ export const ForgotPasswordForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IForgotPasswordFormValues>({
     mode: 'onSubmit',
   })
 
   const onSubmit = (data: IForgotPasswordFormValues) => {
     console.log(data)
+    reset()
   }
 
   return (

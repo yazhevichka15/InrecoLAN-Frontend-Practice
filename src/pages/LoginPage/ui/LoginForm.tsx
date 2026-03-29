@@ -12,12 +12,14 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<ILoginFormValues>({
     mode: 'onSubmit',
   })
 
   const onSubmit = (data: ILoginFormValues) => {
     console.log(data)
+    reset()
   }
 
   return (
