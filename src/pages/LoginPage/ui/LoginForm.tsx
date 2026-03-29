@@ -1,28 +1,68 @@
+import { useForm } from 'react-hook-form'
 import { Button } from '@shared/ui/Button'
-import { Link } from 'react-router-dom'
+
+// Точно ли интерфейс?
+interface ILoginFormValues {
+  email: string
+  password: string
+}
 
 export const LoginForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginFormValues>({
+    mode: 'onSubmit',
+  })
+
+  const onSubmit = (data: ILoginFormValues) => {
+    console.log(data)
+  }
+
   return (
-    <div className='flex flex-col gap-30px items-center'>
-      <h2>Вход в аккаунт</h2>
-      <form className='w-full flex flex-col gap-30px text-[20px]'>
-        <input type='text' placeholder='Почта' className='outline-0' />
-        <input type='text' placeholder='Пароль' className='outline-0' />
-        <Button type='submit' title='Авторизоваться' theme='dark' className='h-80px' />
-      </form>
-
-      <div className='flex flex-col gap-20px items-center'>
-        <p>
-          Нет аккаунта? —{' '}
-          <Link to='/auth/register' className='text-light-brown'>
-            Зарегистрируйтесь
-          </Link>
-        </p>
-
-        <Link to='/auth/forgot-password' className='text-light-brown'>
-          Забыли пароль?
-        </Link>
+    <form onSubmit={handleSubmit(onSubmit)} className='w-full flex flex-col gap-30px text-[20px]'>
+      <div className='flex flex-col gap-15px'>
+        <input
+          type='email'
+          placeholder='Почта'
+          className='outline-0'
+          {...register('email', {
+            required: 'Введите почту',
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: 'Введите корректный email',
+            },
+            maxLength: {
+              value: 100,
+              message: 'Email не должен превышать 100 символов',
+            },
+          })}
+        />
+        {errors.email && <p className='text-red'>{errors.email.message}</p>}
       </div>
-    </div>
+
+      <div className='flex flex-col gap-15px'>
+        <input
+          type='password'
+          placeholder='Пароль'
+          className='outline-0'
+          {...register('password', {
+            required: 'Введите пароль',
+            minLength: {
+              value: 6,
+              message: 'Пароль должен содержать минимум 6 символов',
+            },
+            maxLength: {
+              value: 100,
+              message: 'Пароль не должен превышать 100 символов',
+            },
+          })}
+        />
+        {errors.password && <p className='text-red'>{errors.password.message}</p>}
+      </div>
+
+      <Button type='submit' title='Авторизоваться' theme='dark' className='h-80px' />
+    </form>
   )
 }

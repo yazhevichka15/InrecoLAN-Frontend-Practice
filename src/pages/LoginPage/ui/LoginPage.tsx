@@ -1,5 +1,5 @@
 import { SubHeader } from '@widgets/SubHeader'
-import { LoginForm } from './LoginForm'
+import { LoginFormSection } from './LoginFormSection'
 
 export const LoginPage = () => {
   return (
@@ -11,7 +11,7 @@ export const LoginPage = () => {
       />
       <div className='w-full h-full p-(--basic-container) grid grid-cols-2 gap-base items-center'>
         <img src='/img/auth/test-image.png' alt='Test auth image' />
-        <LoginForm />
+        <LoginFormSection />
       </div>
     </>
   )
