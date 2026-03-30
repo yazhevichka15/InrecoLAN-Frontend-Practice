@@ -34,7 +34,6 @@ export const RegisterForm = () => {
     reset()
   }
 
-  // Возможно, стоит упростить верстку
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-50px text-[20px]'>
       <div className='grid grid-cols-2 gap-base'>

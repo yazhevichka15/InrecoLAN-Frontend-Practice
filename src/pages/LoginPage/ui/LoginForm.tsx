@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { Button } from '@shared/ui/Button'
 
-// Точно ли интерфейс?
 interface ILoginFormValues {
   email: string
   password: string
