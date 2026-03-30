@@ -1,4 +1,4 @@
-export const firstName_validation = {
+export const firstNameValidation = {
   type: 'text',
   name: 'firstName',
   placeholder: 'Имя',
@@ -14,7 +14,7 @@ export const firstName_validation = {
   },
 }
 
-export const secondName_validation = {
+export const secondNameValidation = {
   type: 'text',
   name: 'secondName',
   placeholder: 'Фамилия',
@@ -30,7 +30,7 @@ export const secondName_validation = {
   },
 }
 
-export const email_validation = {
+export const emailValidation = {
   type: 'email',
   name: 'email',
   placeholder: 'Почта',
@@ -50,7 +50,7 @@ export const email_validation = {
   },
 }
 
-export const phone_validation = {
+export const phoneValidation = {
   type: 'tel',
   name: 'phone',
   placeholder: 'Телефон',
@@ -66,7 +66,7 @@ export const phone_validation = {
   },
 }
 
-export const password_validation = {
+export const passwordValidation = {
   type: 'password',
   name: 'password',
   placeholder: 'Пароль',
@@ -86,7 +86,7 @@ export const password_validation = {
   },
 }
 
-export const confirmPassword_validation = {
+export const confirmPasswordValidation = {
   type: 'password',
   name: 'confirmPassword',
   placeholder: 'Подтвердите пароль',
@@ -98,7 +98,7 @@ export const confirmPassword_validation = {
   },
 }
 
-export const requredField_validation = {
+export const requredFieldValidation = {
   required: {
     value: true,
     message: 'Поле обязательно для выбора',

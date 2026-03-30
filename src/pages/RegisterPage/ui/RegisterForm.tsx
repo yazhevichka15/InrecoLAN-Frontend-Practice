@@ -43,18 +43,18 @@ export const RegisterForm = () => {
             <legend className='mb-30px'>
               <h2>Контактные данные</h2>
             </legend>
-            <Input {...validations.firstName_validation} />
-            <Input {...validations.secondName_validation} />
-            <Input {...validations.email_validation} />
-            <Input {...validations.phone_validation} />
+            <Input {...validations.firstNameValidation} />
+            <Input {...validations.secondNameValidation} />
+            <Input {...validations.emailValidation} />
+            <Input {...validations.phoneValidation} />
           </fieldset>
 
           <fieldset className='flex flex-col gap-30px'>
             <legend className='mb-30px'>
               <h2>Пароль</h2>
             </legend>
-            <Input {...validations.password_validation} />
-            <Input {...validations.confirmPassword_validation} />
+            <Input {...validations.passwordValidation} />
+            <Input {...validations.confirmPasswordValidation} />
           </fieldset>
         </div>
 
@@ -76,7 +76,7 @@ export const RegisterForm = () => {
 
         <RegisterSecurityAgreement
           name='securityAgreement'
-          validation={validations.requredField_validation}
+          validation={validations.requredFieldValidation}
         />
       </form>
     </FormProvider>
