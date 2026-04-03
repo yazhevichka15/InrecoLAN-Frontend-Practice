@@ -1,4 +1,3 @@
-// Заглушка
 // import { useParams } from "react-router"; - для динамического отображения
 // import { useSearchParams } from 'react-router-dom'; - для запроса с отображением фильтров, сортировок, поиска
 
@@ -6,6 +5,8 @@ import { FiltersSidebar } from '@widgets/FiltersSidebar'
 import { SubHeader } from '@widgets/SubHeader'
 import { ProductCard } from '@shared/ui/ProductCard'
 import { SortSelect } from '@shared/ui/SortSelect/SortSelect'
+import { getProducts } from '../api/getProducts'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const selectItems = [
   { value: '-', title: 'Без сортировки' },
@@ -13,52 +14,48 @@ const selectItems = [
   { value: 'expensive', title: 'Сначала дорогие' },
 ]
 
-const chandeliersItems = [
-  {
-    image: '/public/assets/products/chandelier-1.webp',
-    title: 'Люстра ARM337-07-R кремовый с золотом',
-    price: '32990',
-    status: 'not-in-cart' as const,
-    badge: '',
-    oldPrice: '',
-  },
-  {
-    image: '/public/assets/products/chandelier-2.webp',
-    title: 'Люстра ARM013-08-W белый антик',
-    price: '51990',
-    status: 'not-in-cart' as const,
-    badge: 'Новинка',
-    oldPrice: '',
-  },
-  {
-    image: '/public/assets/products/chandelier-3.webp',
-    title: 'Люстра 07512-3.33 матовое золото',
-    price: '6230',
-    status: 'not-in-cart' as const,
-    badge: '-30%',
-    oldPrice: '8900',
-  },
-  {
-    image: '/public/assets/products/chandelier-4.webp',
-    title: 'Люстра 07874-80,33 золото',
-    price: '6230',
-    status: 'out-of-stock' as const,
-    badge: '',
-    oldPrice: '',
-  },
+const categories = [
+  { id: 'chandeliers', name: 'Люстры' },
+  { id: 'lamps', name: 'Светильники' },
+  { id: 'sconces', name: 'Бра' },
+  { id: 'spotlights', name: 'Точечные светильники' },
+  { id: 'backlights', name: 'Подсветки' },
+  { id: 'table-lamps', name: 'Настольные лампы' },
+  { id: 'floor-lamps', name: 'Торшеры' },
+  { id: 'track-systems', name: 'Трековые системы' },
+  { id: 'night-lamps', name: 'Ночники' },
+  { id: 'outdoor-lamps', name: 'Уличные светильники' },
+  { id: 'accessories', name: 'Комплектующие' },
 ]
 
+const chandeliersItems = getProducts()
+
 export const CategoryPage = () => {
+  const { category } = useParams()
+  const navigate = useNavigate()
+
+  const currentCategory = categories.find((cat) => cat.id === category)
+
+  const handleCategoryChange = (russianName: string) => {
+    const found = categories.find((cat) => cat.name === russianName)
+    if (found) {
+      navigate(`/catalog/${found.id}`)
+    }
+  }
+
   return (
     <>
       <SubHeader
         mainTitle='Каталог'
-        subTitle='люстры'
+        subTitle={currentCategory ? currentCategory.name.toLowerCase() : 'люстры'}
         description='Поможем подобрать люстру под ваш интерьер, чтобы в доме было светло, уютно и комфортно каждый день.'
-        productCount={27862}
+        productCount={chandeliersItems.length}
       />
       <div className='grid grid-cols-12 gap-base m-(--basic-container-x)'>
-        <FiltersSidebar />
+        <FiltersSidebar
+          currentCategory={currentCategory?.name || 'Люстры'}
+          onCategoryChange={handleCategoryChange}
+        />
         <div className='col-span-9 grid grid-cols-subgrid my-50px'>
           <SortSelect options={selectItems} />
 

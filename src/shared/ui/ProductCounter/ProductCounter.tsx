@@ -9,20 +9,21 @@ interface IProductCounterProps {
 export const ProductCounter: FC<IProductCounterProps> = ({ inCart, onChange }) => {
   const [count, setCount] = useState(1)
 
-  const handleMinus = () => {
-    const newCount = count == 0 ? 0 : count - 1
+  const updateCount = (newCount: number) => {
     setCount(newCount)
     if (onChange) {
       onChange(newCount)
     }
   }
 
+  const handleMinus = () => {
+    const newCount = count === 0 ? 0 : count - 1
+    updateCount(newCount)
+  }
+
   const handlePlus = () => {
     const newCount = count + 1
-    setCount(newCount)
-    if (onChange) {
-      onChange(newCount)
-    }
+    updateCount(newCount)
   }
 
   return (

@@ -2,6 +2,7 @@ import { FilterGroup } from '@shared/ui/FilterGroup'
 import { Button } from '@shared/ui/Button'
 import { DoubleRangeInput } from '@shared/ui/DoubleRangeInput'
 import { useForm } from 'react-hook-form'
+import { type FC } from 'react'
 
 const categoriesItems = [
   'Люстры',
@@ -28,10 +29,15 @@ interface IFormValues {
   lamps: { min: number; max: number }
 }
 
-export function FiltersSidebar() {
+interface IFiltersSidebarProps {
+  currentCategory: string
+  onCategoryChange: (category: string) => void
+}
+
+export const FiltersSidebar: FC<IFiltersSidebarProps> = ({ currentCategory, onCategoryChange }) => {
   const { register, handleSubmit, reset, setValue, watch } = useForm<IFormValues>({
     defaultValues: {
-      category: categoriesItems[0],
+      category: currentCategory,
       room: roomTypeItems[0],
       color: [],
       power: { min: 24, max: 40 },
@@ -44,6 +50,7 @@ export function FiltersSidebar() {
 
   const onSubmit = (data: IFormValues) => {
     console.log('Применить:', data)
+    onCategoryChange(data.category)
   }
 
   return (
@@ -102,7 +109,15 @@ export function FiltersSidebar() {
           title='Сбросить'
           className='w-full h-9.25'
           type='button'
-          onClick={() => reset()}
+          onClick={() =>
+            reset({
+              category: currentCategory,
+              room: roomTypeItems[0],
+              color: [],
+              power: { min: 24, max: 40 },
+              lamps: { min: 1, max: 10 },
+            })
+          }
         />
       </div>
     </form>
