@@ -1,6 +1,5 @@
-import type { FC } from 'react'
 import { Link } from 'react-router-dom'
-
+import type { FC } from 'react'
 import type { IAccountMenuSection } from '../model/IAccountMenuSection'
 
 interface IAccountMenuSectionProps {

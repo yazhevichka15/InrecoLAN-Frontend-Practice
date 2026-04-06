@@ -4,11 +4,6 @@ import { SubHeader } from '@widgets/SubHeader'
 import { AccountMenu } from '@widgets/AccountMenu'
 
 export const AccountLayout = () => {
-  const user = {
-    name: 'Иван',
-    role: 'admin',
-  }
-
   return (
     <>
       {/* Нужно подставить данные пользователя */}
@@ -19,7 +14,8 @@ export const AccountLayout = () => {
       />
 
       <div className='p-(--basic-container-x) flex-1 flex'>
-        <AccountMenu role={user.role} />
+        {/* Нужно подставить данные пользователя */}
+        <AccountMenu role={'admin'} />
         <Outlet />
       </div>
     </>
