@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { products } from "../model/products";
-import ReviewsSlider from "@shared/ui/ReviewsSlider";
+import { products } from "./model/products";
 
 export const ProductDetailsPage = () => {
   const { category, product } = useParams<{
@@ -166,3 +165,4 @@ export const ProductDetailsPage = () => {
     </div>
   );
 };
+export default ProductDetailsPage;
