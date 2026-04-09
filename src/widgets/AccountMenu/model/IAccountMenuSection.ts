@@ -1,10 +1,10 @@
-import type { TUserRole } from './TUserRole'
+import type { EUserRole } from '@entities/user/EUserRole'
 
 interface IAccountMenuItem {
   id: number
   title: string
   to: string
-  roles: TUserRole[]
+  roles: EUserRole[]
 }
 
 export interface IAccountMenuSection {

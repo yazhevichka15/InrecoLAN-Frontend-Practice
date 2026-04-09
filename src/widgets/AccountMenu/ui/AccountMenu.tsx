@@ -1,11 +1,11 @@
 import { AccountMenuSection } from './AccountMenuSection'
 import { AccountMenuData } from '../model/AccountMenuData'
-import type { TUserRole } from '../model/TUserRole'
+import type { EUserRole } from '@entities/user/EUserRole'
 import type { IAccountMenuSection } from '../model/IAccountMenuSection'
 import { Button } from '@shared/ui/Button'
 
 interface IAccountMenuProps {
-  role: TUserRole
+  role: EUserRole
 }
 
 export const AccountMenu = ({ role }: IAccountMenuProps) => {
@@ -28,7 +28,7 @@ export const AccountMenu = ({ role }: IAccountMenuProps) => {
   )
 }
 
-function getMenuByRole(role: TUserRole) {
+function getMenuByRole(role: EUserRole) {
   return AccountMenuData.reduce<IAccountMenuSection[]>((acc, section) => {
     const items = section.items.filter((item) => item.roles.includes(role))
 

@@ -15,7 +15,7 @@ export const AccountLayout = () => {
 
       <div className='p-(--basic-container-x) flex-1 flex'>
         {/* Нужно подставить данные пользователя */}
-        <AccountMenu role={'admin'} />
+        <AccountMenu role={3} />
         <Outlet />
       </div>
     </>
