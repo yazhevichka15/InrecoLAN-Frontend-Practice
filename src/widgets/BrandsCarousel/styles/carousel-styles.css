@@ -1,0 +1,60 @@
+.carousel {
+  /* Анимация в левую сторону */
+  --animation-direction: normal;
+  --animation-duraction: 50s;
+
+  --carousel-item-width: 590px;
+  --carousel-item-height: 120px;
+  --carousel-gap: 100px;
+
+  max-width: 100%;
+  height: var(--spacing-250px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.carousel hr {
+  border-color: var(--color-gray);
+}
+
+.carousel-track {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--carousel-gap);
+  animation: marquee-scroll var(--animation-duraction) var(--animation-direction) linear infinite;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.item {
+  height: var(--carousel-item-height);
+  display: flex;
+  justify-content: center;
+}
+
+.item img {
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.2s ease-in;
+  opacity: 0.4;
+  user-select: none;
+  pointer-events: none;
+}
+
+.item:hover img {
+  opacity: 1;
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translate(calc(-50% - var(--carousel-gap) / 2));
+  }
+}
