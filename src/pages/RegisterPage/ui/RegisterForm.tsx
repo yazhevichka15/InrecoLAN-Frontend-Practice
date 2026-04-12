@@ -1,4 +1,8 @@
+import { useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
+
+import { type IRegisterCredentials, register } from '@shared/api/endpoints/register'
+import { EUserRole } from '@entities/user'
 
 import { RegisterRadioGroup } from './RegisterRadioGroup'
 import { RegisterSecurityAgreement } from './RegisterSecurityAgreement'
@@ -11,7 +15,7 @@ interface IRegisterFormValues {
   firstName: string
   secondName: string
   email: string
-  phone: string
+  birthday: string
   password: string
   confirmPassword: string
   newsLetter: 'yes' | 'no'
@@ -27,9 +31,25 @@ export const RegisterForm = () => {
     },
   })
 
-  const onSubmit = (data: IRegisterFormValues) => {
-    console.log(data)
-    methods.reset()
+  const [error, setError] = useState('')
+
+  const onSubmit = async (data: IRegisterFormValues) => {
+    // Временный маппинг. На бэкенде сейчас нет некоторых полей, которые есть на макете
+    const payload: IRegisterCredentials = {
+      email: data.email,
+      name: data.firstName,
+      surname: data.secondName,
+      password: data.password,
+      birthday: '2000-01-01',
+      userRole: EUserRole.client,
+    }
+
+    try {
+      await register(payload)
+      methods.reset()
+    } catch (err: any) {
+      setError(err.details || err.message)
+    }
   }
 
   return (
@@ -46,7 +66,6 @@ export const RegisterForm = () => {
             <Input {...validations.firstNameValidation} />
             <Input {...validations.secondNameValidation} />
             <Input {...validations.emailValidation} />
-            <Input {...validations.phoneValidation} />
           </fieldset>
 
           <fieldset className='flex flex-col gap-30px'>
@@ -79,6 +98,8 @@ export const RegisterForm = () => {
           validation={validations.requredFieldValidation}
         />
       </form>
+
+      {error && <div className='text-center text-red'>{error}</div>}
     </FormProvider>
   )
 }

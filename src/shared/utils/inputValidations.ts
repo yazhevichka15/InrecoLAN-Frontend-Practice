@@ -66,6 +66,17 @@ export const phoneValidation = {
   },
 }
 
+export const birthdayValidation = {
+  type: 'date',
+  name: 'birthday',
+  placeholder: 'Дата рождения',
+  validation: {
+    validate: {
+      notFuture: (value: string) => new Date(value) <= new Date() || 'Дата не может быть в будущем',
+    },
+  },
+}
+
 export const passwordValidation = {
   type: 'password',
   name: 'password',

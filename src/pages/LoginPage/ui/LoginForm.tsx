@@ -1,22 +1,26 @@
+import { useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
+
+import { type ILoginCredentials, login } from '@shared/api'
 
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
 import { emailValidation, passwordValidation } from '@shared/utils/inputValidations'
 
-interface ILoginFormValues {
-  email: string
-  password: string
-}
-
 export const LoginForm = () => {
-  const methods = useForm<ILoginFormValues>({
+  const methods = useForm<ILoginCredentials>({
     mode: 'onSubmit',
   })
 
-  const onSubmit = (data: ILoginFormValues) => {
-    console.log(data)
-    methods.reset()
+  const [error, setError] = useState('')
+
+  const onSubmit = async (data: ILoginCredentials) => {
+    try {
+      await login(data)
+      methods.reset()
+    } catch (err: any) {
+      setError(err.details || err.message)
+    }
   }
 
   return (
@@ -29,6 +33,8 @@ export const LoginForm = () => {
         <Input {...passwordValidation} />
         <Button type='submit' title='Авторизоваться' theme='dark' className='h-80px' />
       </form>
+
+      {error && <div className='text-red'>{error}</div>}
     </FormProvider>
   )
 }
