@@ -13,13 +13,14 @@ export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step, value,
 
   useEffect(() => {
     if (slider.current) {
-      if (value.min > value.max) {
-        slider.current.style.right = `${100 - ((value.min - min) / (max - min)) * 100}%`
-        slider.current.style.left = `${((value.max - min) / (max - min)) * 100}%`
-      } else {
-        slider.current.style.right = `${100 - ((value.max - min) / (max - min)) * 100}%`
-        slider.current.style.left = `${((value.min - min) / (max - min)) * 100}%`
-      }
+      const minPercent = ((value.min - min) / (max - min)) * 100
+      const maxPercent = ((value.max - min) / (max - min)) * 100
+
+      const left = Math.min(minPercent, maxPercent)
+      const right = 100 - Math.max(minPercent, maxPercent)
+
+      slider.current.style.marginLeft = `${left}%`
+      slider.current.style.marginRight = `${right}%`
     }
   }, [value.min, value.max, min, max])
 
@@ -56,10 +57,10 @@ export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step, value,
         />
       </div>
       <div>
-        <div className='h-5px relative rounded-xs bg-gray'>
-          <span className='h-full absolute rounded-5px bg-light-brown' ref={slider}></span>
+        <div className='h-5px grid rounded-xs bg-gray'>
+          <span className='h-full [grid-area:1/1] rounded-5px bg-light-brown' ref={slider}></span>
         </div>
-        <div className='relative'>
+        <div className='grid'>
           <input
             type='range'
             onChange={(e) => onChange({ min: Number(e.target.value), max: value.max })}
@@ -67,7 +68,7 @@ export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step, value,
             max={max}
             step={step}
             value={value.min}
-            className='absolute w-full h-5px -top-5px bg-none pointer-events-none range-input'
+            className='[grid-area:1/1] w-full h-5px bg-none pointer-events-none range-input'
           />
           <input
             type='range'
@@ -76,7 +77,7 @@ export const DoubleRangeInput: FC<IDoubleRangeInput> = ({ min, max, step, value,
             max={max}
             step={step}
             value={value.max}
-            className='absolute w-full h-5px -top-5px bg-none pointer-events-none range-input'
+            className='[grid-area:1/1] w-full h-5px bg-none pointer-events-none range-input'
           />
         </div>
       </div>
