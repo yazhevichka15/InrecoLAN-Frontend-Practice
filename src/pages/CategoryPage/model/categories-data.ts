@@ -1,4 +1,4 @@
-import type { ICategory } from "@pages/CategoryPage/model/types";
+import type { ICategory } from "@pages/CatalogPage/model/types";
 
 export const categories: ICategory[] = [
   {

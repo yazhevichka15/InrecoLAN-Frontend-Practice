@@ -1,5 +1,5 @@
 import { categories } from "../model/categories-data";
-import CategoryCard from "./CategoryCard";
+import CategoryCard from "@pages/CatalogPage/UI/CategoryCard";
 
 const CategoryPage = () => {
   return (

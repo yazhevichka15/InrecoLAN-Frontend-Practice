@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { categories } from "@pages/CategoryPage/model/categories";
+import { categories } from "@pages/CatalogPage/model/categories-data";
 
 const CatalogSection = () => {
   const displayedCategories = categories.slice(0, 5);
