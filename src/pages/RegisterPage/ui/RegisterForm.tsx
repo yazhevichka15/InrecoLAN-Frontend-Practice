@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { type IRegisterCredentials, register } from '@shared/api/endpoints/register'
+import { registerThunk } from '@shared/store/slices/authSlice'
+import type { AppDispatch } from '@shared/store/store'
+
+import { type IRegisterCredentials } from '@shared/api/endpoints/register'
 import { EUserRole } from '@entities/user'
 
 import { RegisterRadioGroup } from './RegisterRadioGroup'
@@ -32,9 +37,13 @@ export const RegisterForm = () => {
   })
 
   const [error, setError] = useState('')
+  const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
 
   const onSubmit = async (data: IRegisterFormValues) => {
-    // Временный маппинг. На бэкенде сейчас нет некоторых полей, которые есть на макете
+    setError('')
+
+    // Маппинг типов. На бэкенде нет некоторых полей, которые есть на макете
     const payload: IRegisterCredentials = {
       email: data.email,
       name: data.firstName,
@@ -44,11 +53,13 @@ export const RegisterForm = () => {
       userRole: EUserRole.client,
     }
 
-    try {
-      await register(payload)
+    const result = await dispatch(registerThunk(payload))
+
+    if (registerThunk.fulfilled.match(result)) {
       methods.reset()
-    } catch (err: any) {
-      setError(err.details || err.message)
+      navigate('/account')
+    } else {
+      setError((result.payload as string) || 'Ошибка регистрации')
     }
   }
 

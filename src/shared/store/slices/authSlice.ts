@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+
 import { type ILoginCredentials, login } from '@shared/api/endpoints/login'
+import { type IRegisterCredentials, register } from '@shared/api/endpoints/register'
 
 interface AuthState {
   isAuth: boolean
@@ -34,6 +36,17 @@ export const loginThunk = createAsyncThunk(
   }
 )
 
+export const registerThunk = createAsyncThunk(
+  'auth/register',
+  async (credentials: IRegisterCredentials, { rejectWithValue }) => {
+    try {
+      return await register(credentials)
+    } catch (err: any) {
+      return rejectWithValue(err.details || err.message)
+    }
+  }
+)
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -48,6 +61,7 @@ export const authSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
+      // Обработка входа в систему
       .addCase(loginThunk.pending, (state) => {
         state.loading = true
         state.error = null
@@ -71,6 +85,34 @@ export const authSlice = createSlice({
       })
 
       .addCase(loginThunk.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload as string
+      })
+
+      // Обработка регистрации
+      .addCase(registerThunk.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+
+      .addCase(registerThunk.fulfilled, (state, action) => {
+        state.loading = false
+        state.isAuth = true
+
+        state.accessToken = action.payload.accessToken
+        state.refreshToken = action.payload.refreshToken
+
+        state.user = {
+          userId: action.payload.userId,
+          email: action.payload.email,
+          userRole: action.payload.userRole,
+        }
+
+        localStorage.setItem('accessToken', action.payload.accessToken)
+        localStorage.setItem('refreshToken', action.payload.refreshToken)
+      })
+
+      .addCase(registerThunk.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload as string
       })

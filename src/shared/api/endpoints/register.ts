@@ -12,5 +12,5 @@ export interface IRegisterCredentials {
 
 export async function register(credentials: IRegisterCredentials) {
   const res = await client.post('/Users/Auth/SignUp', credentials)
-  return res.data
+  return res
 }
