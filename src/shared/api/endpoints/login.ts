@@ -7,5 +7,5 @@ export interface ILoginCredentials {
 
 export async function login(credentials: ILoginCredentials) {
   const res = await client.post('/Users/Auth/LogIn', credentials)
-  return res.data
+  return res
 }

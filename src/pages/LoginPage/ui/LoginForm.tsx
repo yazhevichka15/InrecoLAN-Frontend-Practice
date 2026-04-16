@@ -1,25 +1,36 @@
 import { useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { type ILoginCredentials, login } from '@shared/api'
+import { type ILoginCredentials } from '@shared/api'
+import { loginThunk } from '@shared/store/slices/authSlice'
+import type { AppDispatch } from '@shared/store/store'
 
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
 import { emailValidation, passwordValidation } from '@shared/utils/inputValidations'
 
 export const LoginForm = () => {
+  const navigate = useNavigate()
+
   const methods = useForm<ILoginCredentials>({
     mode: 'onSubmit',
   })
 
+  const dispatch = useDispatch<AppDispatch>()
   const [error, setError] = useState('')
 
   const onSubmit = async (data: ILoginCredentials) => {
-    try {
-      await login(data)
+    setError('')
+
+    const result = await dispatch(loginThunk(data))
+
+    if (loginThunk.fulfilled.match(result)) {
       methods.reset()
-    } catch (err: any) {
-      setError(err.details || err.message)
+      navigate('/account')
+    } else {
+      setError((result.payload as string) || 'Ошибка авторизации')
     }
   }
 
