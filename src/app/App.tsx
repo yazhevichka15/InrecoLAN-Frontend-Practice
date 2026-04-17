@@ -13,9 +13,14 @@ import { ForgotPasswordPage } from '@pages/ForgotPasswordPage'
 import { ForbiddenPage } from '@pages/ForbiddenPage'
 import { ServerErrorPage } from '@pages/ServerErrorPage'
 import { NotFoundPage } from '@pages/NotFoundPage'
+import { AccountProductDetailsPage } from '@pages/AccountProductDetailsPage'
 
 import { MainLayout } from './MainLayout'
 import { AccountLayout } from './AccountLayout'
+
+import { AccountProductsPage } from '@pages/AccountProductsPage'
+import { CategoryProductsPage } from '@pages/CategoryProductsPage'
+import { AccountProductEditPage } from '@pages/AccountProductEditPage'
 
 function App() {
   return (
@@ -56,11 +61,15 @@ function App() {
           {/* <Route path='orders/:order' element={<AccountOrderDetailsPage />} /> - страница с отображением конкретного заказа */}
           {/* <Route path='reviews' element={<AccountReviewsPage />} - страница "Мои отзывы" / "Управление отзывами" /> */}
           {/* <Route path='reviews/:review' element={<AccountReviewDetailsPage />} - страница с отображением конкретного отзыва /> */}
-
           {/* Пути ТОЛЬКО для сотрудника / администратора: */}
-
-          {/* <Route path='products' element={<AccountProductsPage />} - страница "Управление товарами" /> */}
-          {/* <Route path='products/:product' element={<AccountProductDetailsPage />} /> - страница с отображением конкретного товара */}
+          <Route path='products' element={<AccountProductsPage />} /> //- страница "Управление
+          товарами"
+          <Route path='products/new' element={<AccountProductDetailsPage />} /> - страница
+          добавления товара
+          <Route path='products/:product' element={<AccountProductEditPage />} /> - страница с
+          отображением конкретного товара
+          <Route path='products/category/:category' element={<CategoryProductsPage />} /> - страница
+          со списком товаров выбранной категории
           {/* <Route path='users' element={<AccountUsersPage />} - страница "Управление пользователями" /> */}
           {/* <Route path='users/:user' element={<AccountUserDetailsPage />} /> - страница с отображением конкретного пользователя */}
           {/* <Route path='analytics' element={<AccountAnalyticsPage />} - страница отображения статистики /> */}

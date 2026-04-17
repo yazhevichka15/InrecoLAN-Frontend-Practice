@@ -1,13 +1,23 @@
 import { type RegisterOptions, useFormContext } from 'react-hook-form'
+import { cn } from '@shared/utils/cn'
 
 interface IInputProps {
   type: string
   name: string
   placeholder: string
   validation: RegisterOptions
+  className?: string
+  inputClassName?: string
 }
 
-export const Input = ({ type, name, placeholder, validation }: IInputProps) => {
+export const Input = ({
+  type,
+  name,
+  placeholder,
+  validation,
+  className,
+  inputClassName,
+}: IInputProps) => {
   const {
     register,
     formState: { errors },
@@ -25,8 +35,13 @@ export const Input = ({ type, name, placeholder, validation }: IInputProps) => {
   }
 
   return (
-    <div className='flex flex-col gap-10px'>
-      <input type={type} placeholder={placeholder} {...register(name, finalValidation)} />
+    <div className={cn('flex flex-col gap-10px', className)}>
+      <input
+        className={inputClassName}
+        type={type}
+        placeholder={placeholder}
+        {...register(name, finalValidation)}
+      />
       {error && <span className='text-red text-[14px]'>{error.message as string}</span>}
     </div>
   )

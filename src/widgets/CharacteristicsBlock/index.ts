@@ -1,0 +1,1 @@
+export { CharacteristicsBlock } from './CharacteristicsBlock'
