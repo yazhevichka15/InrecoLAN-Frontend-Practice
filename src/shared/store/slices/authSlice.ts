@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import { type ILoginCredentials, login } from '@shared/api/endpoints/login'
+import { logout } from '@shared/api/endpoints/logout'
 import { type IRegisterCredentials, register } from '@shared/api/endpoints/register'
 
 interface AuthState {
@@ -36,6 +37,20 @@ export const loginThunk = createAsyncThunk(
   }
 )
 
+export const logoutThunk = createAsyncThunk(
+  'auth/logout',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const state: any = getState()
+      const token = state.auth.accessToken
+
+      return await logout(token)
+    } catch (err: any) {
+      return rejectWithValue(err.message)
+    }
+  }
+)
+
 export const registerThunk = createAsyncThunk(
   'auth/register',
   async (credentials: IRegisterCredentials, { rejectWithValue }) => {
@@ -50,14 +65,7 @@ export const registerThunk = createAsyncThunk(
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    logout(state) {
-      state.isAuth = false
-      state.accessToken = null
-      state.refreshToken = null
-      state.user = null
-    },
-  },
+  reducers: {},
 
   extraReducers: (builder) => {
     builder
@@ -116,7 +124,16 @@ export const authSlice = createSlice({
         state.loading = false
         state.error = action.payload as string
       })
+
+      // Обработка выхода из системы
+      .addCase(logoutThunk.fulfilled, (state) => {
+        state.isAuth = false
+        state.accessToken = null
+        state.refreshToken = null
+        state.user = null
+
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+      })
   },
 })
-
-export const { logout } = authSlice.actions
