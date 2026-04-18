@@ -1,1 +1,1 @@
-export { CategoryPage } from './ui/CategoryPage'
+export { CategoryPage } from './UI/CategoryPage'

@@ -1,6 +1,3 @@
-// import { useParams } from "react-router"; - для динамического отображения
-// import { useSearchParams } from 'react-router-dom'; - для запроса с отображением фильтров, сортировок, поиска
-
 import { FiltersSidebar } from '@widgets/FiltersSidebar'
 import { SubHeader } from '@widgets/SubHeader'
 import { ProductCard } from '@shared/ui/ProductCard'
