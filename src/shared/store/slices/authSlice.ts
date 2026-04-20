@@ -95,6 +95,14 @@ export const authSlice = createSlice({
       .addCase(loginThunk.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload as string
+
+        state.isAuth = false
+        state.accessToken = null
+        state.refreshToken = null
+        state.user = null
+
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
       })
 
       // Обработка регистрации
@@ -126,7 +134,24 @@ export const authSlice = createSlice({
       })
 
       // Обработка выхода из системы
+      .addCase(logoutThunk.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+
       .addCase(logoutThunk.fulfilled, (state) => {
+        state.loading = false
+        state.isAuth = false
+        state.accessToken = null
+        state.refreshToken = null
+        state.user = null
+
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+      })
+
+      .addCase(logoutThunk.rejected, (state) => {
+        state.loading = false
         state.isAuth = false
         state.accessToken = null
         state.refreshToken = null

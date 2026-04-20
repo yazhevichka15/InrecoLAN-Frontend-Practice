@@ -4,11 +4,24 @@ import type { EUserRole } from '@entities/EUserRole'
 import type { IAccountMenuSection } from '../model/IAccountMenuSection'
 import { Button } from '@shared/ui/Button'
 
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import type { AppDispatch } from '@shared/store/store'
+import { logoutThunk } from '@shared/store/slices/authSlice'
+
 interface IAccountMenuProps {
   role: EUserRole
 }
 
 export const AccountMenu = ({ role }: IAccountMenuProps) => {
+  const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await dispatch(logoutThunk())
+    navigate('/auth/login')
+  }
+
   const accountSections = getMenuByRole(role)
 
   return (
@@ -20,7 +33,7 @@ export const AccountMenu = ({ role }: IAccountMenuProps) => {
       <Button
         title='Выйти из аккаунта'
         type='button'
-        // onClick={logout}
+        onClick={handleLogout}
         theme='light'
         className='mt-auto w-full h-40px'
       />

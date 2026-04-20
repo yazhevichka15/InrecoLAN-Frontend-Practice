@@ -87,8 +87,8 @@ export const passwordValidation = {
       message: 'Введите пароль',
     },
     minLength: {
-      value: 6,
-      message: 'Пароль должен содержать минимум 6 символов',
+      value: 5,
+      message: 'Пароль должен содержать минимум 5 символов',
     },
     maxLength: {
       value: 100,

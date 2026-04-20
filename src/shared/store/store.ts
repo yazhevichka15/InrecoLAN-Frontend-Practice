@@ -9,7 +9,10 @@ const preloadedState = {
     isAuth: !!accessToken,
     accessToken,
     refreshToken,
+
+    // Нужно делать запрос на получение пользователя по токену
     user: null,
+
     loading: false,
     error: null,
   },

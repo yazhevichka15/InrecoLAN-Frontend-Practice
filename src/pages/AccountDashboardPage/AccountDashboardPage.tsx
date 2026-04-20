@@ -1,5 +1,10 @@
 // Заглушка
 
 export const AccountDashboardPage = () => {
-  return <h1>Панель администратора</h1>
+  return (
+    <div className='p-(--basic-container)'>
+      <h1>Личный кабинет</h1>
+      <p>Главная страница</p>
+    </div>
+  )
 }
