@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { type ILoginCredentials, login } from '@shared/api/endpoints/login'
-import { logout } from '@shared/api/endpoints/logout'
-import { type IRegisterCredentials, register } from '@shared/api/endpoints/register'
+import { type ILoginCredentials, login } from '@shared/api'
+import { type IRegisterCredentials, register } from '@shared/api'
+import { logout } from '@shared/api'
 
 interface AuthState {
   isAuth: boolean

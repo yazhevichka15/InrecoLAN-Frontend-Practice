@@ -1,5 +1,5 @@
 import { configureStore, combineSlices } from '@reduxjs/toolkit'
-import { authSlice } from './slices/authSlice'
+import { authSlice } from './slices'
 
 const accessToken = localStorage.getItem('accessToken')
 const refreshToken = localStorage.getItem('refreshToken')

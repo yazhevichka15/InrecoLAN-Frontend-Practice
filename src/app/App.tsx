@@ -15,8 +15,12 @@ import { ServerErrorPage } from '@pages/ServerErrorPage'
 import { NotFoundPage } from '@pages/NotFoundPage'
 import { AccountDashboardPage } from '@pages/AccountDashboardPage'
 
-import { MainLayout } from './MainLayout'
-import { AccountLayout } from './AccountLayout'
+import { MainLayout } from './layouts/MainLayout'
+import { AccountLayout } from './layouts/AccountLayout'
+
+import { PublicRoute } from './routes/PublicRoute'
+import { ProtectedRoute } from './routes/ProtectedRoute'
+import { RoleRoute } from './routes/RoleRoute'
 
 function App() {
   return (
@@ -31,40 +35,39 @@ function App() {
           <Route path=':category/:product' element={<ProductDetailsPage />} />
         </Route>
 
-        {/* Защищенный путь (клиент) */}
-        <Route path='cart' element={<ShoppingCartPage />} />
-
-        {/* Защищенный путь (клиент) */}
-        {/* <Route path='create-order' element={<CreateOrderPage />} /> */}
-
-        {/* Защищенный путь (клиент) */}
-        <Route path='favourities' element={<FavouritiesPage />} />
-
-        {/* Защищенный путь (пользователь не авторизован) */}
-        <Route path='auth'>
-          <Route index element={<Navigate to='login' replace />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='register' element={<RegisterPage />} />
-          <Route path='forgot-password' element={<ForgotPasswordPage />} />
+        <Route element={<RoleRoute allowedRoles={[1]} />}>
+          <Route path='favourities' element={<FavouritiesPage />} />
+          <Route path='cart' element={<ShoppingCartPage />} />
+          {/* <Route path='create-order' element={<CreateOrderPage />} /> */}
         </Route>
 
-        {/* Защищенный путь (пользователь авторизован) */}
-        <Route path='account' element={<AccountLayout />}>
-          <Route index element={<Navigate to='dashboard' replace />} />
-          <Route path='dashboard' element={<AccountDashboardPage />} />
-          {/* <Route path='settings' element={<AccountSettingsPage />} /> - страница "Настройки аккаунта" */}
-          {/* <Route path='orders' element={<AccountOrdersPage />} /> - страница "Мои заказы" / "Управление заказами" */}
-          {/* <Route path='orders/:order' element={<AccountOrderDetailsPage />} /> - страница с отображением конкретного заказа */}
-          {/* <Route path='reviews' element={<AccountReviewsPage />} - страница "Мои отзывы" / "Управление отзывами" /> */}
-          {/* <Route path='reviews/:review' element={<AccountReviewDetailsPage />} - страница с отображением конкретного отзыва /> */}
+        <Route element={<PublicRoute />}>
+          <Route path='auth'>
+            <Route index element={<Navigate to='login' replace />} />
+            <Route path='login' element={<LoginPage />} />
+            <Route path='register' element={<RegisterPage />} />
+            <Route path='forgot-password' element={<ForgotPasswordPage />} />
+          </Route>
+        </Route>
 
-          {/* Пути ТОЛЬКО для сотрудника / администратора: */}
+        <Route element={<ProtectedRoute />}>
+          <Route path='account' element={<AccountLayout />}>
+            <Route index element={<Navigate to='dashboard' replace />} />
+            <Route path='dashboard' element={<AccountDashboardPage />} />
+            {/* <Route path='settings' element={<AccountSettingsPage />} /> - страница "Настройки аккаунта" */}
+            {/* <Route path='orders' element={<AccountOrdersPage />} /> - страница "Мои заказы" / "Управление заказами" */}
+            {/* <Route path='orders/:order' element={<AccountOrderDetailsPage />} /> - страница с отображением конкретного заказа */}
+            {/* <Route path='reviews' element={<AccountReviewsPage />} - страница "Мои отзывы" / "Управление отзывами" /> */}
+            {/* <Route path='reviews/:review' element={<AccountReviewDetailsPage />} - страница с отображением конкретного отзыва /> */}
 
-          {/* <Route path='products' element={<AccountProductsPage />} - страница "Управление товарами" /> */}
-          {/* <Route path='products/:product' element={<AccountProductDetailsPage />} /> - страница с отображением конкретного товара */}
-          {/* <Route path='users' element={<AccountUsersPage />} - страница "Управление пользователями" /> */}
-          {/* <Route path='users/:user' element={<AccountUserDetailsPage />} /> - страница с отображением конкретного пользователя */}
-          {/* <Route path='analytics' element={<AccountAnalyticsPage />} - страница отображения статистики /> */}
+            <Route element={<RoleRoute allowedRoles={[2, 3]} />}>
+              {/* <Route path='products' element={<AccountProductsPage />} - страница "Управление товарами" /> */}
+              {/* <Route path='products/:product' element={<AccountProductDetailsPage />} /> - страница с отображением конкретного товара */}
+              {/* <Route path='users' element={<AccountUsersPage />} - страница "Управление пользователями" /> */}
+              {/* <Route path='users/:user' element={<AccountUserDetailsPage />} /> - страница с отображением конкретного пользователя */}
+              {/* <Route path='analytics' element={<AccountAnalyticsPage />} - страница отображения статистики /> */}
+            </Route>
+          </Route>
         </Route>
 
         <Route path='403' element={<ForbiddenPage />} />
