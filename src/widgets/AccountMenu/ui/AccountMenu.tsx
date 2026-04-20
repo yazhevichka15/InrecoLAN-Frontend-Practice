@@ -1,6 +1,6 @@
 import { AccountMenuSection } from './AccountMenuSection'
 import { AccountMenuData } from '../model/AccountMenuData'
-import type { EUserRole } from '@entities/user/EUserRole'
+import type { EUserRole } from '@entities/EUserRole'
 import type { IAccountMenuSection } from '../model/IAccountMenuSection'
 import { Button } from '@shared/ui/Button'
 

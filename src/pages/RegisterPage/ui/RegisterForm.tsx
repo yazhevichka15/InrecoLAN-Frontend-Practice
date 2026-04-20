@@ -7,7 +7,7 @@ import { registerThunk } from '@shared/store/slices/authSlice'
 import type { AppDispatch } from '@shared/store/store'
 
 import { type IRegisterCredentials } from '@shared/api/endpoints/register'
-import { EUserRole } from '@entities/user'
+import { EUserRole } from '@entities/EUserRole'
 
 import { RegisterRadioGroup } from './RegisterRadioGroup'
 import { RegisterSecurityAgreement } from './RegisterSecurityAgreement'
