@@ -42,9 +42,9 @@ export const logoutThunk = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const state: any = getState()
-      const token = state.auth.accessToken
+      const accessToken = state.auth.accessToken
 
-      return await logout(token)
+      return await logout(accessToken)
     } catch (err: any) {
       return rejectWithValue(err.message)
     }
