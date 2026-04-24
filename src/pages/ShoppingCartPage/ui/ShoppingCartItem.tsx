@@ -44,14 +44,14 @@ export const ShoppingCartItem: FC<IShoppingCartItem> = ({
         </div>
 
         <div className='w-740px flex justify-between items-center'>
-          {/* Счетчик корректно отображается, но неправильно работает, надо доработать */}
           <ProductCounter inCart={false} />
           <h3>{price * quantity}₽</h3>
           <Button
             Icon={Trash2}
-            theme='red'
+            theme='dark'
             className='w-30px h-30px'
             onClick={() => deleteProductFromCart(id)}
+            type='submit'
           />
         </div>
       </div>
