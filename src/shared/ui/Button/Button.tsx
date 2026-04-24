@@ -5,25 +5,27 @@ import type { LucideIcon } from 'lucide-react'
 
 interface IButtonProps {
   title?: string
-  theme: 'dark' | 'light' | 'red'
+  theme: 'dark' | 'light'
   className?: string
   Icon?: LucideIcon
   onClick?: () => void
+  type: 'submit' | 'button'
 }
 
-export const Button: FC<IButtonProps> = ({ title, theme, className, Icon, onClick }) => (
+export const Button: FC<IButtonProps> = ({ title, theme, className, Icon, onClick, type }) => (
   <button
+    type={type}
     onClick={onClick}
     className={cn(
       'rounded-xs cursor-pointer flex items-center justify-center',
       {
         'bg-dark-brown text-white': theme === 'dark',
         'border border-light-brown text-light-brown': theme === 'light',
-        'border border-red text-red': theme === 'red',
       },
+      'hover:bg-light-brown hover:text-white active:bg-[#81635B]',
       className
     )}
   >
-    {Icon ? <Icon size={16} strokeWidth={1} /> : title}
+    {Icon ? <Icon size={24} color='#A48077' strokeWidth={1} /> : title}
   </button>
 )
