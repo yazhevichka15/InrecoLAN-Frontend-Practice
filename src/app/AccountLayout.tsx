@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 
 import { SubHeader } from '@widgets/SubHeader'
-// import { AccountMenu } from '@widgets/AccountMenu'
+import { AccountMenu } from '@widgets/AccountMenu'
 
 export const AccountLayout = () => {
   return (
@@ -14,7 +14,8 @@ export const AccountLayout = () => {
       />
 
       <div className='p-(--basic-container-x) flex-1 flex'>
-        {/* <AccountMenu /> - компонент бокового меню */}
+        {/* Нужно подставить данные пользователя */}
+        <AccountMenu role={3} />
         <Outlet />
       </div>
     </>
