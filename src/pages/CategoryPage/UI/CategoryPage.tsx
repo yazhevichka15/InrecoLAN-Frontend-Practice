@@ -4,6 +4,7 @@ import { ProductCard } from '@shared/ui/ProductCard'
 import { SortSelect } from '@shared/ui/SortSelect/SortSelect'
 import { getProducts } from '../api/getProducts'
 import { useNavigate, useParams } from 'react-router-dom'
+import { Pagination } from '@widgets/Pagination'
 
 const selectItems = [
   { value: '-', title: 'Без сортировки' },
@@ -68,6 +69,9 @@ export const CategoryPage = () => {
                 oldPrice={card.oldPrice}
               />
             ))}
+          </div>
+          <div className='col-span-9 flex justify-center'>
+            <Pagination totalPage={10} page={1} />
           </div>
         </div>
       </div>
