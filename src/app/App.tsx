@@ -2,8 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { HomePage } from '@pages/HomePage'
 import { ContactsPage } from '@pages/ContactsPage'
-// import { CatalogPage } from '@pages/CatalogPage'
-// import { CategoryPage } from '@pages/CategoryPage'
+import { CatalogPage } from '@pages/CatalogPage'
+import { CategoryPage } from '@pages/CategoryPage'
 import { ProductDetailsPage } from '@pages/ProductDetailsPage'
 import { ShoppingCartPage } from '@pages/ShoppingCartPage'
 import { FavouritiesPage } from '@pages/FavouritiesPage'
@@ -30,8 +30,8 @@ function App() {
         <Route path='contacts' element={<ContactsPage />} />
 
         <Route path='catalog'>
-          {/* <Route index element={<CatalogPage />} />
-          <Route path=':category' element={<CategoryPage />} /> */}
+          <Route index element={<CatalogPage />} />
+          <Route path=':category' element={<CategoryPage />} />
           <Route path=':category/:product' element={<ProductDetailsPage />} />
         </Route>
 
@@ -79,13 +79,3 @@ function App() {
 }
 
 export default App
-
-{
-  /* 
-Пример реализации защищенного пути:
-<Route element={ProtectedRoute}>
-  <Route path='/test1' element={<FirstComponentPage />} />
-  <Route path='/test2' element={<SecondComponentPage />} />
-</Route>  
-*/
-}
