@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+
+import type { StateSchema } from './types'
 import { login, type ILoginCredentials } from '../api/login'
 import { register, type IRegisterCredentials } from '../api/register'
 import { logout } from '../api/logout'
-import type { StateSchema } from './types'
 
 export const loginThunk = createAsyncThunk(
   'auth/login',
@@ -20,7 +21,13 @@ export const logoutThunk = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const state = getState() as StateSchema
-      return await logout(state.auth.accessToken)
+      const token = state.auth.accessToken
+
+      if (!token) {
+        return rejectWithValue('No access token')
+      }
+
+      return await logout(token)
     } catch (err: any) {
       return rejectWithValue(err.message)
     }

@@ -1,52 +1,4 @@
-interface IRefreshTokenCredentials {
-  refreshToken: string
-  accessToken: string
-}
-
-export async function refreshTokenRequest(
-  credentials: IRefreshTokenCredentials,
-  accessToken: string
-) {
-  const res = await fetch(`/api/Users/Auth/RefreshToken`, {
-    method: 'POST',
-    headers: {
-      accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body: JSON.stringify(credentials),
-  })
-
-  const data = await res.json().catch(() => null)
-
-  if (!res.ok) {
-    throw new Error(data?.message || 'Refresh token request failed')
-  }
-
-  return data
-}
-
-async function updateAuthTokens() {
-  const accessToken = localStorage.getItem('accessToken')
-  const refreshToken = localStorage.getItem('refreshToken')
-
-  if (!accessToken || !refreshToken) {
-    throw new Error('Tokens not founded!')
-  }
-
-  const res = await refreshTokenRequest(
-    {
-      accessToken,
-      refreshToken,
-    },
-    accessToken
-  )
-
-  localStorage.setItem('accessToken', res.accessToken)
-  localStorage.setItem('refreshToken', res.refreshToken)
-
-  return res.accessToken
-}
+import { refreshAuthToken } from './auth/refreshTokens'
 
 // Интерфейс для GET-, POST-, PUT-, DELETE-запросов с автообновлением токенов
 export const client = {
@@ -64,8 +16,8 @@ export const client = {
 
     let response = await request(token)
 
-    if (response.status === 401) {
-      const updatedToken = await updateAuthTokens()
+    if (response.status === 401 && token) {
+      const updatedToken = await refreshAuthToken()
       response = await request(updatedToken)
     }
 
@@ -97,8 +49,8 @@ export const client = {
 
     let response = await request(token)
 
-    if (response.status === 401) {
-      const updatedToken = await updateAuthTokens()
+    if (response.status === 401 && token) {
+      const updatedToken = await refreshAuthToken()
       response = await request(updatedToken)
     }
 
@@ -130,8 +82,8 @@ export const client = {
 
     let response = await request(token)
 
-    if (response.status === 401) {
-      const updatedToken = await updateAuthTokens()
+    if (response.status === 401 && token) {
+      const updatedToken = await refreshAuthToken()
       response = await request(updatedToken)
     }
 
@@ -161,8 +113,8 @@ export const client = {
 
     let response = await request(token)
 
-    if (response.status === 401) {
-      const updatedToken = await updateAuthTokens()
+    if (response.status === 401 && token) {
+      const updatedToken = await refreshAuthToken()
       response = await request(updatedToken)
     }
 
