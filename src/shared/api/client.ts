@@ -48,6 +48,7 @@ async function updateAuthTokens() {
   return res.accessToken
 }
 
+// Интерфейс для GET-, POST-, PUT-, DELETE-запросов с автообновлением токенов
 export const client = {
   async get(endpoint: string, token?: string, options?: RequestInit) {
     const request = (accessToken?: string) =>

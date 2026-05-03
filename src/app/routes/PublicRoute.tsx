@@ -1,9 +1,10 @@
-import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
-import type { RootState } from '@shared/store/store'
+
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
+import { selectIsAuth } from '@features/auth'
 
 export const PublicRoute = () => {
-  const { isAuth } = useSelector((state: RootState) => state.auth)
+  const isAuth = useAppSelector(selectIsAuth)
 
   if (isAuth) {
     return <Navigate to='/account' replace />

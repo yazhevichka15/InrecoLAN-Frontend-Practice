@@ -1,20 +1,16 @@
 import { useState } from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
-import { registerThunk } from '@shared/store/slices/authSlice'
-import type { AppDispatch } from '@shared/store/store'
-
-import { type IRegisterCredentials } from '@shared/api/endpoints/register'
-import { EUserRole } from '@entities/EUserRole'
+import { useForm, FormProvider } from 'react-hook-form'
 
 import { RegisterRadioGroup } from './RegisterRadioGroup'
 import { RegisterSecurityAgreement } from './RegisterSecurityAgreement'
 
+import { type IRegisterCredentials, registerThunk } from '@features/auth'
+import { EUserRole } from '@entities/user/types/EUserRole'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
-import * as validations from '@shared/utils/inputValidations'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import * as validations from '@shared/lib/utils/inputValidations'
 
 interface IRegisterFormValues {
   firstName: string
@@ -37,7 +33,7 @@ export const RegisterForm = () => {
   })
 
   const [error, setError] = useState('')
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const onSubmit = async (data: IRegisterFormValues) => {

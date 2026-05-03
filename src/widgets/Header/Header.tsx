@@ -7,9 +7,9 @@ import { HeaderRightMenuItem } from './HeaderRightMenuItem'
 
 import { SearchBar } from '@shared/ui/SearchBar'
 import { Badge } from '@shared/ui/Badge'
-import { cn } from '@shared/utils/cn'
+import { cn } from '@shared/lib/utils/cn'
 
-import type { RootState } from '@shared/store/store'
+import { selectIsAuth, selectAuthUser } from '@features/auth'
 
 export function Header() {
   const menuItems = [
@@ -20,7 +20,8 @@ export function Header() {
 
   const navigate = useNavigate()
 
-  const { isAuth, user } = useSelector((state: RootState) => state.auth)
+  const isAuth = useSelector(selectIsAuth)
+  const user = useSelector(selectAuthUser)
 
   const handleUserClick = async () => {
     if (!isAuth) {

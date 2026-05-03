@@ -1,20 +1,20 @@
+import { useNavigate } from 'react-router-dom'
+
 import { AccountMenuSection } from './AccountMenuSection'
 import { AccountMenuData } from '../model/AccountMenuData'
-import type { EUserRole } from '@entities/EUserRole'
 import type { IAccountMenuSection } from '../model/IAccountMenuSection'
-import { Button } from '@shared/ui/Button'
 
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import type { AppDispatch } from '@shared/store/store'
-import { logoutThunk } from '@shared/store/slices/authSlice'
+import type { EUserRole } from '@entities/user'
+import { logoutThunk } from '@features/auth'
+import { Button } from '@shared/ui/Button'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 
 interface IAccountMenuProps {
   role: EUserRole
 }
 
 export const AccountMenu = ({ role }: IAccountMenuProps) => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const handleLogout = async () => {

@@ -1,15 +1,12 @@
 import { useState } from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useForm, FormProvider } from 'react-hook-form'
 
-import { type ILoginCredentials } from '@shared/api'
-import { loginThunk } from '@shared/store/slices/authSlice'
-import type { AppDispatch } from '@shared/store/store'
-
+import { type ILoginCredentials, loginThunk } from '@features/auth'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
-import { emailValidation, passwordValidation } from '@shared/utils/inputValidations'
+import { emailValidation, passwordValidation } from '@shared/lib/utils/inputValidations'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 
 export const LoginForm = () => {
   const navigate = useNavigate()
@@ -18,7 +15,7 @@ export const LoginForm = () => {
     mode: 'onSubmit',
   })
 
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const [error, setError] = useState('')
 
   const onSubmit = async (data: ILoginCredentials) => {

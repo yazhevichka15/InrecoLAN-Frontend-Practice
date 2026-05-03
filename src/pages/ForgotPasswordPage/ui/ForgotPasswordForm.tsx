@@ -1,7 +1,7 @@
 import { useForm, FormProvider } from 'react-hook-form'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
-import { emailValidation } from '@shared/utils/inputValidations'
+import { emailValidation } from '@shared/lib/utils/inputValidations'
 
 interface IForgotPasswordFormValues {
   email: string

@@ -2,11 +2,11 @@ import { Outlet } from 'react-router-dom'
 
 import { SubHeader } from '@widgets/SubHeader'
 import { AccountMenu } from '@widgets/AccountMenu'
+import { selectAuthUser } from '@features/auth'
+import type { EUserRole } from '@entities/user'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 
-import { useSelector } from 'react-redux'
-import type { RootState } from '@shared/store/store'
-
-const getRoleName = (role?: number) => {
+const getRoleName = (role?: EUserRole) => {
   switch (role) {
     case 1:
       return 'Клиент'
@@ -20,8 +20,7 @@ const getRoleName = (role?: number) => {
 }
 
 export const AccountLayout = () => {
-  const { user } = useSelector((state: RootState) => state.auth)
-
+  const user = useAppSelector(selectAuthUser)
   const role = user?.userRole
 
   return (

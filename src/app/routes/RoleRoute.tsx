@@ -1,14 +1,16 @@
-import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
-import type { RootState } from '@shared/store/store'
-import type { EUserRole } from '@entities/EUserRole'
+
+import { selectIsAuth, selectAuthUser } from '@features/auth'
+import type { EUserRole } from '@entities/user'
+import { useAppSelector } from '@shared/lib/hooks/useAppSelector'
 
 interface IRoleRouteProps {
   allowedRoles: EUserRole[]
 }
 
 export const RoleRoute = ({ allowedRoles }: IRoleRouteProps) => {
-  const { isAuth, user } = useSelector((state: RootState) => state.auth)
+  const isAuth = useAppSelector(selectIsAuth)
+  const user = useAppSelector(selectAuthUser)
 
   if (!isAuth) {
     return <Navigate to='/auth/login' replace />
