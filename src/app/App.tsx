@@ -62,14 +62,18 @@ function App() {
           {/* <Route path='reviews' element={<AccountReviewsPage />} - страница "Мои отзывы" / "Управление отзывами" /> */}
           {/* <Route path='reviews/:review' element={<AccountReviewDetailsPage />} - страница с отображением конкретного отзыва /> */}
           {/* Пути ТОЛЬКО для сотрудника / администратора: */}
-          <Route path='products' element={<AccountProductsPage />} /> //- страница "Управление
-          товарами"
-          <Route path='products/new' element={<AccountProductDetailsPage />} /> - страница
-          добавления товара
-          <Route path='products/:product' element={<AccountProductEditPage />} /> - страница с
-          отображением конкретного товара
-          <Route path='products/category/:category' element={<CategoryProductsPage />} /> - страница
-          со списком товаров выбранной категории
+
+          {/* страница "Управление товарами" */}
+          <Route path='products' element={<AccountProductsPage />} />
+
+          {/* страница добавления товара */}
+          <Route path='products/new' element={<AccountProductDetailsPage />} />
+
+          {/* страница с отображением конкретного товара */}
+          <Route path='products/:product' element={<AccountProductEditPage />} />
+
+          {/* страница со списком товаров выбранной категории */}
+          <Route path='products/category/:category' element={<CategoryProductsPage />} />
           {/* <Route path='users' element={<AccountUsersPage />} - страница "Управление пользователями" /> */}
           {/* <Route path='users/:user' element={<AccountUserDetailsPage />} /> - страница с отображением конкретного пользователя */}
           {/* <Route path='analytics' element={<AccountAnalyticsPage />} - страница отображения статистики /> */}
