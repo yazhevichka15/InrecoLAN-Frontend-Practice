@@ -86,7 +86,7 @@ const ReviewsSlider: React.FC = () => {
                   <span className="text-[#3A2E2A]">
                     {review.name}
                     </span>
-                  <div className="text-[#3A2E2A] text-sm">
+                  <div className="text-[#A48077] text-sm">
                     {"★".repeat(review.rating)}
                     {"☆".repeat(5 - review.rating)}
                   </div>
