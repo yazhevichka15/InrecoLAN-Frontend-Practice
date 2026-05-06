@@ -7,10 +7,6 @@ import App from './App.tsx'
 import { store } from '@app/providers/StoreProvider'
 import './index.css'
 
-store.subscribe(() => {
-  console.log('Обновление хранилища:', store.getState())
-})
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
