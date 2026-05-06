@@ -34,4 +34,3 @@ export const VisitSection = () => {
   );
 };
 
-export default VisitSection;

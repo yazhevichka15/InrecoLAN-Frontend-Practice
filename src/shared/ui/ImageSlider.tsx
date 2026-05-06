@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface ISlide {
   image: string;
@@ -16,29 +16,31 @@ const ImageSlider: React.FC = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % sliderData.length);
+      setCurrentSlide((prev) => (prev + 1) % sliderData.length);
     }, 5000);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
-      {sliderData.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <img
-            src={slide.image}
-            alt={`slide-${index}`}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-      ))}
+    <div className="w-full h-full overflow-hidden">
+      <div className="grid w-full h-full">
+        {sliderData.map((slide, index) => (
+          <div
+            key={index}
+            className={`row-start-1 col-start-1 transition-opacity duration-500 ease-in-out ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={slide.image}
+              alt={`slide-${index}`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

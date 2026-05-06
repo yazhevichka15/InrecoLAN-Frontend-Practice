@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { categories } from "@pages/CatalogPage/model/categories-data";
 
-const CatalogSection = () => {
+export const CatalogSection = () => {
   const displayedCategories = categories.slice(0, 5);
 
   return (
@@ -45,4 +45,3 @@ const CatalogSection = () => {
   );
 };
 
-export default CatalogSection;
