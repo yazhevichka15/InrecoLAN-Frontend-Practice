@@ -42,4 +42,3 @@ export const MapSection: FC = () => {
     </section>
   );
 };
-export default MapSection;

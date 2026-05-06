@@ -1,6 +1,6 @@
 import ReviewsSlider from "@shared/ui/ReviewsSlider";
 
-const ReviewsSection = () => {
+export const ReviewsSection = () => {
   return (
     <section className="py-20">
       <div className="w-full px-6 pl-14">
@@ -36,4 +36,3 @@ const ReviewsSection = () => {
   );
 };
 
-export default ReviewsSection;
