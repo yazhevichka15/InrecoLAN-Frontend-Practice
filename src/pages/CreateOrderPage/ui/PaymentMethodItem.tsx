@@ -1,6 +1,7 @@
 import { type FC } from 'react'
 import { useFormContext } from 'react-hook-form'
-import type { IPaymentMethod } from '../model/IPaymentMethod'
+
+import type { IPaymentMethod } from '../model/types/IPaymentMethod'
 
 export const PaymentMethodItem: FC<IPaymentMethod> = ({ title, value }) => {
   const { register, watch } = useFormContext()

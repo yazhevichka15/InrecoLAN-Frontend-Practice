@@ -9,7 +9,7 @@ interface IOrderItemProps {
 
 export const OrderItem: FC<IOrderItemProps> = ({ imgSrc, name, price, quantity }) => {
   return (
-    <div className='w-full h-[140px] flex flex-col gap-20px'>
+    <div className='w-full h-140px flex flex-col gap-20px'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-base'>
           <img

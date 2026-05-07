@@ -1,11 +1,14 @@
 import { useForm, FormProvider } from 'react-hook-form'
+import { useNavigate } from 'react-router'
+
 import { getCartProducts } from '../api/getCartProducts'
+import { paymentMethods } from '../model/paymentMethodsData'
+import { PaymentMethodItem } from './PaymentMethodItem'
+import { OrderSecurityAgreement } from './OrderSecurityAgreement'
 
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
-import * as validations from '@shared/utils/inputValidations'
-import { PaymentMethodItem } from './PaymentMethodItem'
-import { paymentMethods } from '../model/paymentMethodsData'
+import { deliveryAddress, requredFieldValidation } from '@shared/utils/inputValidations'
 
 interface ICreateOrderFormValues {
   paymentMethod: string
@@ -16,7 +19,11 @@ interface ICreateOrderFormValues {
 }
 
 export const CreateOrderForm = () => {
+  const navigate = useNavigate()
+
+  // Временно, уберется, когда подключу redux store
   const orderProducts = getCartProducts()
+
   const totalPrice = orderProducts.reduce((sum, product) => {
     return sum + product.price * product.quantity
   }, 0)
@@ -30,12 +37,13 @@ export const CreateOrderForm = () => {
     },
   })
 
-  const hasDelivery = methods.watch('hasDelivery')
-
   const onSubmit = (data: ICreateOrderFormValues) => {
     console.log(data)
     methods.reset()
+    navigate('/account')
   }
+
+  const hasDelivery = methods.watch('hasDelivery')
 
   return (
     <FormProvider {...methods}>
@@ -91,7 +99,7 @@ export const CreateOrderForm = () => {
               <legend className='mb-30px'>
                 <h2>Адрес доставки</h2>
               </legend>
-              <Input {...validations.firstNameValidation} />
+              <Input {...deliveryAddress} />
             </fieldset>
           </>
         )}
@@ -101,7 +109,10 @@ export const CreateOrderForm = () => {
             Итого: <span className='text-light-brown'>{totalPrice}₽</span>
           </h2>
         </div>
+
         <Button type='submit' title='Оформить заказ' theme='dark' className='h-80px' />
+
+        <OrderSecurityAgreement name='securityAgreement' validation={requredFieldValidation} />
       </form>
     </FormProvider>
   )

@@ -2,6 +2,7 @@ import { OrderItem } from './OrderItem'
 import { getCartProducts } from '../api/getCartProducts'
 
 export const OrdersItemsSection = () => {
+  // Временно, уберется, когда подключу redux store
   const orderProducts = getCartProducts()
 
   return (

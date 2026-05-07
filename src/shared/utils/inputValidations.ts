@@ -66,6 +66,26 @@ export const phoneValidation = {
   },
 }
 
+export const deliveryAddress = {
+  type: 'text',
+  name: 'deliveryAddress',
+  placeholder: 'г.Москва, ул.Балакирева, д.33, кв.10',
+  validation: {
+    required: {
+      value: true,
+      message: 'Введите адрес доставки',
+    },
+    minLength: {
+      value: 5,
+      message: 'Адрес доставки должен содержать не менее 5 символов',
+    },
+    maxLength: {
+      value: 150,
+      message: 'Адрес доставки не должен превышать 150 символов',
+    },
+  },
+}
+
 export const passwordValidation = {
   type: 'password',
   name: 'password',

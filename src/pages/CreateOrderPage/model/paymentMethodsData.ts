@@ -1,4 +1,4 @@
-import type { IPaymentMethod } from './IPaymentMethod'
+import type { IPaymentMethod } from './types/IPaymentMethod'
 
 export const paymentMethods: IPaymentMethod[] = [
   {

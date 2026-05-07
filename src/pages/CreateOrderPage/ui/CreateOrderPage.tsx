@@ -5,6 +5,7 @@ import { CreateOrderForm } from './CreateOrderForm'
 import { getCartProducts } from '../api/getCartProducts'
 
 export const CreateOrderPage = () => {
+  // Временно, уберется, когда подключу redux store
   const orderProducts = getCartProducts()
   const orderIsEmpty = orderProducts.length === 0
 
