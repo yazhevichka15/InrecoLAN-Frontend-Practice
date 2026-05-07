@@ -26,7 +26,12 @@ export const Input = ({ type, name, placeholder, validation }: IInputProps) => {
 
   return (
     <div className='flex flex-col gap-10px'>
-      <input type={type} placeholder={placeholder} {...register(name, finalValidation)} />
+      <input
+        type={type}
+        placeholder={placeholder}
+        {...register(name, finalValidation)}
+        className='border-2 border-solid border-light-brown text-light-brown px-20px py-30px outline-0'
+      />
       {error && <span className='text-red text-[14px]'>{error.message as string}</span>}
     </div>
   )
