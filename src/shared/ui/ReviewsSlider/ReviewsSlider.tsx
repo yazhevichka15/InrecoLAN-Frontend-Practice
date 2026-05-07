@@ -65,7 +65,7 @@ export const ReviewsSlider: React.FC = () => {
   }
 
   return (
-    <div className='relative w-full'>
+    <div className='w-full'>
       <div className='overflow-hidden w-full'>
         <div
           className='flex transition-transform duration-500'
@@ -82,7 +82,7 @@ export const ReviewsSlider: React.FC = () => {
               <div className='h-full border border-[#D6D0CC] bg-white p-8 flex flex-col justify-between'>
                 <div className='flex justify-between mb-4'>
                   <span className='text-[#3A2E2A]'>{review.name}</span>
-                  <div className='text-[#3A2E2A] text-sm'>
+                  <div className='text-[#A48077] text-sm'>
                     {'★'.repeat(review.rating)}
                     {'☆'.repeat(5 - review.rating)}
                   </div>
@@ -96,7 +96,7 @@ export const ReviewsSlider: React.FC = () => {
         </div>
       </div>
 
-      <div className='absolute -bottom-12 right-0 flex gap-8'>
+      <div className='flex justify-end gap-8 mt-12'>
         <button onClick={prev} className='text-[#8C6F63] hover:text-[#3A2E2A]'>
           ←
         </button>
