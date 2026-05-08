@@ -19,6 +19,7 @@ export default defineConfig([
       reactX.configs['recommended-typescript'],
       reactDom.configs.recommended,
     ],
+    // Добавить проверку импортов файлов по FSD
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],

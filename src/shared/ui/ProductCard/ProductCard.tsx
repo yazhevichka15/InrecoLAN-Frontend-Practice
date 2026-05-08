@@ -1,7 +1,7 @@
 import { useState, type FC } from 'react'
 import { ProductCounter } from '../ProductCounter'
 import { Heart } from 'lucide-react'
-import { cn } from '@shared/utils/cn'
+import { cn } from '@shared/lib/utils/cn'
 import { CardBadge } from '../CardBadge'
 
 interface IProductCardProps {

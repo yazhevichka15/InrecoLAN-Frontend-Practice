@@ -1,4 +1,4 @@
-import type { EUserRole } from '@entities/user/EUserRole'
+import type { EUserRole } from '@entities/user'
 
 interface IAccountMenuItem {
   id: number

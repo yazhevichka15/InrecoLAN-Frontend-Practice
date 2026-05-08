@@ -1,17 +1,22 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { RegisterRadioGroup } from './RegisterRadioGroup'
 import { RegisterSecurityAgreement } from './RegisterSecurityAgreement'
 
+import { type IRegisterCredentials, registerThunk } from '@features/auth'
+import { EUserRole } from '@entities/user/types/EUserRole'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
-import * as validations from '@shared/utils/inputValidations'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
+import * as validations from '@shared/lib/utils/inputValidations'
 
 interface IRegisterFormValues {
   firstName: string
   secondName: string
   email: string
-  phone: string
+  birthday: string
   password: string
   confirmPassword: string
   newsLetter: 'yes' | 'no'
@@ -27,9 +32,31 @@ export const RegisterForm = () => {
     },
   })
 
-  const onSubmit = (data: IRegisterFormValues) => {
-    console.log(data)
-    methods.reset()
+  const [error, setError] = useState('')
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
+  const onSubmit = async (data: IRegisterFormValues) => {
+    setError('')
+
+    // Маппинг типов. На бэкенде нет некоторых полей, которые есть на макете
+    const payload: IRegisterCredentials = {
+      email: data.email,
+      name: data.firstName,
+      surname: data.secondName,
+      password: data.password,
+      birthday: '2000-01-01',
+      userRole: EUserRole.client,
+    }
+
+    const result = await dispatch(registerThunk(payload))
+
+    if (registerThunk.fulfilled.match(result)) {
+      methods.reset()
+      navigate('/account')
+    } else {
+      setError((result.payload as string) || 'Ошибка регистрации')
+    }
   }
 
   return (
@@ -46,7 +73,6 @@ export const RegisterForm = () => {
             <Input {...validations.firstNameValidation} />
             <Input {...validations.secondNameValidation} />
             <Input {...validations.emailValidation} />
-            <Input {...validations.phoneValidation} />
           </fieldset>
 
           <fieldset className='flex flex-col gap-30px'>
@@ -79,6 +105,8 @@ export const RegisterForm = () => {
           validation={validations.requredFieldValidation}
         />
       </form>
+
+      {error && <div className='text-center text-red'>{error}</div>}
     </FormProvider>
   )
 }

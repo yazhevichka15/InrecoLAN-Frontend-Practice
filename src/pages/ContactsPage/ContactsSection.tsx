@@ -1,7 +1,7 @@
 import { MapPin, CalendarDays } from 'lucide-react'
 import type { FC } from 'react'
 
-import { cn } from '@shared/utils/cn'
+import { cn } from '@shared/lib/utils/cn'
 
 interface IContactSection {
   sectionHeader: string

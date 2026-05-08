@@ -1,24 +1,35 @@
-import { useState } from 'react'
 import { ShoppingCart, User, Heart } from 'lucide-react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { HeaderMenu } from './HeaderMenu'
 import { HeaderRightMenuItem } from './HeaderRightMenuItem'
 
 import { SearchBar } from '@shared/ui/SearchBar'
 import { Badge } from '@shared/ui/Badge'
-import { cn } from '@shared/utils/cn'
+import { cn } from '@shared/lib/utils/cn'
+
+import { selectIsAuth, selectAuthUser } from '@features/auth'
 
 export function Header() {
-  const [isAuth, setIsAuth] = useState(false)
-  const toggleAuth = () => {
-    setIsAuth(!isAuth)
-  }
-
   const menuItems = [
     { title: 'Главная', ref: '/' },
     { title: 'Каталог', ref: '/catalog' },
     { title: 'Контакты', ref: '/contacts' },
   ]
+
+  const navigate = useNavigate()
+
+  const isAuth = useSelector(selectIsAuth)
+  const user = useSelector(selectAuthUser)
+
+  const handleUserClick = async () => {
+    if (!isAuth) {
+      navigate('auth')
+    } else {
+      navigate('account')
+    }
+  }
 
   return (
     <header className='m-(--basic-container-x)'>
@@ -55,8 +66,8 @@ export function Header() {
           <li>
             <HeaderRightMenuItem
               Icon={User}
-              title={isAuth ? 'Михалыч' : 'Войти'}
-              onClick={toggleAuth}
+              title={isAuth ? user?.email || 'Пользователь' : 'Войти'}
+              onClick={handleUserClick}
             />
           </li>
         </ul>

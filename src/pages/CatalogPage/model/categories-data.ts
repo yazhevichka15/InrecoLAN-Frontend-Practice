@@ -1,4 +1,8 @@
-import type { ICategory } from '@pages/CatalogPage/model/types'
+export interface ICategory {
+  slug: string
+  title: string
+  image: string
+}
 
 export const categories: ICategory[] = [
   {

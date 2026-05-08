@@ -10,7 +10,7 @@ export const CatalogPage = () => {
           <CategoryCard key={category.slug} category={category} />
         ))}
       </div>
-      <BrandsCarousel/>
+      <BrandsCarousel />
     </section>
   )
 }

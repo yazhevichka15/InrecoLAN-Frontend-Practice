@@ -8,7 +8,7 @@ import { OrderSecurityAgreement } from './OrderSecurityAgreement'
 
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
-import { deliveryAddress, requredFieldValidation } from '@shared/utils/inputValidations'
+import { deliveryAddress, requredFieldValidation } from '@shared/lib/utils/inputValidations'
 
 interface ICreateOrderFormValues {
   paymentMethod: string

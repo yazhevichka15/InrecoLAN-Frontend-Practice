@@ -1,59 +1,63 @@
-import type { ICategory } from "@pages/CatalogPage/model/types";
+export interface ICategory {
+  slug: string
+  title: string
+  image: string
+}
 
 export const categories: ICategory[] = [
   {
-    slug: "chandeliers",
-    title: "Люстры",
-    image: "chandeliers.webp",
-  },
-  { 
-    slug: "ceilingLights",
-    title: "Светильники",
-    image: "ceilingLights.webp",
+    slug: 'chandeliers',
+    title: 'Люстры',
+    image: 'chandeliers.webp',
   },
   {
-    slug: "tableLamps",
-    title: "Настольные лампы",
-    image: "tableLamps.webp",
+    slug: 'ceilingLights',
+    title: 'Светильники',
+    image: 'ceilingLights.webp',
   },
   {
-    slug: "wallSconces",
-    title: "Бра",
-    image: "wallSconces.webp",
+    slug: 'tableLamps',
+    title: 'Настольные лампы',
+    image: 'tableLamps.webp',
   },
   {
-    slug: "spotLights",
-    title: "Точечные светильники",
-    image: "spotLights.webp",
+    slug: 'wallSconces',
+    title: 'Бра',
+    image: 'wallSconces.webp',
   },
   {
-    slug: "accentLighting",
-    title: "Подсветки",
-    image: "accentLighting.webp",
+    slug: 'spotLights',
+    title: 'Точечные светильники',
+    image: 'spotLights.webp',
   },
   {
-    slug: "floorLamps",
-    title: "Торшеры",
-    image: "floorLamps.webp",
+    slug: 'accentLighting',
+    title: 'Подсветки',
+    image: 'accentLighting.webp',
   },
   {
-    slug: "trackLighting",
-    title: "Трековые системы",
-    image: "trackLighting.webp",
+    slug: 'floorLamps',
+    title: 'Торшеры',
+    image: 'floorLamps.webp',
   },
   {
-    slug: "nightLights",
-    title: "Ночники",
-    image: "nightLights.webp",
+    slug: 'trackLighting',
+    title: 'Трековые системы',
+    image: 'trackLighting.webp',
   },
   {
-    slug: "accessories",
-    title: "Комплектующие",
-    image: "accessories.webp",
+    slug: 'nightLights',
+    title: 'Ночники',
+    image: 'nightLights.webp',
   },
   {
-    slug: "outdoorLights",
-    title: "Уличные светильники",
-    image: "outdoorLights.webp",
+    slug: 'accessories',
+    title: 'Комплектующие',
+    image: 'accessories.webp',
   },
-];
+  {
+    slug: 'outdoorLights',
+    title: 'Уличные светильники',
+    image: 'outdoorLights.webp',
+  },
+]

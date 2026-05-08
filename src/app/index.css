@@ -39,6 +39,7 @@
   --spacing-10px: calc(var(--spacing) * 2.5);
   --spacing-15px: calc(var(--spacing) * 3.75);
   --spacing-20px: calc(var(--spacing) * 5);
+  --spacing-24px: calc(var(--spacing) * 6);
   --spacing-30px: calc(var(--spacing) * 7.5);
   --spacing-34px: calc(var(--spacing) * 8.5);
   --spacing-40px: calc(var(--spacing) * 10);
