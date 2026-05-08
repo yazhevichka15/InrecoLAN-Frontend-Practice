@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ImageSlider } from 'shared/ui/ImageSlider'
+import type { FC } from 'react'
 
-export const HeroSection = () => {
+export const HeroSection: FC = () => {
   return (
     <section className='h-[80vh] overflow-hidden'>
       <div className='h-full'>
