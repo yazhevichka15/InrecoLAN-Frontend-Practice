@@ -14,6 +14,7 @@ import { ForbiddenPage } from '@pages/ForbiddenPage'
 import { ServerErrorPage } from '@pages/ServerErrorPage'
 import { NotFoundPage } from '@pages/NotFoundPage'
 import { AccountDashboardPage } from '@pages/AccountDashboardPage'
+import { CreateOrderPage } from '@pages/CreateOrderPage'
 
 import { MainLayout } from './layouts/MainLayout'
 import { AccountLayout } from './layouts/AccountLayout'
@@ -38,7 +39,7 @@ function App() {
         <Route element={<RoleRoute allowedRoles={[1]} />}>
           <Route path='favourities' element={<FavouritiesPage />} />
           <Route path='cart' element={<ShoppingCartPage />} />
-          {/* <Route path='create-order' element={<CreateOrderPage />} /> */}
+          <Route path='create-order' element={<CreateOrderPage />} />
         </Route>
 
         <Route element={<PublicRoute />}>
