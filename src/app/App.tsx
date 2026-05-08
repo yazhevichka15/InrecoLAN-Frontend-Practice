@@ -13,6 +13,7 @@ import { ForgotPasswordPage } from '@pages/ForgotPasswordPage'
 import { ForbiddenPage } from '@pages/ForbiddenPage'
 import { ServerErrorPage } from '@pages/ServerErrorPage'
 import { NotFoundPage } from '@pages/NotFoundPage'
+import { CreateOrderPage } from '@pages/CreateOrderPage'
 
 import { MainLayout } from './MainLayout'
 import { AccountLayout } from './AccountLayout'
@@ -33,8 +34,7 @@ function App() {
         {/* Защищенный путь (клиент) */}
         <Route path='cart' element={<ShoppingCartPage />} />
 
-        {/* Защищенный путь (клиент) */}
-        {/* <Route path='create-order' element={<CreateOrderPage />} /> */}
+        <Route path='create-order' element={<CreateOrderPage />} />
 
         {/* Защищенный путь (клиент) */}
         <Route path='favourities' element={<FavouritiesPage />} />
