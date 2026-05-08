@@ -55,7 +55,7 @@ function App() {
         {/* Защищенный путь (пользователь авторизован) */}
         <Route path='account' element={<AccountLayout />}>
           <Route index element={<Navigate to='dashboard' replace />} />
-          {/* <Route path='dashboard' element={<AccountDashboardPage />} /> - главная (приветственная) страница в ЛК */}
+          {/* <Route path='dashboard' element={<AccountDashboardPage />} /> */}
           {/* <Route path='settings' element={<AccountSettingsPage />} /> - страница "Настройки аккаунта" */}
           {/* <Route path='orders' element={<AccountOrdersPage />} /> - страница "Мои заказы" / "Управление заказами" */}
           {/* <Route path='orders/:order' element={<AccountOrderDetailsPage />} /> - страница с отображением конкретного заказа */}

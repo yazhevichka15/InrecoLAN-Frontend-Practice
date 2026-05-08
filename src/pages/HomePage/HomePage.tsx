@@ -1,9 +1,20 @@
 // Заглушка
+import HeroSection from '@widgets/homePage/HeroSection'
+import AboutUsSection from '@widgets/homePage/aboutUsSection'
+import CatalogSection from '@widgets/homePage/CatalogSection'
+import ReviewsSection from '@widgets/homePage/ReviewsSection'
+import VisitSection from '@widgets/homePage/VisitUsSection'
+import MapSection from '@widgets/homePage/MapSection'
 
 export const HomePage = () => {
   return (
     <>
-      <h1>Главная страница</h1>
+      <HeroSection />
+      <AboutUsSection />
+      <CatalogSection />
+      <ReviewsSection />
+      <VisitSection />
+      <MapSection />
     </>
   )
 }
