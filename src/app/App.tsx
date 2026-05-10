@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 
-import { HomePage } from '@pages/HomePage/UI'
+import { HomePage } from '@pages/HomePage'
 import { ContactsPage } from '@pages/ContactsPage'
 import { CatalogPage } from '@pages/CatalogPage'
 import { CategoryPage } from '@pages/CategoryPage'

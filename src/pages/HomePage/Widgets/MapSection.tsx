@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { Map } from "@shared/ui/Map";
+import { SmallDescriptionBlock } from "@shared/ui/SmallDescriptionBlock";
 
 export const MapSection: FC = () => {
   return (
@@ -10,18 +11,16 @@ export const MapSection: FC = () => {
 
           <div className="flex flex-col gap-2">
             <h3 className="text-xl text-[#3A2E2A]">Адрес</h3>
-            <div className="w-20 h-px bg-[#8C6F63]" />
-            <p className="text-sm text-gray-600">
-              г. Владимир, ул. Студёная гора, д. 34
-            </p>
+            <SmallDescriptionBlock
+            text="г. Владимир, ул. Студёная гора, д. 34"
+            />
           </div>
 
           <div className="flex flex-col gap-2 items-center">
             <h3 className="text-xl text-[#3A2E2A]">Телефон</h3>
-            <div className="w-20 h-px bg-[#8C6F63]" />
-            <p className="text-sm text-gray-600">
-              8(4922)44-93-30
-            </p>
+            <SmallDescriptionBlock
+            text="8(4922)44-93-30"
+            />
           </div>
 
           <div className="flex flex-col gap-2 items-end">
