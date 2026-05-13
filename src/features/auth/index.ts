@@ -8,5 +8,6 @@ export {
   selectAuthLoading,
   selectAuthError,
 } from './model/selectors'
+
 export { type ILoginCredentials, login } from './api/login'
 export { type IRegisterCredentials, register } from './api/register'
