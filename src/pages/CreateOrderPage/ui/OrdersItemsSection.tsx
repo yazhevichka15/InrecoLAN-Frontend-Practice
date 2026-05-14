@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 
-import { OrderItem } from './OrderItem'
-
 import { selectSelectedCartItems } from '@features/cart'
+
+import { OrderItem } from './OrderItem'
 
 export const OrdersItemsSection = () => {
   const orderProducts = useSelector(selectSelectedCartItems)

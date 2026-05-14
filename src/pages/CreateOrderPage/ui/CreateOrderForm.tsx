@@ -2,17 +2,14 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 
-import { paymentMethods } from '../model/paymentMethodsData'
-
-import { PaymentMethodItem } from './PaymentMethodItem'
-import { OrderSecurityAgreement } from './OrderSecurityAgreement'
-
+import { selectSelectedCartItems, selectCartTotalPrice } from '@features/cart'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
-
 import { deliveryAddress, requredFieldValidation } from '@shared/lib/utils/inputValidations'
 
-import { selectSelectedCartItems } from '@features/cart'
+import { paymentMethods } from '../model/paymentMethodsData'
+import { PaymentMethodItem } from './PaymentMethodItem'
+import { OrderSecurityAgreement } from './OrderSecurityAgreement'
 
 interface ICreateOrderFormValues {
   paymentMethod: string
@@ -26,10 +23,7 @@ export const CreateOrderForm = () => {
   const navigate = useNavigate()
 
   const orderProducts = useSelector(selectSelectedCartItems)
-
-  const totalPrice = orderProducts.reduce((sum, product) => {
-    return sum + product.price * product.quantity
-  }, 0)
+  const totalPrice = useSelector(selectCartTotalPrice)
 
   const methods = useForm<ICreateOrderFormValues>({
     mode: 'onSubmit',
@@ -41,14 +35,7 @@ export const CreateOrderForm = () => {
   })
 
   const onSubmit = (data: ICreateOrderFormValues) => {
-    console.log({
-      formData: data,
-      products: orderProducts,
-      totalPrice,
-    })
-
     methods.reset()
-
     navigate('/account')
   }
 

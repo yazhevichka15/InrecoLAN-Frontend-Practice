@@ -1,14 +1,13 @@
 import { useState, type FC } from 'react'
-import { Heart } from 'lucide-react'
 import { useSelector } from 'react-redux'
+import { Heart } from 'lucide-react'
 
-import { ProductCounter } from '../ProductCounter'
-import { CardBadge } from '../CardBadge'
-
+import { addToCart, increaseQuantity, decreaseQuantity, selectCartItems } from '@features/cart'
 import { cn } from '@shared/lib/utils/cn'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 
-import { addToCart, increaseQuantity, decreaseQuantity, selectCartItems } from '@features/cart'
+import { ProductCounter } from '../ProductCounter'
+import { CardBadge } from '../CardBadge'
 
 interface IProductCardProps {
   productId: string

@@ -23,3 +23,6 @@ export {
   selectAllProducts,
   clearSelection,
 } from './model/slice'
+
+export { addProductToOrder } from './api/addProductToOrder'
+export { deleteProductFromOrder } from './api/deleteProductFromOrder'

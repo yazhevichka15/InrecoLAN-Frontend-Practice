@@ -2,11 +2,10 @@ import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 import { SubHeader } from '@widgets/SubHeader'
+import { selectSelectedCartItems } from '@features/cart'
 
 import { OrdersItemsSection } from './OrdersItemsSection'
 import { CreateOrderForm } from './CreateOrderForm'
-
-import { selectSelectedCartItems } from '@features/cart'
 
 export const CreateOrderPage = () => {
   const orderProducts = useSelector(selectSelectedCartItems)

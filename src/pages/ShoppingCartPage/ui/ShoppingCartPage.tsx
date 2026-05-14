@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux'
 
 import { SubHeader } from '@widgets/SubHeader'
+import { selectCartItems } from '@features/cart'
 
 import { ShoppingCartItem } from './ShoppingCartItem'
 import { ShoppingCartButtonsSection } from './ShoppingCartButtonsSection'
 import { ShoppingCartSummarySection } from './ShoppingCartSummarySection'
-
-import { selectCartItems } from '@features/cart'
 import { EmptyShoppingCartSection } from './EmptyShoppingCartSection'
 
 export const ShoppingCartPage = () => {

@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
-import { Button } from '@shared/ui/Button'
 import { useNavigate } from 'react-router-dom'
 
 import { selectCartTotalPrice } from '@features/cart'
+import { Button } from '@shared/ui/Button'
 
 export const ShoppingCartSummarySection = () => {
   const navigate = useNavigate()
@@ -19,7 +19,7 @@ export const ShoppingCartSummarySection = () => {
         type='button'
         title='Оформить заказ'
         theme='dark'
-        className='w-[600px] h-80px text-xl'
+        className='w-740px h-80px text-xl'
         onClick={() => navigate('/create-order')}
       />
     </div>
