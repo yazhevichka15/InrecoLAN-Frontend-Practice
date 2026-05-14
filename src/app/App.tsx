@@ -1,4 +1,6 @@
+import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 
 import { HomePage } from '@pages/HomePage'
 import { ContactsPage } from '@pages/ContactsPage'
@@ -23,7 +25,15 @@ import { PublicRoute } from './routes/PublicRoute'
 import { ProtectedRoute } from './routes/ProtectedRoute'
 import { RoleRoute } from './routes/RoleRoute'
 
+import { loadCartFromStorageThunk } from '@features/cart'
+
 function App() {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(loadCartFromStorageThunk())
+  }, [])
+
   return (
     <Routes>
       <Route path='/' element={<MainLayout />}>

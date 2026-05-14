@@ -59,13 +59,14 @@ export const CategoryPage = () => {
           <div className='col-span-9 grid grid-cols-subgrid gap-base my-50px'>
             {chandeliersItems.map((card) => (
               <ProductCard
-                key={card.title}
+                key={card.id}
+                productId={card.id}
                 image={card.image}
                 title={card.title}
                 price={card.price}
                 status={card.status}
                 badge={card.badge}
-                oldPrice={card.oldPrice}
+                oldPrice={card.oldPrice ?? undefined}
               />
             ))}
           </div>

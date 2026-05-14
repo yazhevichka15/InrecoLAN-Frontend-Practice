@@ -1,5 +1,7 @@
 import { configureStore, combineSlices } from '@reduxjs/toolkit'
+
 import { authSlice } from '@features/auth'
+import { cartSlice } from '@features/cart'
 
 const accessToken = localStorage.getItem('accessToken')
 const refreshToken = localStorage.getItem('refreshToken')
@@ -18,11 +20,15 @@ const preloadedState = {
   },
 }
 
-const rootReducer = combineSlices(authSlice)
+const rootReducer = combineSlices(authSlice, cartSlice)
 
 export const store = configureStore({
   reducer: rootReducer,
   preloadedState,
+})
+
+store.subscribe(() => {
+  console.log('STORE:', store.getState())
 })
 
 export type RootState = ReturnType<typeof store.getState>

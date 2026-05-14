@@ -1,35 +1,61 @@
 import type { FC } from 'react'
 import { Trash2 } from 'lucide-react'
+import { useSelector } from 'react-redux'
 
 import { Button } from '@shared/ui/Button'
 import { ProductCounter } from '@shared/ui/ProductCounter'
+import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 
-import { useShoppingCart } from '../context/ShoppingCartContext'
+import {
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart,
+  toggleSelectProduct,
+  selectSelectedIds,
+} from '@features/cart'
 
-interface IShoppingCartItem {
+interface IShoppingCartItemProps {
   id: string
   imgSrc: string
   name: string
   price: number
   quantity: number
-  checked: boolean
 }
 
-export const ShoppingCartItem: FC<IShoppingCartItem> = ({
+export const ShoppingCartItem: FC<IShoppingCartItemProps> = ({
   id,
   imgSrc,
   name,
   price,
   quantity,
-  checked,
 }) => {
-  const { toggleSelectProduct, deleteProductFromCart } = useShoppingCart()
+  const dispatch = useAppDispatch()
+
+  const selectedIds = useSelector(selectSelectedIds)
+
+  const checked = selectedIds.includes(id)
+
+  const handleToggleSelect = () => {
+    dispatch(toggleSelectProduct(id))
+  }
+
+  const handleMinus = () => {
+    dispatch(decreaseQuantity(id))
+  }
+
+  const handlePlus = () => {
+    dispatch(increaseQuantity(id))
+  }
+
+  const handleDelete = () => {
+    dispatch(removeFromCart(id))
+  }
 
   return (
     <div>
       <div className='w-full h-120px flex justify-between'>
         <div className='flex items-center gap-base'>
-          <input type='checkbox' onChange={() => toggleSelectProduct(id)} checked={checked} />
+          <input type='checkbox' checked={checked} onChange={handleToggleSelect} />
 
           <img
             src={imgSrc}
@@ -44,14 +70,16 @@ export const ShoppingCartItem: FC<IShoppingCartItem> = ({
         </div>
 
         <div className='w-740px flex justify-between items-center'>
-          <ProductCounter inCart={false} />
+          <ProductCounter count={quantity} onMinus={handleMinus} onPlus={handlePlus} />
+
           <h3>{price * quantity}₽</h3>
+
           <Button
             Icon={Trash2}
             theme='dark'
             className='w-30px h-30px'
-            onClick={() => deleteProductFromCart(id)}
-            type='submit'
+            onClick={handleDelete}
+            type='button'
           />
         </div>
       </div>

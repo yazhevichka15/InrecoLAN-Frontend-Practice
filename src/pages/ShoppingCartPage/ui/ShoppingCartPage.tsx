@@ -1,24 +1,18 @@
-import { ShoppingCartProvider, useShoppingCart } from '../context/ShoppingCartContext'
+import { useSelector } from 'react-redux'
 
 import { SubHeader } from '@widgets/SubHeader'
-import { EmptyShoppingCartSection } from './EmptyShoppingCartSection'
-import { ShoppingCartButtonsSection } from './ShoppingCartButtonsSection'
+
 import { ShoppingCartItem } from './ShoppingCartItem'
+import { ShoppingCartButtonsSection } from './ShoppingCartButtonsSection'
 import { ShoppingCartSummarySection } from './ShoppingCartSummarySection'
-import { getCartProducts } from '../api/getCartProducts'
+
+import { selectCartItems } from '@features/cart'
+import { EmptyShoppingCartSection } from './EmptyShoppingCartSection'
 
 export const ShoppingCartPage = () => {
-  const cartProducts = getCartProducts()
+  const cartProducts = useSelector(selectCartItems)
 
-  return (
-    <ShoppingCartProvider cartProducts={cartProducts}>
-      <ShoppingCartContent />
-    </ShoppingCartProvider>
-  )
-}
-
-const ShoppingCartContent = () => {
-  const { cartProducts, cartIsEmpty, selectedProducts } = useShoppingCart()
+  const cartIsEmpty = cartProducts.length === 0
 
   return (
     <>
@@ -37,9 +31,12 @@ const ShoppingCartContent = () => {
           <fieldset className='flex flex-col gap-base'>
             {cartProducts.map((product) => (
               <ShoppingCartItem
-                key={product.id}
-                {...product}
-                checked={selectedProducts.includes(product.id)}
+                key={product.productId}
+                id={product.productId}
+                imgSrc={product.imageUrl}
+                name={product.title}
+                price={product.price}
+                quantity={product.quantity}
               />
             ))}
           </fieldset>

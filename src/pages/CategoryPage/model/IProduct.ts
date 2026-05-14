@@ -1,8 +1,9 @@
 export interface IProduct {
+  id: string
   image: string
   title: string
-  price: string
+  price: number
   status: 'in-cart' | 'not-in-cart' | 'out-of-stock'
   badge: string
-  oldPrice: string
+  oldPrice: number | null
 }

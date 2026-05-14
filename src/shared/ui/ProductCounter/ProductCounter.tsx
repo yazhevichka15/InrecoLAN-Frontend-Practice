@@ -1,37 +1,21 @@
-import { useState, type FC } from 'react'
+import type { FC } from 'react'
+
 import { Button } from '@shared/ui/Button'
 
 interface IProductCounterProps {
+  count: number
   inCart?: boolean
-  onChange?: (count: number) => void
+  onMinus: () => void
+  onPlus: () => void
 }
 
-export const ProductCounter: FC<IProductCounterProps> = ({ inCart, onChange }) => {
-  const [count, setCount] = useState(1)
-
-  const updateCount = (newCount: number) => {
-    setCount(newCount)
-    if (onChange) {
-      onChange(newCount)
-    }
-  }
-
-  const handleMinus = () => {
-    const newCount = count === 0 ? 0 : count - 1
-    updateCount(newCount)
-  }
-
-  const handlePlus = () => {
-    const newCount = count + 1
-    updateCount(newCount)
-  }
-
+export const ProductCounter: FC<IProductCounterProps> = ({ count, inCart, onMinus, onPlus }) => {
   return (
     <div className='text-light-brown flex items-center gap-10px'>
       {inCart && 'В корзине'}
-      <Button title='-' theme='light' className='size-6.75' onClick={handleMinus} type='button' />
+      <Button title='-' theme='light' className='size-6.75' onClick={onMinus} type='button' />
       {count} шт.
-      <Button title='+' theme='light' className='size-6.75' onClick={handlePlus} type='button' />
+      <Button title='+' theme='light' className='size-6.75' onClick={onPlus} type='button' />
     </div>
   )
 }

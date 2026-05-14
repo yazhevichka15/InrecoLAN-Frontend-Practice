@@ -10,6 +10,7 @@ import { Badge } from '@shared/ui/Badge'
 import { cn } from '@shared/lib/utils/cn'
 
 import { selectIsAuth, selectAuthUser } from '@features/auth'
+import { selectCartTotalCount } from '@features/cart'
 
 export function Header() {
   const menuItems = [
@@ -23,12 +24,22 @@ export function Header() {
   const isAuth = useSelector(selectIsAuth)
   const user = useSelector(selectAuthUser)
 
-  const handleUserClick = async () => {
+  const cartCount = useSelector(selectCartTotalCount)
+
+  const handleUserClick = () => {
     if (!isAuth) {
-      navigate('auth')
+      navigate('/auth')
     } else {
-      navigate('account')
+      navigate('/account')
     }
+  }
+
+  const handleCartClick = () => {
+    navigate('/cart')
+  }
+
+  const handleFavoritesClick = () => {
+    navigate('/favourities')
   }
 
   return (
@@ -51,18 +62,31 @@ export function Header() {
           <li>
             <SearchBar />
           </li>
+
           {isAuth && (
             <>
               <li className='relative'>
-                <HeaderRightMenuItem Icon={Heart} title='Избранное' />
+                <HeaderRightMenuItem
+                  Icon={Heart}
+                  title='Избранное'
+                  onClick={handleFavoritesClick}
+                />
+
                 <Badge count={0} />
               </li>
+
               <li className='relative'>
-                <HeaderRightMenuItem Icon={ShoppingCart} title='Корзина' />
-                <Badge count={0} />
+                <HeaderRightMenuItem
+                  Icon={ShoppingCart}
+                  title='Корзина'
+                  onClick={handleCartClick}
+                />
+
+                <Badge count={cartCount} />
               </li>
             </>
           )}
+
           <li>
             <HeaderRightMenuItem
               Icon={User}

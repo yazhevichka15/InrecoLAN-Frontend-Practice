@@ -1,14 +1,12 @@
-import { useNavigate } from 'react-router-dom'
-import { useShoppingCart } from '../context/ShoppingCartContext'
-
+import { useSelector } from 'react-redux'
 import { Button } from '@shared/ui/Button'
-import { calculateTotalPrice } from '../utils/calculateTotalPrice'
+import { useNavigate } from 'react-router-dom'
+
+import { selectCartTotalPrice } from '@features/cart'
 
 export const ShoppingCartSummarySection = () => {
   const navigate = useNavigate()
-
-  const { cartProducts } = useShoppingCart()
-  const totalPrice = calculateTotalPrice(cartProducts)
+  const totalPrice = useSelector(selectCartTotalPrice)
 
   return (
     <div className='flex items-center justify-between'>
@@ -17,11 +15,11 @@ export const ShoppingCartSummarySection = () => {
         <h2 className='text-light-brown'>{totalPrice}₽</h2>
       </div>
 
-      {/* Редирект на страницу с оформлением заказа, надо будет передать выбранные товары */}
       <Button
+        type='button'
         title='Оформить заказ'
         theme='dark'
-        className='w-740px h-80px text-xl'
+        className='w-[600px] h-80px text-xl'
         onClick={() => navigate('/create-order')}
       />
     </div>
