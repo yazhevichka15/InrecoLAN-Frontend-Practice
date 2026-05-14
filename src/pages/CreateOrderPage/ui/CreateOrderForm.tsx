@@ -1,14 +1,18 @@
 import { useForm, FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
 
-import { getCartProducts } from '../api/getCartProducts'
 import { paymentMethods } from '../model/paymentMethodsData'
+
 import { PaymentMethodItem } from './PaymentMethodItem'
 import { OrderSecurityAgreement } from './OrderSecurityAgreement'
 
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
+
 import { deliveryAddress, requredFieldValidation } from '@shared/lib/utils/inputValidations'
+
+import { selectSelectedCartItems } from '@features/cart'
 
 interface ICreateOrderFormValues {
   paymentMethod: string
@@ -21,8 +25,7 @@ interface ICreateOrderFormValues {
 export const CreateOrderForm = () => {
   const navigate = useNavigate()
 
-  // Временно, уберется, когда подключу redux store
-  const orderProducts = getCartProducts()
+  const orderProducts = useSelector(selectSelectedCartItems)
 
   const totalPrice = orderProducts.reduce((sum, product) => {
     return sum + product.price * product.quantity
@@ -38,8 +41,14 @@ export const CreateOrderForm = () => {
   })
 
   const onSubmit = (data: ICreateOrderFormValues) => {
-    console.log(data)
+    console.log({
+      formData: data,
+      products: orderProducts,
+      totalPrice,
+    })
+
     methods.reset()
+
     navigate('/account')
   }
 
@@ -55,6 +64,7 @@ export const CreateOrderForm = () => {
           <legend className='mb-30px'>
             <h2>Способ оплаты</h2>
           </legend>
+
           <div className='flex gap-base'>
             {paymentMethods.map((method) => (
               <PaymentMethodItem key={method.value} title={method.title} value={method.value} />
@@ -64,6 +74,7 @@ export const CreateOrderForm = () => {
 
         <fieldset className='flex flex-col gap-30px'>
           <h2>Доставка</h2>
+
           <div className='flex gap-base'>
             <span>Получить в магазине</span>
 
@@ -85,12 +96,15 @@ export const CreateOrderForm = () => {
               <legend className='mb-30px'>
                 <h2>Способ доставки</h2>
               </legend>
+
               <select
                 {...methods.register('deliveryMethod')}
                 className='px-50px py-10px w-full text-light-brown outline-0 border border-light-brown rounded-xs'
               >
                 <option value='courier'>Курьер</option>
+
                 <option value='post'>Почта России</option>
+
                 <option value='sdek'>СДЭК</option>
               </select>
             </fieldset>
@@ -99,6 +113,7 @@ export const CreateOrderForm = () => {
               <legend className='mb-30px'>
                 <h2>Адрес доставки</h2>
               </legend>
+
               <Input {...deliveryAddress} />
             </fieldset>
           </>

@@ -1,12 +1,16 @@
+import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+
 import { SubHeader } from '@widgets/SubHeader'
+
 import { OrdersItemsSection } from './OrdersItemsSection'
 import { CreateOrderForm } from './CreateOrderForm'
-import { getCartProducts } from '../api/getCartProducts'
+
+import { selectSelectedCartItems } from '@features/cart'
 
 export const CreateOrderPage = () => {
-  // Временно, уберется, когда подключу redux store
-  const orderProducts = getCartProducts()
+  const orderProducts = useSelector(selectSelectedCartItems)
+
   const orderIsEmpty = orderProducts.length === 0
 
   if (orderIsEmpty) {
