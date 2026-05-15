@@ -1,8 +1,12 @@
 import { useState, type FC } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Heart } from 'lucide-react'
 
 import { addToCart, increaseQuantity, decreaseQuantity, selectCartItems } from '@features/cart'
+
+import { selectIsAuth } from '@features/auth'
+
 import { cn } from '@shared/lib/utils/cn'
 import { useAppDispatch } from '@shared/lib/hooks/useAppDispatch'
 
@@ -31,8 +35,11 @@ export const ProductCard: FC<IProductCardProps> = ({
   isOutOfStock,
 }) => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const [favorites, setFavorites] = useState(inFavorites)
+
+  const isAuth = useSelector(selectIsAuth)
 
   const cartItems = useSelector(selectCartItems)
 
@@ -43,6 +50,11 @@ export const ProductCard: FC<IProductCardProps> = ({
   const quantity = cartItem?.quantity || 0
 
   const handleAddToCart = () => {
+    if (!isAuth) {
+      navigate('/auth')
+      return
+    }
+
     dispatch(
       addToCart({
         productId,
