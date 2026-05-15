@@ -5,6 +5,8 @@ import { SortSelect } from '@shared/ui/SortSelect/SortSelect'
 import { getProducts } from '../api/getProducts'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import { useProductPagination, Pagination } from '@widgets/Pagination'
+
 const selectItems = [
   { value: '-', title: 'Без сортировки' },
   { value: 'cheap', title: 'Сначала дешёвые' },
@@ -28,6 +30,8 @@ const categories = [
 const chandeliersItems = getProducts()
 
 export const CategoryPage = () => {
+  const { currentPage, knownMaxPage, isLastPage, goToPage } = useProductPagination()
+
   const { category } = useParams()
   const navigate = useNavigate()
 
@@ -68,6 +72,15 @@ export const CategoryPage = () => {
                 oldPrice={card.oldPrice}
               />
             ))}
+          </div>
+
+          <div className='col-span-9 flex justify-center'>
+            <Pagination
+              currentPage={currentPage}
+              knownMaxPage={knownMaxPage}
+              isLastPage={isLastPage}
+              onPageChange={goToPage}
+            />
           </div>
         </div>
       </div>
