@@ -1,6 +1,13 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { products } from "./model/products";
+
+interface IReview {
+  id: string;
+  rate: number;
+  content: string;
+  creationDate: string;
+}
 
 export const ProductDetailsPage = () => {
   const { category, product } = useParams<{
@@ -10,19 +17,61 @@ export const ProductDetailsPage = () => {
 
   const currentProduct = products.find(
     (item) =>
-      item.slug === product && item.category === category
+      item.slug === product &&
+      item.category === category
   );
 
   const [activeImage, setActiveImage] = useState(0);
 
+  const [reviews, setReviews] = useState<IReview[]>([]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        console.log("TOKEN:");
+        console.log(token);
+
+        const response = await fetch(
+  "/api/Review/Review",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
+
+console.log(response.status);
+
+if (!response.ok) {
+  throw new Error("Ошибка загрузки отзывов");
+}
+
+const data = await response.json();
+
+setReviews(data);
+      } catch (error) {
+        console.error("ERROR:");
+        console.error(error);
+      }
+    };
+
+    fetchReviews();
+  }, []);
+
   if (!currentProduct) {
-    return <div className="p-10">Товар не найден</div>;
+    return (
+      <div className="p-10">
+        Товар не найден
+      </div>
+    );
   }
 
   return (
     <div className="w-full max-w-[1600px] mx-auto px-10 py-10">
       <div className="grid grid-cols-[1.2fr_1fr] gap-20 items-stretch">
-        
+
         <div className="flex flex-col">
           <div className="w-full h-[650px] flex items-center justify-center mb-4 border">
             <img
@@ -39,7 +88,9 @@ export const ProductDetailsPage = () => {
                 src={img}
                 onClick={() => setActiveImage(index)}
                 className={`w-28 h-20 object-cover cursor-pointer border ${
-                  activeImage === index ? "border-2" : ""
+                  activeImage === index
+                    ? "border-2"
+                    : ""
                 }`}
               />
             ))}
@@ -96,21 +147,29 @@ export const ProductDetailsPage = () => {
               </h2>
 
               <div className="flex flex-col gap-4">
-                {currentProduct.reviews.map((review) => (
+                {reviews.map((review) => (
                   <div
                     key={review.id}
                     className="border p-4"
                   >
                     <div className="flex justify-between mb-2">
-                      <span>{review.author}</span>
-                      <span>{"★".repeat(review.rating)}</span>
+                      <span>Аноним</span>
+
+                      <span>
+                        {"★".repeat(review.rate)}
+                        {"☆".repeat(5 - review.rate)}
+                      </span>
                     </div>
 
                     <div className="text-sm mb-2">
-                      {review.date}
+                      {new Date(
+                        review.creationDate
+                      ).toLocaleDateString()}
                     </div>
 
-                    <div>{review.text}</div>
+                    <div>
+                      {review.content}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -149,20 +208,19 @@ export const ProductDetailsPage = () => {
         </h2>
 
         <div className="border-t divide-y">
-          {Object.entries(currentProduct.usageSpecs).map(
-            ([key, value]) => (
-              <div
-                key={key}
-                className="flex justify-between py-3"
-              >
-                <span>{key}</span>
-                <span>{value}</span>
-              </div>
-            )
-          )}
+          {Object.entries(
+            currentProduct.usageSpecs
+          ).map(([key, value]) => (
+            <div
+              key={key}
+              className="flex justify-between py-3"
+            >
+              <span>{key}</span>
+              <span>{value}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
-export default ProductDetailsPage;
